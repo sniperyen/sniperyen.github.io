@@ -1,0 +1,732 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <link rel="dns-prefetch" href="http://woshijingshenbing.com">
+  <title>Git 随记 | Codreamer的博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="基本操作123456789101112git config --global user.name “Your Name”git config --global user.email “you@example.com”git mkdir sanyangcd sanyang/git init  ls -agit add . 			//给当前的这个项目制作一个快照snapshot（index file">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Git 随记">
+<meta property="og:url" content="http://woshijingshenbing.com/2016/10/16/Git-随记/index.html">
+<meta property="og:site_name" content="Codreamer的博客">
+<meta property="og:description" content="基本操作123456789101112git config --global user.name “Your Name”git config --global user.email “you@example.com”git mkdir sanyangcd sanyang/git init  ls -agit add . 			//给当前的这个项目制作一个快照snapshot（index file">
+<meta property="og:image" content="http://static.zybuluo.com/sanyang/78geg21ihdqm1z7z5wk1x28y/image_1auv5m976g7vcvr2dr198k1bti9.png">
+<meta property="og:image" content="http://static.zybuluo.com/sanyang/21pvymu2vt27qd5td85sfptp/image_1auv5sbqqkaa17v810jr1nmn1t5km.png">
+<meta property="og:image" content="http://static.zybuluo.com/sanyang/d0xusm613172sdxlflrioxsn/image_1auv62jii1h5r1tch19mr1lt83k59.png">
+<meta property="og:updated_time" content="2016-12-21T05:49:20.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Git 随记">
+<meta name="twitter:description" content="基本操作123456789101112git config --global user.name “Your Name”git config --global user.email “you@example.com”git mkdir sanyangcd sanyang/git init  ls -agit add . 			//给当前的这个项目制作一个快照snapshot（index file">
+<meta name="twitter:image" content="http://static.zybuluo.com/sanyang/78geg21ihdqm1z7z5wk1x28y/image_1auv5m976g7vcvr2dr198k1bti9.png">
+  
+    <link rel="alternative" href="/atom.xml" title="Codreamer的博客" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link rel="stylesheet" href="/main.css?v=4.0.0.css">
+  
+
+  
+<script>
+var _hmt = _hmt || [];
+(function() {
+	var hm = document.createElement("script");
+	hm.src = "https://hm.baidu.com/hm.js?45db6f44750c33b1afd7970532c8b3fb";
+	var s = document.getElementsByTagName("script")[0]; 
+	s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+</head>
+
+<body>
+  <div id="container" q-class="show:isCtnShow">
+    <canvas id="anm-canvas" class="anm-canvas"></canvas>
+    <div class="left-col" q-class="show:isShow">
+      <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			<img src="/img/avatar.png" class="js-avatar">
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">Codreamer</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">除非你改变了交往的人和阅读的书，否则，你的五年之后和现在完全一样</p>
+		
+
+		<nav class="header-menu">
+			<ul>
+			
+				<li><a href="/">主页</a></li>
+	        
+				<li><a href="/photos">相册</a></li>
+	        
+			</ul>
+		</nav>
+		<nav class="header-smart-menu">
+	        
+    		
+    			
+    			<a data-idx="0" q-on="click: openSlider(e, 'innerArchive')" href="javascript:void(0)">所有文章</a>
+    			
+    			
+            
+    			
+    			<a data-idx="1" q-on="click: openSlider(e, 'friends')" href="javascript:void(0)">友链</a>
+    			
+    			
+            
+    			
+    			<a data-idx="2" q-on="click: openSlider(e, 'aboutme')" href="javascript:void(0)">关于我</a>
+    			
+    			
+            
+		</nav>
+		<nav class="header-nav">
+			<div class="social">
+				
+					<a class="github" target="_blank" href="https://github.com/sniperyen" title="github"><i class="icon-github"></i></a>
+		        
+					<a class="weibo" target="_blank" href="http://weibo.com/ddhj" title="weibo"><i class="icon-weibo"></i></a>
+		        
+					<a class="qq" target="_blank" href="/871757525" title="qq"><i class="icon-qq"></i></a>
+		        
+					<a class="mail" target="_blank" href="mailto:871757525@qq.com" title="mail"><i class="icon-mail"></i></a>
+		        
+			</div>
+		</nav>
+	</header>		
+</div>
+
+    </div>
+    <div class="mid-col" q-class="show:isShow,hide:isShow|isFalse">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"><i class="icon-sort"></i></div>
+  		<h1 class="header-author js-mobile-header hide">Codreamer</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				<img src="/img/avatar.png" class="js-avatar">
+			</div>
+			<hgroup>
+			  <h1 class="header-author">Codreamer</h1>
+			</hgroup>
+			
+			<p class="header-subtitle">除非你改变了交往的人和阅读的书，否则，你的五年之后和现在完全一样</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/photos">相册</a></li>
+		        
+		        
+		        	<li><a href="/archives/">所有文章</a></li>
+		        
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/sniperyen" title="github"><i class="icon-github"></i></a>
+			        
+						<a class="weibo" target="_blank" href="http://weibo.com/ddhj" title="weibo"><i class="icon-weibo"></i></a>
+			        
+						<a class="qq" target="_blank" href="/871757525" title="qq"><i class="icon-qq"></i></a>
+			        
+						<a class="mail" target="_blank" href="mailto:871757525@qq.com" title="mail"><i class="icon-mail"></i></a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+
+      <div id="wrapper" class="body-wrap">
+        <div class="menu-l">
+          <div class="canvas-wrap">
+            <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
+          </div>
+          <div id="js-content" class="content-ll">
+            <article id="post-Git-随记" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Git 随记
+    </h1>
+  
+
+        <a href="/2016/10/16/Git-随记/" class="archive-article-date">
+  	<time datetime="2016-10-16T13:46:40.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-10-16</time>
+</a>
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="基本操作"><a href="#基本操作" class="headerlink" title="基本操作"></a>基本操作</h2><figure class="highlight vim"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">git config --<span class="keyword">global</span> user.name “Your Name”</div><div class="line">git config --<span class="keyword">global</span> user.email “you@example.<span class="keyword">com</span>”</div><div class="line">git <span class="built_in">mkdir</span> sanyang</div><div class="line"><span class="keyword">cd</span> sanyang/</div><div class="line">git init  </div><div class="line"><span class="keyword">ls</span> -<span class="keyword">a</span></div><div class="line">git <span class="built_in">add</span> . 			//给当前的这个项目制作一个快照snapshot（<span class="built_in">index</span> <span class="keyword">file</span> 索引）</div><div class="line">git commit  		//将快照里登记的内容永久写入git仓库，也就是开发者已经想好了要提交自己的开发成果了。</div><div class="line">git diff 			//这个命令只在git <span class="built_in">add</span>之前使用有效。如果已经<span class="built_in">add</span>了，那么此命令输出为空</div><div class="line">git diff –cached       //这个命令在git <span class="built_in">add</span>之后在git commit之前有效。</div><div class="line">git status  	       //这个命令在git commit之前有效，表示都有哪些文件发生了改动</div><div class="line">git <span class="built_in">log</span> (-<span class="keyword">p</span>)              //查看开发日志，加-<span class="keyword">p</span>显示每个版本的代码区别所在</div></pre></td></tr></table></figure>
+<a id="more"></a>
+<h2 id="分支操作"><a href="#分支操作" class="headerlink" title="分支操作"></a>分支操作</h2><figure class="highlight awk"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">git branch experimental         <span class="regexp">//</span>开启一个experimental分支</div><div class="line">git branch                              <span class="regexp">//</span>列出所有分支</div><div class="line">git checkout experimental     <span class="regexp">//</span>切换到experimental分支，进行一系列开发工作</div><div class="line">git checkout master              <span class="regexp">//</span>切换到主分支</div><div class="line">git merge experimental         <span class="regexp">//</span>将分支合并到主干道(必须在主分支中进行)</div><div class="line">git branch -d experimental   <span class="regexp">//</span>删除experimental分支，在已合并后；如果要强制删除，无论是否合并，用-D</div><div class="line">git clone -b master2 sanyang@http:<span class="regexp">//</span>www.kernel.org<span class="regexp">/pub/</span>scm<span class="regexp">/git/gi</span>t.git  <span class="regexp">//</span> 用帐号 sanyang 从 http:<span class="regexp">//</span>www.kernel.org<span class="regexp">/pub/</span>scm<span class="regexp">/git/gi</span>t.git 去克隆 master2 分支</div></pre></td></tr></table></figure>
+<h2 id="协同工作"><a href="#协同工作" class="headerlink" title="协同工作"></a>协同工作</h2><ul>
+<li><p>合作伙伴bob希望改进我（sanyang）的工作成果,先克隆到他本地</p>
+<figure class="highlight crmsh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">bob$ git <span class="keyword">clone</span> <span class="title">/home</span>/rocrocket/project myrepo  //此命令用于克隆我的代码到bob自己的myrepo目录下</div></pre></td></tr></table></figure>
+</li>
+<li><p>bob提交自己的改进成果到我的git仓库中，并口头告知我他已经完成了工作</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">bob$ git commit -<span class="selector-tag">a</span>  <span class="comment">//不用加任何参数，因为当初clone的时候，git已经记住了我(sanyang)的工作目录，它会直接找到我的目录来取。</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>如果很信任对方(bob)能力，直接合并对方提交过来的工作</p>
+<figure class="highlight arduino"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sanyang$ git pull /<span class="built_in">home</span>/bob/myrepo master</div></pre></td></tr></table></figure>
+</li>
+<li><p>不是很信任，先放到我主分支下的某一目录下，检查过后再合并</p>
+<figure class="highlight armasm"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="symbol">git</span> fetch /home/<span class="keyword">bob/myrepo </span>master:<span class="keyword">bobworks </span></div><div class="line"><span class="symbol">git</span> whatchanged -p master..<span class="keyword">bobworks </span>//用来查看<span class="keyword">bob都做了什么</span></div><div class="line"><span class="symbol">git</span> checkout master //切换到master分区</div><div class="line"><span class="symbol">git</span> pull . <span class="keyword">bobworks </span>//如果我检查了<span class="keyword">bob的工作后很满意，就可以用pull来将bobworks分支合并到我的项目中了</span></div><div class="line"><span class="symbol">git</span> <span class="keyword">branch </span>-D <span class="keyword">bobworks </span>//如果我检查了<span class="keyword">bob的工作后很不满意，就可以用-D来放弃这个分支就可以了</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>过了几天，bob如果想继续帮助我开发，他需要先同步一下我这几天的工作成果，如下操作</p>
+<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="attribute">git pull</span></div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>———————–Tips——————-<br>（1）git commit -a 这是一个偷懒的命令，相当于git add .; git commit;但无法提交新添加的文件<br>（2）log和status等命令只能查看当前当前分支进行的工作<br>（3）merge两个分支时，两个分支都需要commit过<br>（4）git pull . 跟 git merge 功能是一样的，以后完全可以用git pull .来代替git merge<br>（5）开发日志的格式：第一行概括信息，第二行空行，第三行详细信息。<br>（6）gitk  图形化当前分支的信息</p>
+<h2 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h2><p>Git有三个工作区域，分别为：工作目录（Working Directory）、暂存区（Stage或Index）以及资源库（Repository或Git Directory）。下图是文件在这三个工作区域之间的关系：</p>
+<p><img src="http://static.zybuluo.com/sanyang/78geg21ihdqm1z7z5wk1x28y/image_1auv5m976g7vcvr2dr198k1bti9.png" alt="image_1auv5m976g7vcvr2dr198k1bti9.png-85.5kB"></p>
+<p>Git使用了SHA-1算法计算数据的校验和，并将该结果作为索引，而非文件名。</p>
+<p><img src="http://static.zybuluo.com/sanyang/21pvymu2vt27qd5td85sfptp/image_1auv5sbqqkaa17v810jr1nmn1t5km.png" alt="image_1auv5sbqqkaa17v810jr1nmn1t5km.png-132.1kB"></p>
+<p>两种状态足以表达Git中的文件，即：未跟踪（Untracked）和已跟踪（Tracked）。而对于已跟踪状态，我又将其分为：未修改的（Unmodified），Modified（已修改的），暂存的（Staged）和已提交的（committed）。</p>
+<p><img src="http://static.zybuluo.com/sanyang/d0xusm613172sdxlflrioxsn/image_1auv62jii1h5r1tch19mr1lt83k59.png" alt="image_1auv62jii1h5r1tch19mr1lt83k59.png-271.9kB"></p>
+<h2 id="git-clone不需输入账号密码的方法"><a href="#git-clone不需输入账号密码的方法" class="headerlink" title="git clone不需输入账号密码的方法"></a>git clone不需输入账号密码的方法</h2><ol>
+<li>在~/下， touch创建文件 .git-credentials，在里面按“i”然后输入：<br><code>https://{username}:{password}@github.com</code>，比如 <code>https://aoeddklj:1233ds@github.com</code></li>
+<li>在终端下执行<br><code>ame@zhenyun ~ $git config --global credential.helper store</code></li>
+<li>可以看到~/.gitconfig文件，会多了一项：<figure class="highlight ini"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="section">[credential]</span></div><div class="line"><span class="attr">helper</span> = store</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>这个时候输入命令 <code>git clone http://username@url</code> 时不需要输入密码，即可完成代码的git.</p>
+<h2 id="本地多个key-ssh"><a href="#本地多个key-ssh" class="headerlink" title="本地多个key-ssh"></a>本地多个key-ssh</h2><ul>
+<li><p>第一步 配置用户名和邮箱</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">git config --global user<span class="selector-class">.name</span> <span class="string">"sanyang"</span></div><div class="line">git config --global user<span class="selector-class">.email</span> <span class="string">"871757525@qq.com"</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>第二步 生成SSH-Key的同时指定保存的文件名</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">ssh-keygen -t rsa -f ~<span class="regexp">/.ssh/i</span>d_rsa -C <span class="string">"871757525@qq.com"</span></div><div class="line">ssh-keygen -t rsa -f ~<span class="regexp">/.ssh/i</span>d_rsa.oschina -C <span class="string">"871757525@qq.com"</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>第三步 新增并配置config文件</p>
+<figure class="highlight arduino"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">touch ~/.ssh/<span class="built_in">config</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>配置示例</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">Host <span class="number">121.42</span>.<span class="number">58.246</span></div><div class="line">    IdentityFile ~/.ssh/id_rsa</div><div class="line">    User <span class="string">"sanyang"</span></div><div class="line"></div><div class="line">Host gitlab<span class="selector-class">.xiangcloud</span><span class="selector-class">.com</span><span class="selector-class">.cn</span></div><div class="line">    IdentityFile ~/.ssh/id_rsa<span class="selector-class">.oschina</span></div><div class="line">    User <span class="string">"sanyang"</span></div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="Git服务器搭建"><a href="#Git服务器搭建" class="headerlink" title="Git服务器搭建"></a>Git服务器搭建</h2><p>在Ubuntu上搭建Git服务器，我们使用VMware虚拟机安装两台Ubantu系统，分别命名为gitServer和gitClient_01</p>
+<ul>
+<li><p>服务器(gitServer)上的操作</p>
+<figure class="highlight applescript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">sudo apt-<span class="keyword">get</span> install openssh-server <span class="comment"># 安装SSH服务</span></div><div class="line">ps –e|grep ssh <span class="comment"># 查看ssh服务是否启动</span></div><div class="line">sudo adduser git <span class="comment"># 添加git用户</span></div><div class="line">sudo apt-<span class="keyword">get</span> install git-core <span class="comment"># 安装git</span></div><div class="line">git <span class="comment">--bare init /home/git/myRep.git  # 初始化仓库</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>客户端(gitClient_01)的操作</p>
+<figure class="highlight elixir"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git clone git<span class="variable">@gitServer</span><span class="symbol">:/home/git/myRep</span>.git  <span class="comment"># gitServer为服务器的ip或域名</span></div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="使用docker部署gitlab应用"><a href="#使用docker部署gitlab应用" class="headerlink" title="使用docker部署gitlab应用"></a>使用docker部署gitlab应用</h2><p><a href="http://www.jianshu.com/p/05e3bb375f64" target="_blank" rel="external">http://www.jianshu.com/p/05e3bb375f64</a></p>
+<h2 id="git-config"><a href="#git-config" class="headerlink" title="git config"></a>git config</h2><ul>
+<li>更改git默认编辑器为vim: <code>git config --global core.editor vim</code></li>
+</ul>
+<h2 id="错误处理"><a href="#错误处理" class="headerlink" title="错误处理"></a>错误处理</h2><ul>
+<li>错误1： server certificate verification failed. CAfile: /etc/ssl/certs/ca-certificates.crt CRLfile: none<br>解决方案：执行 <code>export GIT_SSL_NO_VERIFY=1</code></li>
+</ul>
+<h2 id="git与svn的区别"><a href="#git与svn的区别" class="headerlink" title="git与svn的区别"></a>git与svn的区别</h2><p>   1) 最核心的区别Git是分布式的，而Svn不是分布的。能理解这点，上手会很容易，声明一点Git并不是目前唯一的分布式版本控制系统，还有比如Mercurial等，所以说它们差不许多。话说回来Git跟Svn一样有自己的集中式版本库和Server端，但Git更倾向于分布式开发，因为每一个开发人员的电脑上都有一个Local Repository,所以即使没有网络也一样可以Commit，查看历史版本记录，创建项 目分支等操作，等网络再次连接上Push到Server端。</p>
+<p>从上面看GIt真的很棒，但是GIt adds Complexity,刚开始使用会有些疑惑，因为需要建两个Repositories(Local Repositories &amp; Remote Repositories),指令很多，除此之外你需要知道哪些指令在Local Repository，哪些指令在Remote Repository。</p>
+<p>   2)Git把内容按元数据方式存储，而SVN是按文件：因为,.git目录是处于你的机器上的一个克隆版的版本库，它拥有中心版本库上所有的东西，例如标签，分支，版本记录等。.git目录的体积大小跟.svn比较，你会发现它们差距很大。</p>
+<p>   3) Git没有一个全局版本号，而SVN有：目前为止这是跟SVN相比Git缺少的最大的一个特征。</p>
+<p>   4) Git的内容的完整性要优于SVN: GIT的内容存储使用的是SHA-1哈希算法。这能确保代码内容的完整性，确保在遇到磁盘故障和网络问题时降低对版本库的破坏。</p>
+<p>   5) Git下载下来后，在OffLine状态下可以看到所有的Log,SVN不可以。</p>
+<p>   6) 刚开始用时很狗血的一点，SVN必须先Update才能Commit,忘记了合并时就会出现一些错误，git还是比较少的出现这种情况。</p>
+<p>   7) 克隆一份全新的目录以同样拥有五个分支来说，SVN是同时复製5个版本的文件,也就是说重复五次同样的动作。而Git只是获取文件的每个版本的 元素，然后只载入主要的分支(master)在我的经验,克隆一个拥有将近一万个提交(commit),五个分支,每个分支有大约1500个文件的 SVN,耗了将近一个小时！而Git只用了区区的1分钟！</p>
+<p>   8) 版本库（repository):SVN只能有一个指定中央版本库。当这个中央版本库有问题时，所有工作成员都一起瘫痪直到版本库维修完毕或者新的版本库设立完成。而 Git可以有无限个版本库。或者，更正确的说法，每一个Git都是一个版本库，区别是它们是否拥有活跃目录（Git Working Tree）。如果主要版本库（例如：置於GitHub的版本库）发生了什麼事，工作成员仍然可以在自己的本地版本库（local repository）提交，等待主要版本库恢复即可。工作成员也可以提交到其他的版本库！</p>
+<p>   9)分支（Branch）在SVN，分支是一个完整的目录。且这个目录拥有完整的实际文件。如果工作成员想要开啟新的分支，那将会影响“全世界”！每个人都会拥有和你一样的分支。如果你的分支是用来进行破坏工作（安检测试），那将会像传染病一样,你改一个分支，还得让其他人重新切分支重新下载，十分狗血。而 Git，每个工作成员可以任意在自己的本地版本库开啟无限个分支。举例：当我想尝试破坏自己的程序（安检测试），并且想保留这些被修改的文件供日后使用， 我可以开一个分支，做我喜欢的事。完全不需担心妨碍其他工作成员。只要我不合并及提交到主要版本库，没有一个工作成员会被影响。等到我不需要这个分支时， 我只要把它从我的本地版本库删除即可。无痛无痒。</p>
+<p>Git的分支名是可以使用不同名字的。例如：我的本地分支名为OK，而在主要版本库的名字其实是master。</p>
+<p>最值得一提，我可以在Git的任意一个提交点（commit point）开启分支！（其中一个方法是使用gitk –all 可观察整个提交记录，然后在任意点开啟分支。）</p>
+<p>10)提交（Commit）在SVN，当你提交你的完成品时，它将直接记录到中央版本库。当你发现你的完成品存在严重问题时，你已经无法阻止事情的发生了。如果网路中断，你根本没办法提交！而Git的提交完全属於本地版本库的活动。而你只需“推”（git push）到主要版本库即可。Git的“推”其实是在执行“同步”（Sync）。</p>
+<p>最后总结一下：</p>
+<ul>
+<li>SVN的特点是简单，只是需要一个放代码的地方时用是OK的。</li>
+<li>Git的特点版本控制可以不依赖网络做任何事情，对分支和合并有更好的支持(当然这是开发者最关心的地方)，不过想各位能更好使用它，需要花点时间尝试下。</li>
+</ul>
+<h2 id="参考文档"><a href="#参考文档" class="headerlink" title="参考文档"></a>参考文档</h2><ul>
+<li><a href="http://rogerdudler.github.io/git-guide/index.zh.html" target="_blank" rel="external">git - 简明指南
+</a></li>
+<li><a href="http://os.51cto.com/art/201312/425331.htm" target="_blank" rel="external">图文详解 Git 的使用场景</a></li>
+<li><a href="http://www.ihref.com/read-16369.html" target="_blank" rel="external">Git版本控制软件结合GitHub从入门到精通常用命令学习手册</a></li>
+</ul>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/pay-alipay.png">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/pay-wechat.png">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags"></i>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Git/">Git</a></li></ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+	<i class="icon-book icon"></i>
+	<a class="article-category-link" href="/categories/技术/">技术</a>
+	</div>
+
+
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://woshijingshenbing.com/2016/10/16/Git-随记/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+  
+<nav id="article-nav">
+  
+    <a href="/2016/10/16/Mysql-随记/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          Mysql 随记
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/10/15/两个人的马尔代夫/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">两个人的马尔代夫（未完待续）</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="Git-随记" data-title="Git 随记" data-url="http://woshijingshenbing.com/2016/10/16/Git-随记/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"woshijingshenbing"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+
+
+          </div>
+        </div>
+      </div>
+      <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+
+<footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2016 Codreamer
+    	</div>
+      	<div class="footer-right">
+      	<span id="busuanzi_container_site_uv">
+          本站访客数<span id="busuanzi_value_site_uv"></span>人次
+        </span>
+      	</div>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <script>
+	var yiliaConfig = {
+		mathjax: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false,
+		root: "/",
+		innerArchive: true
+	}
+</script>
+
+<script src="/./main.js?v=4.0.0.js"></script>
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+    
+<div class="tools-col" q-class="show:isShow,hide:isShow|isFalse" q-on="click:stop(e)">
+  <div class="tools-wrap">
+    
+    	<section class="tools-section tools-section-all" q-show="innerArchive">
+        <div class="search-wrap">
+          <input class="search-ipt" q-model="search" type="text" placeholder="find something…">
+          <i class="icon-search icon" q-show="search|isEmptyStr"></i>
+          <i class="icon-close icon" q-show="search|isNotEmptyStr" q-on="click:clearChose(e)"></i>
+        </div>
+        <div class="widget tagcloud search-tag">
+          <p class="search-tag-wording">tag:</p>
+          <label class="search-switch">
+            <input type="checkbox" q-on="click:toggleTag(e)" q-attr="checked:showTags">
+          </label>
+          <ul class="article-tag-list" q-show="showTags">
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">http</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">Mysql</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">Markdown</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">Git</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">MongoDB</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">VIM</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">mac</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">hexo</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">nodejs</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">定时任务</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">python</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">并发</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">线程</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">进程</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">协程</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">pycharm</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">随记</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">买房</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">北京</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">游记</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">马尔代夫</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">设计模式</a>
+              </li>
+            
+            <div class="clearfix"></div>
+          </ul>
+        </div>
+        <ul class="search-ul">
+          <p q-show="jsonFail" style="padding: 20px; font-size: 12px;">
+            缺失模块。<br/>1、在博客根目录（注意不是yilia根目录）执行以下命令：<br/> npm i hexo-generator-json-content --save<br/><br/>
+            2、在根目录_config.yml里添加配置：
+<pre style="font-size: 12px;" q-show="jsonFail">
+  jsonContent:
+    meta: false
+    pages: false
+    posts:
+      title: true
+      date: true
+      path: true
+      text: true
+      raw: false
+      content: false
+      slug: false
+      updated: false
+      comments: false
+      link: false
+      permalink: false
+      excerpt: false
+      categories: false
+      tags: true
+</pre>
+          </p>
+          <li class="search-li" q-repeat="items" q-show="isShow">
+            <a q-attr="href:path|urlformat" class="search-title"><i class="icon-quo-left icon"></i><span q-text="title"></span></a>
+            <p class="search-time">
+              <i class="icon-calendar icon"></i>
+              <span q-text="date|dateformat"></span>
+            </p>
+            <p class="search-tag">
+              <i class="icon-price-tags icon"></i>
+              <span q-repeat="tags" q-on="click:choseTag(e, name)" q-text="name|tagformat"></span>
+            </p>
+          </li>
+        </ul>
+    	</section>
+    
+
+    
+    	<section class="tools-section tools-section-friends" q-show="friends">
+  		
+        <ul class="search-ul">
+          
+            <li class="search-li">
+              <a href="https://coderq.com,一个面向程序员交流分享的新一代社区" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>码农圈</a>
+            </li>
+          
+            <li class="search-li">
+              <a href="http://weavesilk.com/,HTML5实现的魔幻效果" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>weavesilk</a>
+            </li>
+          
+        </ul>
+  		
+    	</section>
+    
+
+    
+    	<section class="tools-section tools-section-me" q-show="aboutme">
+  	  	
+  	  		<div class="aboutme-wrap" id="js-aboutme">他真诚地将自己的挑剔,&lt;br /&gt;误认为是对美的不懈追求，&lt;br /&gt;把自己的孤僻,&lt;br /&gt;误认为是不食人间烟火，&lt;br /&gt;把自己的散漫,&lt;br /&gt;误认为是对于自由的热爱。&lt;br /&gt;&lt;br /&gt;他的思想因为追求风雅而变得庸俗起来，&lt;br /&gt;他的行为因为小心翼翼而变得放纵不羁。&lt;br /&gt;&lt;br /&gt;他有很强的责任感，&lt;br /&gt;却也因此害怕做出承诺。&lt;br /&gt;&lt;br /&gt;他批判世上的所有东西，&lt;br /&gt;包括他自己。&lt;br /&gt;&lt;br /&gt;当别人指出他的自相矛盾后，&lt;br /&gt;他无法自圆其说，&lt;br /&gt;于是只好沉默。&lt;br /&gt;&lt;br /&gt;他是个不可理喻的人。</div>
+  	  	
+    	</section>
+    
+  </div>
+  
+</div>
+    <!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+  </div>
+</body>
+</html>

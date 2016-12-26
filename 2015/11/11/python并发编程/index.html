@@ -1,0 +1,835 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <link rel="dns-prefetch" href="http://woshijingshenbing.com">
+  <title>python并发编程 | Codreamer的博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="概述
+进程：Python中一般使用multiprocessing/subprocess来实现 
+线程：threading/thread是Python中用来实现多线程的模块
+协程（Coroutines）：Python中用于处理协程的模块倒是比较多，有eventlet、Twisted、Tulip、asyncio">
+<meta property="og:type" content="article">
+<meta property="og:title" content="python并发编程">
+<meta property="og:url" content="http://woshijingshenbing.com/2015/11/11/python并发编程/index.html">
+<meta property="og:site_name" content="Codreamer的博客">
+<meta property="og:description" content="概述
+进程：Python中一般使用multiprocessing/subprocess来实现 
+线程：threading/thread是Python中用来实现多线程的模块
+协程（Coroutines）：Python中用于处理协程的模块倒是比较多，有eventlet、Twisted、Tulip、asyncio">
+<meta property="og:image" content="http://7u2qu2.com1.z0.glb.clouddn.com/进程、线程、协程关系图.png">
+<meta property="og:updated_time" content="2016-12-21T05:55:12.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="python并发编程">
+<meta name="twitter:description" content="概述
+进程：Python中一般使用multiprocessing/subprocess来实现 
+线程：threading/thread是Python中用来实现多线程的模块
+协程（Coroutines）：Python中用于处理协程的模块倒是比较多，有eventlet、Twisted、Tulip、asyncio">
+<meta name="twitter:image" content="http://7u2qu2.com1.z0.glb.clouddn.com/进程、线程、协程关系图.png">
+  
+    <link rel="alternative" href="/atom.xml" title="Codreamer的博客" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link rel="stylesheet" href="/main.css?v=4.0.0.css">
+  
+
+  
+<script>
+var _hmt = _hmt || [];
+(function() {
+	var hm = document.createElement("script");
+	hm.src = "https://hm.baidu.com/hm.js?45db6f44750c33b1afd7970532c8b3fb";
+	var s = document.getElementsByTagName("script")[0]; 
+	s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+</head>
+
+<body>
+  <div id="container" q-class="show:isCtnShow">
+    <canvas id="anm-canvas" class="anm-canvas"></canvas>
+    <div class="left-col" q-class="show:isShow">
+      <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			<img src="/img/avatar.png" class="js-avatar">
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">Codreamer</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">除非你改变了交往的人和阅读的书，否则，你的五年之后和现在完全一样</p>
+		
+
+		<nav class="header-menu">
+			<ul>
+			
+				<li><a href="/">主页</a></li>
+	        
+				<li><a href="/photos">相册</a></li>
+	        
+			</ul>
+		</nav>
+		<nav class="header-smart-menu">
+	        
+    		
+    			
+    			<a data-idx="0" q-on="click: openSlider(e, 'innerArchive')" href="javascript:void(0)">所有文章</a>
+    			
+    			
+            
+    			
+    			<a data-idx="1" q-on="click: openSlider(e, 'friends')" href="javascript:void(0)">友链</a>
+    			
+    			
+            
+    			
+    			<a data-idx="2" q-on="click: openSlider(e, 'aboutme')" href="javascript:void(0)">关于我</a>
+    			
+    			
+            
+		</nav>
+		<nav class="header-nav">
+			<div class="social">
+				
+					<a class="github" target="_blank" href="https://github.com/sniperyen" title="github"><i class="icon-github"></i></a>
+		        
+					<a class="weibo" target="_blank" href="http://weibo.com/ddhj" title="weibo"><i class="icon-weibo"></i></a>
+		        
+					<a class="qq" target="_blank" href="/871757525" title="qq"><i class="icon-qq"></i></a>
+		        
+					<a class="mail" target="_blank" href="mailto:871757525@qq.com" title="mail"><i class="icon-mail"></i></a>
+		        
+			</div>
+		</nav>
+	</header>		
+</div>
+
+    </div>
+    <div class="mid-col" q-class="show:isShow,hide:isShow|isFalse">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"><i class="icon-sort"></i></div>
+  		<h1 class="header-author js-mobile-header hide">Codreamer</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				<img src="/img/avatar.png" class="js-avatar">
+			</div>
+			<hgroup>
+			  <h1 class="header-author">Codreamer</h1>
+			</hgroup>
+			
+			<p class="header-subtitle">除非你改变了交往的人和阅读的书，否则，你的五年之后和现在完全一样</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/photos">相册</a></li>
+		        
+		        
+		        	<li><a href="/archives/">所有文章</a></li>
+		        
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/sniperyen" title="github"><i class="icon-github"></i></a>
+			        
+						<a class="weibo" target="_blank" href="http://weibo.com/ddhj" title="weibo"><i class="icon-weibo"></i></a>
+			        
+						<a class="qq" target="_blank" href="/871757525" title="qq"><i class="icon-qq"></i></a>
+			        
+						<a class="mail" target="_blank" href="mailto:871757525@qq.com" title="mail"><i class="icon-mail"></i></a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+
+      <div id="wrapper" class="body-wrap">
+        <div class="menu-l">
+          <div class="canvas-wrap">
+            <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
+          </div>
+          <div id="js-content" class="content-ll">
+            <article id="post-python并发编程" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      python并发编程
+    </h1>
+  
+
+        <a href="/2015/11/11/python并发编程/" class="archive-article-date">
+  	<time datetime="2015-11-11T03:12:12.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2015-11-11</time>
+</a>
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h3><ul>
+<li>进程：Python中一般使用multiprocessing/subprocess来实现 </li>
+<li>线程：threading/thread是Python中用来实现多线程的模块</li>
+<li>协程（Coroutines）：Python中用于处理协程的模块倒是比较多，有eventlet、Twisted、Tulip、asyncio</li>
+</ul>
+<p><img src="http://7u2qu2.com1.z0.glb.clouddn.com/进程、线程、协程关系图.png" alt=""></p>
+<a id="more"></a>
+<h3 id="线程"><a href="#线程" class="headerlink" title="线程"></a>线程</h3><p>多线程几乎是每一个程序猿在使用每一种语言时都会首先想到用于解决并发的工具（JS程序员请回避），使用多线程可以有效的 利用CPU资源（Python例外）。然而多线程所带来的程序的复杂度也不可避免，尤其是对竞争资源的同步问题。</p>
+<p>然而在python中由于使用了<strong>全局解释锁（GIL）</strong>的原因，代码并不能同时在多核上并发的运行，也就是说， <strong>Python的多线程不能并发</strong>，很多人会发现 使用多线程来改进自己的Python代码后，程序的运行效率却下降了， 这是多么蛋疼的一件事呀！如果想了解更多细节，推荐阅读这篇文章。 实际上使用多线程的编程模型是很困难的，程序员很容易犯错，这并不是程序员的错误，因为并行思维是反人类的， 我们大多数人的思维是串行（精神分裂不讨 论），而且冯诺依曼设计的计算机架构也是以顺序执行为基础的。 所以如果你总是不能把你的多线程程序搞定，恭喜你，你是个思维正常的程序猿：）</p>
+<p>Python提供两组线程的接口，一组是thread模块，提供基础的，低等级（Low Level）接口， 使用Function作为线程的运行体。还有一组是threading模块，提供更容易使用的基于对象的接口（类似于Java）， 可以 继承Thread对象来实现线程，还提供了其它一些线程相关的对象，例如Timer，Lock</p>
+<p>使用thread模块的例子</p>
+<pre><code>import thread
+def worker():
+    &quot;&quot;&quot;thread worker function&quot;&quot;&quot;
+    print &apos;Worker&apos;
+thread.start_new_thread(worker)
+</code></pre><p>使用threading模块的例子</p>
+<pre><code>import threading
+def worker():
+    &quot;&quot;&quot;thread worker function&quot;&quot;&quot;
+    print &apos;Worker&apos;
+t = threading.Thread(target=worker)
+t.start()
+</code></pre><p>或者Java Style</p>
+<pre><code>import threading
+class worker(threading.Thread):
+    def __init__(self):
+        pass
+    def run():
+        &quot;&quot;&quot;thread worker function&quot;&quot;&quot;
+        print &apos;Worker&apos; 
+t = worker()
+t.start()
+</code></pre><h3 id="进程-（Process）"><a href="#进程-（Process）" class="headerlink" title="进程 （Process）"></a>进程 （Process）</h3><p>由于前文提到的全局解释锁的问题，Python下比较好的并行方式是使用多进程，这样可以非常有效的使用CPU资源， 并实现真正意义上的并发。当然，进程的开销比线程要大，也就是说如果你要创建数量惊人的并发进程的话， 需要考虑一下你的机器是不是有一颗强大的心。</p>
+<p>单个进程示例：</p>
+<pre><code>import multiprocessing
+import time
+
+def worker(interval):
+    n = 3
+    while n &gt; 0:
+        print(&quot;The time is {0}&quot;.format(time.ctime()))
+        time.sleep(interval)
+        n -= 1
+
+if __name__ == &quot;__main__&quot;:
+    p = multiprocessing.Process(target = worker, args = (3,))
+    p.start()
+    print &quot;p.pid:&quot;, p.pid
+    print &quot;p.name:&quot;, p.name
+    print &quot;p.is_alive:&quot;, p.is_alive()
+</code></pre><p>多个进程示例：</p>
+<pre><code>import multiprocessing
+import time
+
+def worker_1(interval):
+    print &quot;worker_1&quot;
+    time.sleep(interval)
+    print &quot;end worker_1&quot;
+
+def worker_2(interval):
+    print &quot;worker_2&quot;
+    time.sleep(interval)
+    print &quot;end worker_2&quot;
+
+def worker_3(interval):
+    print &quot;worker_3&quot;
+    time.sleep(interval)
+    print &quot;end worker_3&quot;
+
+if __name__ == &quot;__main__&quot;:
+    p1 = multiprocessing.Process(target = worker_1, args = (2,))
+    p2 = multiprocessing.Process(target = worker_2, args = (3,))
+    p3 = multiprocessing.Process(target = worker_3, args = (4,))
+    p1.start()
+    p2.start()
+    p3.start()
+
+    print(&quot;The number of CPU is:&quot; + str(multiprocessing.cpu_count()))
+
+    for p in multiprocessing.active_children():
+        print(&quot;child   p.name:&quot; + p.name + &quot;\tp.id:&quot; + str(p.pid))
+
+    print &quot;END!!!!!!!!!!!!!!!!!&quot;
+</code></pre><p>打印结果：</p>
+<pre><code>The number of CPU is:4
+child   p.name:Process-3    p.id:8276
+child   p.name:Process-2    p.id:6552
+child   p.name:Process-1    p.id:7340
+END!!!!!!!!!!!!!!!!!
+</code></pre><p>多线程和多进程（注意锁的用法）</p>
+<pre><code>#!/usr/bin/python
+# -*- coding:utf-8 -*-
+import os
+import threading
+import multiprocessing
+
+count_thread = 0
+count_process = 0
+
+# worker function
+def worker1(sign, lock):
+    global count_thread
+    lock.acquire()
+    count_thread += 1
+    print(sign, os.getpid())
+    lock.release()
+
+def worker2(sign, lock):
+    global count_process
+    lock.acquire()
+    count_process += 1
+    print(sign, os.getpid())
+    lock.release()
+
+if __name__ == &apos;__main__&apos;:
+    # Main
+    print(&apos;Main:&apos;,os.getpid())
+
+    # Multi-thread
+    record = []
+    lock  = threading.Lock()
+    for i in range(5):
+        thread = threading.Thread(target=worker1,args=(&apos;thread&apos;,lock))
+        thread.start()
+        record.append(thread)
+    for thread in record:
+        thread.join()
+
+    # Multi-process
+    record = []
+    lock = multiprocessing.Lock()
+    for i in range(5):
+        process = multiprocessing.Process(target=worker2,args=(&apos;process&apos;,lock))
+        process.start()
+        record.append(process)
+    for process in record:
+        process.join()
+
+    print count_thread
+    print count_process
+</code></pre><p>打印结果：</p>
+<pre><code>(&apos;Main:&apos;, 6688)
+(&apos;thread&apos;, 6688)
+(&apos;thread&apos;, 6688)
+(&apos;thread&apos;, 6688)
+(&apos;thread&apos;, 6688)
+(&apos;thread&apos;, 6688)
+(&apos;process&apos;, 7820)
+(&apos;process&apos;, 6596)
+(&apos;process&apos;, 9068)
+(&apos;process&apos;, 8256)
+(&apos;process&apos;, 6212)
+5
+0
+[Finished in 0.2s]
+</code></pre><p>由于线程共享相同的地址空间和内存，所以线程之间的通信是非常容易的，然而进程之间的通信就要复杂一些了。常见的进程间通信有，管道，消息队列，Socket接口（TCP/IP）等等。Python的mutliprocess模块提供了封装好的管道和队列，可以方便的在进程间传递消息。Python进程间的同步使用锁，这一点和线程是一样的。<br>另外，Python还提供了进程池Pool对象，可以方便的管理和控制线程。  </p>
+<h3 id="协程"><a href="#协程" class="headerlink" title="协程"></a>协程</h3><p>还有一种并发手段并不常见，我们可以称之为伪线程，或者称为协程，就是看上去像是线程，使用的接口类似线程接口，但是实际使用非线程的方式，对应的线程开销也不存的。</p>
+<p>greenlet提供轻量级的coroutines来支持进程内的并发。</p>
+<p>greenlet是Stackless的一个副产品，使用tasklet来支持一中被称之为微线程（mirco－thread）的技术，这里是一个使用greenlet的伪线程的例子</p>
+<pre><code>from greenlet import greenlet
+
+def test1():
+    print 12
+    gr2.switch()
+    print 34
+
+def test2():
+    print 56
+    gr1.switch()
+    print 78
+
+gr1 = greenlet(test1)
+gr2 = greenlet(test2)
+gr1.switch()
+</code></pre><p>运行以上程序得到如下结果：</p>
+<pre><code>12
+56
+34
+</code></pre><p>伪线程gr1 switch会打印12，然后调用gr2 switch得到56，然后switch回到gr1，打印34，然后伪线程gr1结束，程序退出，所以78永远不会被打印。通过这个例子我们可以看出，使用伪线程，我们可以有效的控制程序的执行流程，但是伪线程并不存在真正意义上的并发。</p>
+<p>各种测试用例参考：  <a href="http://www.open-open.com/lib/view/open1426919121601.html" target="_blank" rel="external">http://www.open-open.com/lib/view/open1426919121601.html</a></p>
+<p>通过测试我们可以发现，对于IO密集型的任务，使用多线程，或者是多进程都可以有效的提高程序的效率，而使用伪线程性能提升非常显著，eventlet比 没有并发的情况下，响应时间从9秒提高到0.03秒。同时eventlet／gevent提供了非阻塞的异步调用模式，非常方便。这里推荐使用线程或者伪 线程，因为在响应时间类似的情况下，线程和伪线程消耗的资源更少。</p>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>Python提供了不同的并发方式，对应于不同的场景，我们需要选择不同的方式进行并发。选择合适的方式，不但要对该方法的原理有所了解，还应该做一些测试和试验，数据才是你做选择的最好参考。</p>
+<h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><p><a href="http://www.cnblogs.com/kaituorensheng/p/4445418.html" target="_blank" rel="external">python多进程编程</a><br><a href="http://www.cnblogs.com/rrxc/p/4432371.html" target="_blank" rel="external">使用Python进行并发编程</a></p>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/pay-alipay.png">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/pay-wechat.png">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags"></i>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/">python</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/协程/">协程</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/并发/">并发</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/线程/">线程</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/进程/">进程</a></li></ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+	<i class="icon-book icon"></i>
+	<a class="article-category-link" href="/categories/技术/">技术</a>
+	</div>
+
+
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://woshijingshenbing.com/2015/11/11/python并发编程/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+  
+<nav id="article-nav">
+  
+    <a href="/2016/05/03/pycharm随记/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          pycharm随记
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2015/11/07/crontab调用python脚本的注意事项/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">实现定时任务的多种方式</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="python并发编程" data-title="python并发编程" data-url="http://woshijingshenbing.com/2015/11/11/python并发编程/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"woshijingshenbing"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+
+
+          </div>
+        </div>
+      </div>
+      <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+
+<footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2016 Codreamer
+    	</div>
+      	<div class="footer-right">
+      	<span id="busuanzi_container_site_uv">
+          本站访客数<span id="busuanzi_value_site_uv"></span>人次
+        </span>
+      	</div>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <script>
+	var yiliaConfig = {
+		mathjax: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false,
+		root: "/",
+		innerArchive: true
+	}
+</script>
+
+<script src="/./main.js?v=4.0.0.js"></script>
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+    
+<div class="tools-col" q-class="show:isShow,hide:isShow|isFalse" q-on="click:stop(e)">
+  <div class="tools-wrap">
+    
+    	<section class="tools-section tools-section-all" q-show="innerArchive">
+        <div class="search-wrap">
+          <input class="search-ipt" q-model="search" type="text" placeholder="find something…">
+          <i class="icon-search icon" q-show="search|isEmptyStr"></i>
+          <i class="icon-close icon" q-show="search|isNotEmptyStr" q-on="click:clearChose(e)"></i>
+        </div>
+        <div class="widget tagcloud search-tag">
+          <p class="search-tag-wording">tag:</p>
+          <label class="search-switch">
+            <input type="checkbox" q-on="click:toggleTag(e)" q-attr="checked:showTags">
+          </label>
+          <ul class="article-tag-list" q-show="showTags">
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">http</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">Mysql</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">Markdown</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">Git</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">MongoDB</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">VIM</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">mac</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">hexo</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">nodejs</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">定时任务</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">python</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">并发</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">线程</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">进程</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">协程</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">pycharm</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">随记</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">买房</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">北京</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">游记</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">马尔代夫</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">设计模式</a>
+              </li>
+            
+            <div class="clearfix"></div>
+          </ul>
+        </div>
+        <ul class="search-ul">
+          <p q-show="jsonFail" style="padding: 20px; font-size: 12px;">
+            缺失模块。<br/>1、在博客根目录（注意不是yilia根目录）执行以下命令：<br/> npm i hexo-generator-json-content --save<br/><br/>
+            2、在根目录_config.yml里添加配置：
+<pre style="font-size: 12px;" q-show="jsonFail">
+  jsonContent:
+    meta: false
+    pages: false
+    posts:
+      title: true
+      date: true
+      path: true
+      text: true
+      raw: false
+      content: false
+      slug: false
+      updated: false
+      comments: false
+      link: false
+      permalink: false
+      excerpt: false
+      categories: false
+      tags: true
+</pre>
+          </p>
+          <li class="search-li" q-repeat="items" q-show="isShow">
+            <a q-attr="href:path|urlformat" class="search-title"><i class="icon-quo-left icon"></i><span q-text="title"></span></a>
+            <p class="search-time">
+              <i class="icon-calendar icon"></i>
+              <span q-text="date|dateformat"></span>
+            </p>
+            <p class="search-tag">
+              <i class="icon-price-tags icon"></i>
+              <span q-repeat="tags" q-on="click:choseTag(e, name)" q-text="name|tagformat"></span>
+            </p>
+          </li>
+        </ul>
+    	</section>
+    
+
+    
+    	<section class="tools-section tools-section-friends" q-show="friends">
+  		
+        <ul class="search-ul">
+          
+            <li class="search-li">
+              <a href="https://coderq.com,一个面向程序员交流分享的新一代社区" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>码农圈</a>
+            </li>
+          
+            <li class="search-li">
+              <a href="http://weavesilk.com/,HTML5实现的魔幻效果" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>weavesilk</a>
+            </li>
+          
+        </ul>
+  		
+    	</section>
+    
+
+    
+    	<section class="tools-section tools-section-me" q-show="aboutme">
+  	  	
+  	  		<div class="aboutme-wrap" id="js-aboutme">他真诚地将自己的挑剔,&lt;br /&gt;误认为是对美的不懈追求，&lt;br /&gt;把自己的孤僻,&lt;br /&gt;误认为是不食人间烟火，&lt;br /&gt;把自己的散漫,&lt;br /&gt;误认为是对于自由的热爱。&lt;br /&gt;&lt;br /&gt;他的思想因为追求风雅而变得庸俗起来，&lt;br /&gt;他的行为因为小心翼翼而变得放纵不羁。&lt;br /&gt;&lt;br /&gt;他有很强的责任感，&lt;br /&gt;却也因此害怕做出承诺。&lt;br /&gt;&lt;br /&gt;他批判世上的所有东西，&lt;br /&gt;包括他自己。&lt;br /&gt;&lt;br /&gt;当别人指出他的自相矛盾后，&lt;br /&gt;他无法自圆其说，&lt;br /&gt;于是只好沉默。&lt;br /&gt;&lt;br /&gt;他是个不可理喻的人。</div>
+  	  	
+    	</section>
+    
+  </div>
+  
+</div>
+    <!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,736 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <link rel="dns-prefetch" href="http://woshijingshenbing.com">
+  <title>编写高质量代码（改善python程序的91个建议） | Codreamer的博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="概述一些小tip,不用刻意去记,大致知道有这么个用法,慢慢就潜移默化到平时的编程中了.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="编写高质量代码（改善python程序的91个建议）">
+<meta property="og:url" content="http://woshijingshenbing.com/2015/11/07/编写高质量代码（改善python程序的91个建议）/index.html">
+<meta property="og:site_name" content="Codreamer的博客">
+<meta property="og:description" content="概述一些小tip,不用刻意去记,大致知道有这么个用法,慢慢就潜移默化到平时的编程中了.">
+<meta property="og:updated_time" content="2016-12-21T05:57:47.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="编写高质量代码（改善python程序的91个建议）">
+<meta name="twitter:description" content="概述一些小tip,不用刻意去记,大致知道有这么个用法,慢慢就潜移默化到平时的编程中了.">
+  
+    <link rel="alternative" href="/atom.xml" title="Codreamer的博客" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link rel="stylesheet" href="/main.css?v=4.0.0.css">
+  
+
+  
+<script>
+var _hmt = _hmt || [];
+(function() {
+	var hm = document.createElement("script");
+	hm.src = "https://hm.baidu.com/hm.js?45db6f44750c33b1afd7970532c8b3fb";
+	var s = document.getElementsByTagName("script")[0]; 
+	s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+</head>
+
+<body>
+  <div id="container" q-class="show:isCtnShow">
+    <canvas id="anm-canvas" class="anm-canvas"></canvas>
+    <div class="left-col" q-class="show:isShow">
+      <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			<img src="/img/avatar.png" class="js-avatar">
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">Codreamer</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">除非你改变了交往的人和阅读的书，否则，你的五年之后和现在完全一样</p>
+		
+
+		<nav class="header-menu">
+			<ul>
+			
+				<li><a href="/">主页</a></li>
+	        
+				<li><a href="/photos">相册</a></li>
+	        
+			</ul>
+		</nav>
+		<nav class="header-smart-menu">
+	        
+    		
+    			
+    			<a data-idx="0" q-on="click: openSlider(e, 'innerArchive')" href="javascript:void(0)">所有文章</a>
+    			
+    			
+            
+    			
+    			<a data-idx="1" q-on="click: openSlider(e, 'friends')" href="javascript:void(0)">友链</a>
+    			
+    			
+            
+    			
+    			<a data-idx="2" q-on="click: openSlider(e, 'aboutme')" href="javascript:void(0)">关于我</a>
+    			
+    			
+            
+		</nav>
+		<nav class="header-nav">
+			<div class="social">
+				
+					<a class="github" target="_blank" href="https://github.com/sniperyen" title="github"><i class="icon-github"></i></a>
+		        
+					<a class="weibo" target="_blank" href="http://weibo.com/ddhj" title="weibo"><i class="icon-weibo"></i></a>
+		        
+					<a class="qq" target="_blank" href="/871757525" title="qq"><i class="icon-qq"></i></a>
+		        
+					<a class="mail" target="_blank" href="mailto:871757525@qq.com" title="mail"><i class="icon-mail"></i></a>
+		        
+			</div>
+		</nav>
+	</header>		
+</div>
+
+    </div>
+    <div class="mid-col" q-class="show:isShow,hide:isShow|isFalse">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"><i class="icon-sort"></i></div>
+  		<h1 class="header-author js-mobile-header hide">Codreamer</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				<img src="/img/avatar.png" class="js-avatar">
+			</div>
+			<hgroup>
+			  <h1 class="header-author">Codreamer</h1>
+			</hgroup>
+			
+			<p class="header-subtitle">除非你改变了交往的人和阅读的书，否则，你的五年之后和现在完全一样</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/photos">相册</a></li>
+		        
+		        
+		        	<li><a href="/archives/">所有文章</a></li>
+		        
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/sniperyen" title="github"><i class="icon-github"></i></a>
+			        
+						<a class="weibo" target="_blank" href="http://weibo.com/ddhj" title="weibo"><i class="icon-weibo"></i></a>
+			        
+						<a class="qq" target="_blank" href="/871757525" title="qq"><i class="icon-qq"></i></a>
+			        
+						<a class="mail" target="_blank" href="mailto:871757525@qq.com" title="mail"><i class="icon-mail"></i></a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+
+      <div id="wrapper" class="body-wrap">
+        <div class="menu-l">
+          <div class="canvas-wrap">
+            <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
+          </div>
+          <div id="js-content" class="content-ll">
+            <article id="post-编写高质量代码（改善python程序的91个建议）" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      编写高质量代码（改善python程序的91个建议）
+    </h1>
+  
+
+        <a href="/2015/11/07/编写高质量代码（改善python程序的91个建议）/" class="archive-article-date">
+  	<time datetime="2015-11-07T11:42:14.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2015-11-07</time>
+</a>
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h3><p>一些小tip,不用刻意去记,大致知道有这么个用法,慢慢就潜移默化到平时的编程中了.</p>
+<a id="more"></a>
+<h3 id="掌握字符串的基本用法"><a href="#掌握字符串的基本用法" class="headerlink" title="掌握字符串的基本用法"></a>掌握字符串的基本用法</h3><ul>
+<li><p>判断是否为字符串，用 <code>isinstance(a, basestring)</code>，而不是用str或unicode，因为str和unicode都为basestring的子类，用它们的话会有遗失情况。</p>
+  <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span>a = <span class="string">'123'</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>a</div><div class="line"><span class="string">'123'</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>isinstance(a, str)</div><div class="line"><span class="keyword">True</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>isinstance(a, unicode)</div><div class="line"><span class="keyword">False</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>isinstance(a, basestring)</div><div class="line"><span class="keyword">True</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>判断是否包含子串用 <code>in</code></p>
+  <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span>str = <span class="string">"Test if a string contains some special substrings"</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">print</span> <span class="string">"some"</span> <span class="keyword">in</span> str</div><div class="line"><span class="keyword">True</span></div><div class="line">&gt;&gt;&gt;</div></pre></td></tr></table></figure>
+</li>
+<li><p>repace(old,new,[,count])用以替换字符串中的某些子串，如果指定count参数的话，就最多替换count次，如果不指定，就全部替换（跟其他语言不太一样，要注意）。</p>
+</li>
+<li><p>字符串s.split()和s.split(‘ ‘)返回值是不一样的</p>
+  <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span>a = <span class="string">' hello   world'</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>a.split()</div><div class="line">[<span class="string">'hello'</span>, <span class="string">'world'</span>]</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>a.split(<span class="string">' '</span>)</div><div class="line">[<span class="string">''</span>, hello<span class="string">', '</span><span class="string">', '</span><span class="string">', '</span>world<span class="string">']</span></div></pre></td></tr></table></figure>
+<p>  产生差异的原因在于：当忽略 sep 参数或 sep 参数为 None 时与明确给 sep 赋予字符串值时，split()采用两种不同的算法。</p>
+<ol>
+<li>对于前者，split() 先去除字符串两端的空白符，然后以任意长度的空白符串作为界定符分切字符串（即连续的空白符串被当作单一的空白符看待）；</li>
+<li><p>对于后者则认为两个连续的 sep 之间存在一个空字符串。因此对于空字符串（或空白符串），它们的返回值也是不同的。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="string">''</span>.split()</div><div class="line">[]</div><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="string">''</span>.split(<span class="string">' '</span>)</div><div class="line">[<span class="string">''</span>]</div></pre></td></tr></table></figure>
+</li>
+</ol>
+</li>
+<li><p>首字母大写，capwords和title是不一样的，前者会移除前后空白符，并把多个空格合并成一个，后者只是简单的首字符大写，无其它操作。</p>
+  <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">import</span> string</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>string.capwords(<span class="string">' hello   world!'</span>)</div><div class="line"><span class="string">'Hello World!'</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="string">' hello   world!'</span>.title()</div><div class="line"><span class="string">' Hello   World!'</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>删除末端的逗号，或者掐头去尾（strip([char])、lstrip([char])、rstrip([char])）</p>
+  <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span>a = <span class="string">'1,2,3,4,'</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>a.rstrip(<span class="string">','</span>)</div></pre></td></tr></table></figure>
+</li>
+<li><p>漂亮的字符串输出，可以用在打印日志调试时</p>
+  <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span>a = <span class="string">'1,2,3,4'</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">print</span> a.center(<span class="number">30</span>, <span class="string">'*'</span>)</div><div class="line">***********<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>************</div><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">print</span> a.ljust(<span class="number">30</span>, <span class="string">'*'</span>)</div><div class="line"><span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>***********************</div><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">print</span> a.rjust(<span class="number">30</span>, <span class="string">'*'</span>)</div><div class="line">***********************<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span></div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="按需选择-sort-或者-sorted"><a href="#按需选择-sort-或者-sorted" class="headerlink" title="按需选择 sort() 或者 sorted()"></a>按需选择 sort() 或者 sorted()</h3><ul>
+<li><p>相比于 sort()，sorted() 使用的范围更为广泛，两者的函数形式分别如下：</p>
+<p>  sorted(iterable[, cmp[, key[, reverse]]])<br>  s.sort([cmp[, key[, reverse]]])</p>
+<p>  这两个方法有以下 3 个共同的参数：</p>
+<ol>
+<li>cmp 为用户定义的任何比较函数，函数的参数为两个可比较的元素（来自iterable 或者 list），函数根据第一个参数与第二个参数的关系依次返回 -1、0 或者 +1（第一个参数小于第二个参数则返回负数）。该参数默认值为 None。</li>
+<li>key 是带一个参数的函数，用来为每个元素提取比较值，默认为 None（即直接比较每个元素）。</li>
+<li><p>reverse 表示排序结果是否反转。</p>
+<p>从函数的定义形式可以看出，<strong> sorted() 作用于任意可迭代的对象，而 sort() 一般作用于列表。 </strong>  因此下面的例子中针对元组使用 sort() 方法会抛出 AttributeError，而使用 sorted() 函数则<br>没有这个问题。</p>
+<p>示例一：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span>a = (<span class="number">4</span>,<span class="number">2</span>,<span class="number">1</span>,<span class="number">3</span>)</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>a.sort()</div><div class="line">Traceback (most recent call last):</div><div class="line">  File <span class="string">"&lt;stdin&gt;"</span>, line <span class="number">1</span>, <span class="keyword">in</span> &lt;module&gt;</div><div class="line">AttributeError: <span class="string">'tuple'</span> object has no attribute <span class="string">'sort'</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>sorted(a)</div><div class="line">[<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>]</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>a = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>]</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>a.sort()</div></pre></td></tr></table></figure>
+<p>示例二：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span>persons = [&#123;<span class="string">'name'</span>: <span class="string">'Jon'</span>, <span class="string">'age'</span>: <span class="number">32</span>&#125;, &#123;<span class="string">'name'</span>: <span class="string">'Alan'</span>, <span class="string">'age'</span>: <span class="number">50</span>&#125;, &#123;<span class="string">'name'</span>: <span class="string">'Bob'</span>, <span class="string">'age'</span>: <span class="number">23</span>&#125;]</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>sorted(persons, key=<span class="keyword">lambda</span> x: -x[<span class="string">'age'</span>])</div><div class="line">[&#123;<span class="string">'age'</span>: <span class="number">50</span>, <span class="string">'name'</span>: <span class="string">'Alan'</span>&#125;, &#123;<span class="string">'age'</span>: <span class="number">32</span>, <span class="string">'name'</span>: <span class="string">'Jon'</span>&#125;, &#123;<span class="string">'age'</span>: <span class="number">23</span>, <span class="string">'name'</span>: <span class="string">'Bob'</span>&#125;]</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>sorted(persons, key=<span class="keyword">lambda</span> x: (x[<span class="string">'name'</span>], -x[<span class="string">'age'</span>]))</div><div class="line">[&#123;<span class="string">'age'</span>: <span class="number">50</span>, <span class="string">'name'</span>: <span class="string">'Alan'</span>&#125;, &#123;<span class="string">'age'</span>: <span class="number">23</span>, <span class="string">'name'</span>: <span class="string">'Bob'</span>&#125;, &#123;<span class="string">'age'</span>: <span class="number">32</span>, <span class="string">'name'</span>: <span class="string">'Jon'</span>&#125;]</div></pre></td></tr></table></figure>
+</li>
+</ol>
+</li>
+<li><p>sorted() 函数会返回一个排序后的列表，原有列表保持不变；而 sort() 函数会直接修改原有列表，函数返 None。</p>
+  <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span>a = [<span class="string">'1'</span>, <span class="number">1</span>, <span class="string">'a'</span>, <span class="number">3</span>, <span class="number">7</span>, <span class="string">'n'</span>]</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>sorted(a)</div><div class="line">[<span class="number">1</span>, <span class="number">3</span>, <span class="number">7</span>, <span class="string">'1'</span>, <span class="string">'a'</span>, <span class="string">'n'</span>]</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>a</div><div class="line">[<span class="string">'1'</span>, <span class="number">1</span>, <span class="string">'a'</span>, <span class="number">3</span>, <span class="number">7</span>, <span class="string">'n'</span>]</div><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">print</span> a.sort()</div><div class="line"><span class="keyword">None</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>a</div><div class="line">[<span class="number">1</span>, <span class="number">3</span>, <span class="number">7</span>, <span class="string">'1'</span>, <span class="string">'a'</span>, <span class="string">'n'</span>]</div></pre></td></tr></table></figure>
+<p>  <strong> 因此如果实际应用过程中需要保留原有列表，使用 sorted() 函数较为适合，否则可以选择 sort() 函数，因为 sort() 函数不需要复制原有列表，消耗的内存较少，效率也较高。 </strong></p>
+</li>
+<li><p>无论是 sort() 还是 sorted() 函数，传入参数 key 比 cmp 效率要高。</p>
+</li>
+<li><p>sorted()的强大功能</p>
+<ol>
+<li><p>对字典进行排序：下面的例子中根据字典的值进行排序，即将phonebook对应的电话号码按照数字大小进行排序。</p>
+ <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span>phonebook = &#123;<span class="string">'linda'</span>: <span class="string">'7750'</span>, <span class="string">'bob'</span>: <span class="string">'7829'</span>, <span class="string">'carol'</span>: <span class="string">'5834'</span>&#125;</div><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">from</span> operator <span class="keyword">import</span> itemgetter</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>sorted_db = sorted(phonebook.iteritems(), key=itemgetter(<span class="number">1</span>))</div><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">print</span> sorted_db</div><div class="line">[(<span class="string">'carol'</span>, <span class="string">'5834'</span>), (<span class="string">'linda'</span>, <span class="string">'7750'</span>), (<span class="string">'bob'</span>, <span class="string">'7829'</span>)]</div></pre></td></tr></table></figure>
+</li>
+<li><p>多维list排序…</p>
+</li>
+<li>字典中混合list排序…</li>
+<li>list中混合字典排序…</li>
+<li>…</li>
+</ol>
+</li>
+</ul>
+<h3 id="使用-copy-模块深拷贝对象"><a href="#使用-copy-模块深拷贝对象" class="headerlink" title="使用 copy 模块深拷贝对象"></a>使用 copy 模块深拷贝对象</h3><ul>
+<li>浅拷贝（shallow copy）：构造一个新的复合对象并将从原对象中发现的引用插入该对象中。浅拷贝的实现方式有多种，如工厂函数、切片操作、copy模块中的copy操作等。</li>
+<li>深拷贝（deep copy）：也构造一个新的复合对象，但是遇到引用会继续递归拷贝其所指向的具体内容，也就是说它会针对引用所指向的对象继续执行拷贝，因此产生的对象不受其他引用对象操作的影响。深拷贝的实现需要依赖 copy 模块的deepcopy()操作。</li>
+</ul>
+<h3 id="使用-Counter-进行计数统计"><a href="#使用-Counter-进行计数统计" class="headerlink" title="使用 Counter 进行计数统计"></a>使用 Counter 进行计数统计</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">from</span> collections <span class="keyword">import</span> Counter</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>some_data = [<span class="string">'1'</span>, <span class="string">'2'</span>, <span class="number">2</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="string">'2'</span>, <span class="string">'b'</span>, <span class="string">'2'</span>]</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>a = Counter(some_data)</div><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">print</span> a</div><div class="line">Counter(&#123;<span class="string">'2'</span>: <span class="number">3</span>, <span class="number">2</span>: <span class="number">1</span>, <span class="string">'b'</span>: <span class="number">1</span>, <span class="number">4</span>: <span class="number">1</span>, <span class="number">5</span>: <span class="number">1</span>, <span class="string">'1'</span>: <span class="number">1</span>&#125;)</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>a.most_common(<span class="number">2</span>)  <span class="comment"># 频率最高的元素和它们的次数</span></div><div class="line">[(<span class="string">'2'</span>, <span class="number">3</span>), (<span class="number">2</span>, <span class="number">1</span>)]</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>a.update(<span class="string">'234b1'</span>)  <span class="comment"># 对原有计数器对象中元素的相加</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>a</div><div class="line">Counter(&#123;<span class="string">'2'</span>: <span class="number">4</span>, <span class="string">'b'</span>: <span class="number">2</span>, <span class="string">'1'</span>: <span class="number">2</span>, <span class="number">2</span>: <span class="number">1</span>, <span class="number">4</span>: <span class="number">1</span>, <span class="number">5</span>: <span class="number">1</span>, <span class="string">'3'</span>: <span class="number">1</span>, <span class="string">'4'</span>: <span class="number">1</span>&#125;)</div></pre></td></tr></table></figure>
+<p>Counter 类是自Python2.7起增加的，属于字典类的子类，是一个容器对象，主要用来统计散列对象，支持集合操作 +、-、&amp;、|，其中 &amp; 和 | 操作分别返 Counter 对象各元素的最小值和最大值。</p>
+<h3 id="使用-logging-记录日志信息"><a href="#使用-logging-记录日志信息" class="headerlink" title="使用 logging 记录日志信息"></a>使用 logging 记录日志信息</h3><h3 id="使用-threading"><a href="#使用-threading" class="headerlink" title="使用 threading"></a>使用 threading</h3><p>模块都可以进行多线程的处理，threading 基于 thread 进行包装，将线程的操作对象化，在语言层面提供了丰富的特性，实际应用中推荐优先使用 threading 模块。</p>
+<ul>
+<li><p>threading 模块对同步原语的支持更为完善和丰富。就线程的同步和互斥来说，thread 模块只提供了一种锁类型 thread.LockType，而 threading 模块中不仅有 Lock 令锁、RLock 可重入指令锁，还支持条件变量 Condition、信号量 Semaphore、BoundedSemaphore 以及 Event 事件等。</p>
+</li>
+<li><p>threading 模块在主线程和子线程交互上更为友好，threading 中的 join() 方法能够阻塞当前上下文环境的线程，直到调用此方法的线程终止或到达指定的 timeout（可选参数）。利用该方法可以方便地控制主线程和子线程以及子线程之间的执行。</p>
+</li>
+<li><p>thread 模块不支持守护线程。thread 模块中主线程退出的时候，所有的子线程不论是否还在工作，都会被强制结束，并且没有任何警告，也没有任何退出前的清理工作。</p>
+<pre><code><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> time</div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">myfunc</span><span class="params">(a,delay)</span>:</span></div><div class="line">    <span class="keyword">print</span> <span class="string">"I will calculate square of  %s after delay for %s"</span> %(a,delay)</div><div class="line">    time.sleep(delay)</div><div class="line">    <span class="keyword">print</span> <span class="string">"calculate begins..."</span></div><div class="line">    result = a*a</div><div class="line">    <span class="keyword">print</span> result</div><div class="line">    <span class="keyword">return</span> result</div><div class="line"></div><div class="line"><span class="comment">## thread 的处理方式，主线程不等子线程结束直接退出    </span></div><div class="line"><span class="comment"># from thread import start_new_thread</span></div><div class="line"><span class="comment"># start_new_thread(myfunc,(2,5))</span></div><div class="line"><span class="comment"># start_new_thread(myfunc,(6,8))</span></div><div class="line"><span class="comment"># time.sleep(1)</span></div><div class="line"></div><div class="line"><span class="comment"># threading 的处理方式</span></div><div class="line"><span class="keyword">import</span> threading</div><div class="line">t1=threading.Thread(target=myfunc,args=(<span class="number">2</span>,<span class="number">5</span>))</div><div class="line">t2=threading.Thread(target=myfunc,args=(<span class="number">6</span>,<span class="number">8</span>))</div><div class="line"><span class="keyword">print</span> t1.isDaemon()  <span class="comment"># 默认是False，会被主线程等待</span></div><div class="line"><span class="keyword">print</span> t2.isDaemon() </div><div class="line"></div><div class="line">t2.setDaemon(<span class="keyword">True</span>)  <span class="comment"># 设置为True后，会被主线程遗弃</span></div><div class="line">t1.start()</div><div class="line">t2.start()</div></pre></td></tr></table></figure>
+</code></pre></li>
+<li><p>python3 中已经不存在 thread 模块了。</p>
+</li>
+</ul>
+<h3 id="使用-Queue-使多线程编程更安全"><a href="#使用-Queue-使多线程编程更安全" class="headerlink" title="使用 Queue 使多线程编程更安全"></a>使用 Queue 使多线程编程更安全</h3><h3 id="深入掌握-ConfigParser"><a href="#深入掌握-ConfigParser" class="headerlink" title="深入掌握 ConfigParser"></a>深入掌握 ConfigParser</h3><p>几乎所有的应用程序真正运行起来的时候，都会读取一个或几个配置文件。配置文件的意义在于用户不需要修改代码，就可以改变应用程序的行为，让它更好地为应用服务。基本用法通过手册可以掌握，这里只是介绍几个值得注意的知识点：</p>
+<ul>
+<li>除了 0 之外，no、false 和 off 都会被转义为 False，而对应的 1、yes、true 和 on<br>则都被转义为 True，其他值都会导致抛出 ValueError 异常</li>
+<li>在支持的配置文件格式里，有一个 [DEFAULT] 节，当读取的配置项在不在指定的节里时， 将会到 [DEFAULT] 节中查找。</li>
+<li><p>支持类似python中的字符串格式化</p>
+<pre><code>$ cat format.conf
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="section">[DEFAULT]</span></div><div class="line"><span class="attr">conn_str</span> = %(dbn)s: %(user)s:%(pw)s@%(host)s:%(port)s/%(db)s</div><div class="line"><span class="attr">dbn</span> = mysql</div><div class="line"><span class="attr">user</span> = root</div><div class="line"><span class="attr">host</span>=localhost</div><div class="line"><span class="attr">port</span>=<span class="number">3306</span></div><div class="line"><span class="section"> [db1]</span></div><div class="line"><span class="attr">user</span> = aaa</div><div class="line"><span class="attr">pw</span>=ppp</div><div class="line"><span class="attr">db</span>=example</div><div class="line"><span class="section"> [db2]</span></div><div class="line"><span class="attr">host</span> = <span class="number">192.168</span>.<span class="number">0.110</span></div><div class="line"><span class="attr">pw</span>=www</div><div class="line"><span class="attr">db</span>=example</div></pre></td></tr></table></figure>
+</code></pre><p>  通过这个配置文件能够获取不同的数据库配置相应的连接字符串，即 conn_str。如你所见，conn_str 定义在 [DEFAULT] 中，但当它通过不同的节名来获取格式化后的值时，根据不同配置，得到不同的值。参考如下代码：</p>
+<pre><code>$ cat readformatini.py 
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> ConfigParser</div><div class="line">conf = ConfigParser.ConfigParser()</div><div class="line">conf.read(<span class="string">'format.conf'</span>)</div><div class="line"><span class="keyword">print</span> conf.get(<span class="string">'db1'</span>, <span class="string">'conn_str'</span>)</div><div class="line"><span class="keyword">print</span> conf.get(<span class="string">'db2'</span>, <span class="string">'conn_str'</span>)</div></pre></td></tr></table></figure>
+</code></pre></li>
+</ul>
+<h3 id="使用-argparse-处理命令行参数"><a href="#使用-argparse-处理命令行参数" class="headerlink" title="使用 argparse 处理命令行参数"></a>使用 argparse 处理命令行参数</h3><h3 id="使用-pandas-处理大型-CSV-文件"><a href="#使用-pandas-处理大型-CSV-文件" class="headerlink" title="使用 pandas 处理大型 CSV 文件"></a>使用 pandas 处理大型 CSV 文件</h3><h3 id="一般情况使用-ElementTree-解析-XML"><a href="#一般情况使用-ElementTree-解析-XML" class="headerlink" title="一般情况使用 ElementTree 解析 XML"></a>一般情况使用 ElementTree 解析 XML</h3><h3 id="理解模块-pickle-优劣"><a href="#理解模块-pickle-优劣" class="headerlink" title="理解模块 pickle 优劣"></a>理解模块 pickle 优劣</h3><h3 id="序列化的另一个不错选择-—-JSON"><a href="#序列化的另一个不错选择-—-JSON" class="headerlink" title="序列化的另一个不错选择 — JSON"></a>序列化的另一个不错选择 — JSON</h3>
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/pay-alipay.png">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/pay-wechat.png">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags"></i>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/">python</a></li></ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+	<i class="icon-book icon"></i>
+	<a class="article-category-link" href="/categories/技术/">技术</a>
+	</div>
+
+
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://woshijingshenbing.com/2015/11/07/编写高质量代码（改善python程序的91个建议）/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+  
+<nav id="article-nav">
+  
+    <a href="/2015/11/07/crontab调用python脚本的注意事项/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          实现定时任务的多种方式
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2015/10/07/HTTP知识点总结/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">HTTP知识点总结</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="编写高质量代码（改善python程序的91个建议）" data-title="编写高质量代码（改善python程序的91个建议）" data-url="http://woshijingshenbing.com/2015/11/07/编写高质量代码（改善python程序的91个建议）/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"woshijingshenbing"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+
+
+          </div>
+        </div>
+      </div>
+      <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+
+<footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2016 Codreamer
+    	</div>
+      	<div class="footer-right">
+      	<span id="busuanzi_container_site_uv">
+          本站访客数<span id="busuanzi_value_site_uv"></span>人次
+        </span>
+      	</div>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <script>
+	var yiliaConfig = {
+		mathjax: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false,
+		root: "/",
+		innerArchive: true
+	}
+</script>
+
+<script src="/./main.js?v=4.0.0.js"></script>
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+    
+<div class="tools-col" q-class="show:isShow,hide:isShow|isFalse" q-on="click:stop(e)">
+  <div class="tools-wrap">
+    
+    	<section class="tools-section tools-section-all" q-show="innerArchive">
+        <div class="search-wrap">
+          <input class="search-ipt" q-model="search" type="text" placeholder="find something…">
+          <i class="icon-search icon" q-show="search|isEmptyStr"></i>
+          <i class="icon-close icon" q-show="search|isNotEmptyStr" q-on="click:clearChose(e)"></i>
+        </div>
+        <div class="widget tagcloud search-tag">
+          <p class="search-tag-wording">tag:</p>
+          <label class="search-switch">
+            <input type="checkbox" q-on="click:toggleTag(e)" q-attr="checked:showTags">
+          </label>
+          <ul class="article-tag-list" q-show="showTags">
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">http</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">Mysql</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">Markdown</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">Git</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">MongoDB</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">VIM</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">mac</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">hexo</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">nodejs</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">定时任务</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">python</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">并发</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">线程</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">进程</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">协程</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">pycharm</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">随记</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">买房</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">北京</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">游记</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">马尔代夫</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">设计模式</a>
+              </li>
+            
+            <div class="clearfix"></div>
+          </ul>
+        </div>
+        <ul class="search-ul">
+          <p q-show="jsonFail" style="padding: 20px; font-size: 12px;">
+            缺失模块。<br/>1、在博客根目录（注意不是yilia根目录）执行以下命令：<br/> npm i hexo-generator-json-content --save<br/><br/>
+            2、在根目录_config.yml里添加配置：
+<pre style="font-size: 12px;" q-show="jsonFail">
+  jsonContent:
+    meta: false
+    pages: false
+    posts:
+      title: true
+      date: true
+      path: true
+      text: true
+      raw: false
+      content: false
+      slug: false
+      updated: false
+      comments: false
+      link: false
+      permalink: false
+      excerpt: false
+      categories: false
+      tags: true
+</pre>
+          </p>
+          <li class="search-li" q-repeat="items" q-show="isShow">
+            <a q-attr="href:path|urlformat" class="search-title"><i class="icon-quo-left icon"></i><span q-text="title"></span></a>
+            <p class="search-time">
+              <i class="icon-calendar icon"></i>
+              <span q-text="date|dateformat"></span>
+            </p>
+            <p class="search-tag">
+              <i class="icon-price-tags icon"></i>
+              <span q-repeat="tags" q-on="click:choseTag(e, name)" q-text="name|tagformat"></span>
+            </p>
+          </li>
+        </ul>
+    	</section>
+    
+
+    
+    	<section class="tools-section tools-section-friends" q-show="friends">
+  		
+        <ul class="search-ul">
+          
+            <li class="search-li">
+              <a href="https://coderq.com,一个面向程序员交流分享的新一代社区" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>码农圈</a>
+            </li>
+          
+            <li class="search-li">
+              <a href="http://weavesilk.com/,HTML5实现的魔幻效果" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>weavesilk</a>
+            </li>
+          
+        </ul>
+  		
+    	</section>
+    
+
+    
+    	<section class="tools-section tools-section-me" q-show="aboutme">
+  	  	
+  	  		<div class="aboutme-wrap" id="js-aboutme">他真诚地将自己的挑剔,&lt;br /&gt;误认为是对美的不懈追求，&lt;br /&gt;把自己的孤僻,&lt;br /&gt;误认为是不食人间烟火，&lt;br /&gt;把自己的散漫,&lt;br /&gt;误认为是对于自由的热爱。&lt;br /&gt;&lt;br /&gt;他的思想因为追求风雅而变得庸俗起来，&lt;br /&gt;他的行为因为小心翼翼而变得放纵不羁。&lt;br /&gt;&lt;br /&gt;他有很强的责任感，&lt;br /&gt;却也因此害怕做出承诺。&lt;br /&gt;&lt;br /&gt;他批判世上的所有东西，&lt;br /&gt;包括他自己。&lt;br /&gt;&lt;br /&gt;当别人指出他的自相矛盾后，&lt;br /&gt;他无法自圆其说，&lt;br /&gt;于是只好沉默。&lt;br /&gt;&lt;br /&gt;他是个不可理喻的人。</div>
+  	  	
+    	</section>
+    
+  </div>
+  
+</div>
+    <!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+  </div>
+</body>
+</html>

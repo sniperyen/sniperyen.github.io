@@ -1,0 +1,697 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <link rel="dns-prefetch" href="http://woshijingshenbing.com">
+  <title>大话设计模式 | Codreamer的博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="概述前段时间面试，被问到面向对象编程的好处，我脑子一下子短路了三秒钟，因为觉得这个问题太简单，感觉有诈，但仍是本能的回答了下去：1“面向对象的三大原则是封装、继承、多态，好处就是代码写得少，便于理解，以及易于修改。我们可以把对象们的共同属性和行为封装到类中，如果有子对象有额外的操作，可以定义子类进行继承，而不用再写一遍父类中的代码，多态可以实现对子类的抽象，对客户只暴露父类中方法，具体的实现在子类">
+<meta property="og:type" content="article">
+<meta property="og:title" content="大话设计模式">
+<meta property="og:url" content="http://woshijingshenbing.com/2016/12/12/大话设计模式/index.html">
+<meta property="og:site_name" content="Codreamer的博客">
+<meta property="og:description" content="概述前段时间面试，被问到面向对象编程的好处，我脑子一下子短路了三秒钟，因为觉得这个问题太简单，感觉有诈，但仍是本能的回答了下去：1“面向对象的三大原则是封装、继承、多态，好处就是代码写得少，便于理解，以及易于修改。我们可以把对象们的共同属性和行为封装到类中，如果有子对象有额外的操作，可以定义子类进行继承，而不用再写一遍父类中的代码，多态可以实现对子类的抽象，对客户只暴露父类中方法，具体的实现在子类">
+<meta property="og:image" content="http://static.zybuluo.com/sanyang/nfs1z6glt27hb4s0w3xsm0yp/Snip20161226_5.png">
+<meta property="og:image" content="http://static.zybuluo.com/sanyang/l89b1jt8u242fb4anfinhoal/Snip20161226_4.png">
+<meta property="og:image" content="http://static.zybuluo.com/sanyang/tt5gsl8tjyefx16o7060wq84/image_1b4tmq9r218001sdf1npl1rtg18bm1l.png">
+<meta property="og:image" content="http://static.zybuluo.com/sanyang/2x72gl6gm4trf87yo35hvcn7/image_1b4tms9k31mc71i2nod77ae1j222.png">
+<meta property="og:image" content="http://static.zybuluo.com/sanyang/jnbthoa86xmg747h7txjfv16/image_1b4tn79gs1t991lhifqs173m14129.png">
+<meta property="og:image" content="http://static.zybuluo.com/sanyang/adj4gg3wf1fsq0genjyrl6ex/image_1b4tn0cm41nt0i28gn4aer1s402s.png">
+<meta property="og:image" content="http://static.zybuluo.com/sanyang/eckcwdyt7xveknl7nchrc2ep/image_1b4tn9a6bs1u3517ur1ljg1s0pm.png">
+<meta property="og:image" content="http://static.zybuluo.com/sanyang/fjtaa6zaae01m70hjb45f0qg/image_1b4tnnlq1gco1r2pf5nod81tn313.png">
+<meta property="og:updated_time" content="2016-12-26T14:19:49.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="大话设计模式">
+<meta name="twitter:description" content="概述前段时间面试，被问到面向对象编程的好处，我脑子一下子短路了三秒钟，因为觉得这个问题太简单，感觉有诈，但仍是本能的回答了下去：1“面向对象的三大原则是封装、继承、多态，好处就是代码写得少，便于理解，以及易于修改。我们可以把对象们的共同属性和行为封装到类中，如果有子对象有额外的操作，可以定义子类进行继承，而不用再写一遍父类中的代码，多态可以实现对子类的抽象，对客户只暴露父类中方法，具体的实现在子类">
+<meta name="twitter:image" content="http://static.zybuluo.com/sanyang/nfs1z6glt27hb4s0w3xsm0yp/Snip20161226_5.png">
+  
+    <link rel="alternative" href="/atom.xml" title="Codreamer的博客" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link rel="stylesheet" href="/main.css?v=4.0.0.css">
+  
+
+  
+<script>
+var _hmt = _hmt || [];
+(function() {
+	var hm = document.createElement("script");
+	hm.src = "https://hm.baidu.com/hm.js?45db6f44750c33b1afd7970532c8b3fb";
+	var s = document.getElementsByTagName("script")[0]; 
+	s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+</head>
+
+<body>
+  <div id="container" q-class="show:isCtnShow">
+    <canvas id="anm-canvas" class="anm-canvas"></canvas>
+    <div class="left-col" q-class="show:isShow">
+      <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			<img src="/img/avatar.png" class="js-avatar">
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">Codreamer</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">除非你改变了交往的人和阅读的书，否则，你的五年之后和现在完全一样</p>
+		
+
+		<nav class="header-menu">
+			<ul>
+			
+				<li><a href="/">主页</a></li>
+	        
+				<li><a href="/photos">相册</a></li>
+	        
+			</ul>
+		</nav>
+		<nav class="header-smart-menu">
+	        
+    		
+    			
+    			<a data-idx="0" q-on="click: openSlider(e, 'innerArchive')" href="javascript:void(0)">所有文章</a>
+    			
+    			
+            
+    			
+    			<a data-idx="1" q-on="click: openSlider(e, 'friends')" href="javascript:void(0)">友链</a>
+    			
+    			
+            
+    			
+    			<a data-idx="2" q-on="click: openSlider(e, 'aboutme')" href="javascript:void(0)">关于我</a>
+    			
+    			
+            
+		</nav>
+		<nav class="header-nav">
+			<div class="social">
+				
+					<a class="github" target="_blank" href="https://github.com/sniperyen" title="github"><i class="icon-github"></i></a>
+		        
+					<a class="weibo" target="_blank" href="http://weibo.com/ddhj" title="weibo"><i class="icon-weibo"></i></a>
+		        
+					<a class="qq" target="_blank" href="/871757525" title="qq"><i class="icon-qq"></i></a>
+		        
+					<a class="mail" target="_blank" href="mailto:871757525@qq.com" title="mail"><i class="icon-mail"></i></a>
+		        
+			</div>
+		</nav>
+	</header>		
+</div>
+
+    </div>
+    <div class="mid-col" q-class="show:isShow,hide:isShow|isFalse">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"><i class="icon-sort"></i></div>
+  		<h1 class="header-author js-mobile-header hide">Codreamer</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				<img src="/img/avatar.png" class="js-avatar">
+			</div>
+			<hgroup>
+			  <h1 class="header-author">Codreamer</h1>
+			</hgroup>
+			
+			<p class="header-subtitle">除非你改变了交往的人和阅读的书，否则，你的五年之后和现在完全一样</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/photos">相册</a></li>
+		        
+		        
+		        	<li><a href="/archives/">所有文章</a></li>
+		        
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/sniperyen" title="github"><i class="icon-github"></i></a>
+			        
+						<a class="weibo" target="_blank" href="http://weibo.com/ddhj" title="weibo"><i class="icon-weibo"></i></a>
+			        
+						<a class="qq" target="_blank" href="/871757525" title="qq"><i class="icon-qq"></i></a>
+			        
+						<a class="mail" target="_blank" href="mailto:871757525@qq.com" title="mail"><i class="icon-mail"></i></a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+
+      <div id="wrapper" class="body-wrap">
+        <div class="menu-l">
+          <div class="canvas-wrap">
+            <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
+          </div>
+          <div id="js-content" class="content-ll">
+            <article id="post-大话设计模式" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      大话设计模式
+    </h1>
+  
+
+        <a href="/2016/12/12/大话设计模式/" class="archive-article-date">
+  	<time datetime="2016-12-11T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-12-12</time>
+</a>
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>前段时间面试，被问到面向对象编程的好处，我脑子一下子短路了三秒钟，因为觉得这个问题太简单，感觉有诈，但仍是本能的回答了下去：<br><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">“面向对象的三大原则是封装、继承、多态，好处就是代码写得少，便于理解，以及易于修改。我们可以把对象们的共同属性和行为封装到类中，如果有子对象有额外的操作，可以定义子类进行继承，而不用再写一遍父类中的代码，多态可以实现对子类的抽象，对客户只暴露父类中方法，具体的实现在子类中完成，这样修改子类，或替换子类，对客户的影响都不大，就是所谓的易于修改，或者称为松耦合。”</div></pre></td></tr></table></figure></p>
+<p>再深入一些，就讲不出来了。<br><a id="more"></a><br>然后又被问用到过哪些设计模式，自己好像只回答了一个装饰器模式，其他的一下子也说不出来，因为平时用python比较多，会经常写装饰器，所以这个印象比较深刻。工作过程中肯定也潜移默化的用到了不少设计模式，但一直没有总结过。</p>
+<p>面试回来赶紧补了下课，才发现自己这方面知识有多薄弱，因为python标榜的是面向函数编程，所以自己经常会在一个module里写很多函数进行调用，类倒是用得越来越少，面向对象的好处，都快被自己忽略掉了。看同事们的代码，也是大把大把面向过程编程，到处是小函数，一个功能会被不同的人，写在不同的地方，代码实在太难以维护。</p>
+<p>在网上看了几篇帖子，都是专业术语，比较晦涩，好像懂了，但仍是不太明了。于是在kindle中下载了两本书，一本《大话设计模式》，用诙谐的语句，浅显易懂的说明了设计模式怎么用，用在哪里，一周就看完了；另一本《设计模式导论》，更深入的介绍了各种设计模式的异同，和更多的应用场景，相似的设计模式之间如何取舍，尚未看完，边看边思考，而且这个过程，可以拿我们现在项目（代码超15w行）开刀，修改的地方，以及为什么这么修改，会陆续记录在这篇博客中，供大家参考。</p>
+<h2 id="五大原则（SOLID）"><a href="#五大原则（SOLID）" class="headerlink" title="五大原则（SOLID）"></a>五大原则（SOLID）</h2><h3 id="原则一：单一责任原则（Single-Responsibility-Principle）"><a href="#原则一：单一责任原则（Single-Responsibility-Principle）" class="headerlink" title="原则一：单一责任原则（Single Responsibility Principle）"></a>原则一：单一责任原则（Single Responsibility Principle）</h3><p><img src="http://static.zybuluo.com/sanyang/nfs1z6glt27hb4s0w3xsm0yp/Snip20161226_5.png" alt="Snip20161226_5.png-200.1kB"></p>
+<ul>
+<li>如果一个类（或方法、或服务）有超过一个理由让它修改代码（或者有超过一个功能），你就要根据它的功能把它拆分开 </li>
+</ul>
+<h3 id="原则二：开闭原则（Open-Closed-Principle）"><a href="#原则二：开闭原则（Open-Closed-Principle）" class="headerlink" title="原则二：开闭原则（Open-Closed Principle）"></a>原则二：开闭原则（Open-Closed Principle）</h3><p><img src="http://static.zybuluo.com/sanyang/l89b1jt8u242fb4anfinhoal/Snip20161226_4.png" alt="Snip20161226_4.png-248.2kB"></p>
+<ul>
+<li>扩展一项功能的时候，模块原有的核心类的源代码不应该改变</li>
+</ul>
+<p>示例： 如果浏览器是跟一个具体的服务器（例如IIS）紧耦合的，那要是把IIS换成Apache，<br>浏览器跟服务器交互的部分就肯定得改了。这牵一发而动全身的改动太恶心了。<br>我们定义一个抽象服务类，对修改关闭（有事没事都别改它的代码），具体类的实现却是对扩展开放的。<br><img src="http://static.zybuluo.com/sanyang/tt5gsl8tjyefx16o7060wq84/image_1b4tmq9r218001sdf1npl1rtg18bm1l.png" alt="image_1b4tmq9r218001sdf1npl1rtg18bm1l.png-44.2kB"></p>
+<h3 id="原则三：里氏替换原则（Liskov’s-Substitution-Principle）"><a href="#原则三：里氏替换原则（Liskov’s-Substitution-Principle）" class="headerlink" title="原则三：里氏替换原则（Liskov’s Substitution Principle）"></a>原则三：里氏替换原则（Liskov’s Substitution Principle）</h3><p><img src="http://static.zybuluo.com/sanyang/2x72gl6gm4trf87yo35hvcn7/image_1b4tms9k31mc71i2nod77ae1j222.png" alt="image_1b4tms9k31mc71i2nod77ae1j222.png-262.3kB"></p>
+<ul>
+<li>基类的函数在子类里面也必须正常使用，类图设计完的时候必须用LSP原则作为验证工具来检验你写的继承关系是不是合适，否则继承会发生混乱。</li>
+<li>定义鸭子基类不用充电，如果实例化的鸭子要充电，则这个鸭子不是要的鸭子。</li>
+</ul>
+<p>示例：如果在鸟基类中定义了飞的动作，那么KingFisher（翠鸟）继承这个基类没有问题，但Ostrich（鸵鸟）继承就不合适了，就算它属于鸟类，也应该继承另外一个基类，因为它不能飞。<br><img src="http://static.zybuluo.com/sanyang/jnbthoa86xmg747h7txjfv16/image_1b4tn79gs1t991lhifqs173m14129.png" alt="image_1b4tn79gs1t991lhifqs173m14129.png-13.3kB"></p>
+<h3 id="原则四：接口隔离原则（The-Interface-Segregation-Principle）"><a href="#原则四：接口隔离原则（The-Interface-Segregation-Principle）" class="headerlink" title="原则四：接口隔离原则（The Interface Segregation Principle）"></a>原则四：接口隔离原则（The Interface Segregation Principle）</h3><p><img src="http://static.zybuluo.com/sanyang/adj4gg3wf1fsq0genjyrl6ex/image_1b4tn0cm41nt0i28gn4aer1s402s.png" alt="image_1b4tn0cm41nt0i28gn4aer1s402s.png-185.1kB"></p>
+<ul>
+<li>客户端代码不应该费劲去弄懂他用不到的接口，服务端接口应该只暴露给客户端它需要用到的功能。<br>接口分离原则告诉你要让接口简单，只做它必须做的事，这样才易懂易重用。</li>
+<li>好比你想买一台电视机，有两种可选的。一种是有很多开关和按钮，大多数开关都不知道是干嘛的，也不知道有用没用。另一种只有几个开关和按钮，看起来又熟悉又容易理解。如果这两台电视功能一样，你选哪个？</li>
+</ul>
+<h3 id="原则五：依赖倒置原则（The-Dependency-Inversion-Principle）"><a href="#原则五：依赖倒置原则（The-Dependency-Inversion-Principle）" class="headerlink" title="原则五：依赖倒置原则（The Dependency Inversion Principle）"></a>原则五：依赖倒置原则（The Dependency Inversion Principle）</h3><p><img src="http://static.zybuluo.com/sanyang/eckcwdyt7xveknl7nchrc2ep/image_1b4tn9a6bs1u3517ur1ljg1s0pm.png" alt="image_1b4tn9a6bs1u3517ur1ljg1s0pm.png-131.7kB"></p>
+<ul>
+<li>高层模块不应该依赖于低层模块。两者都应该依赖于抽象。核心是可插拔。</li>
+<li>车子不是直接依赖引擎和轮子的，而是他们的抽象说明。然后任何满足这个抽象的引擎和轮子都能够组装到车子上了。</li>
+<li>如果违背，调用底层类的高层代码被推倒重来，底层代码修改时，不得不大量修改高层代码。</li>
+</ul>
+<h3 id="其它原则"><a href="#其它原则" class="headerlink" title="其它原则"></a>其它原则</h3><ul>
+<li>组合优于继承：尽量组合，这比继承好。</li>
+<li>傻瓜原则：你的类知道的东西越少越好。</li>
+<li>闭包原则：把相关的类打包到一起。</li>
+<li>稳定抽象原则：想少改动一个类的话，就尽量用抽象的东西定义它。</li>
+</ul>
+<h2 id="经典的23种模式"><a href="#经典的23种模式" class="headerlink" title="经典的23种模式"></a>经典的23种模式</h2><p><img src="http://static.zybuluo.com/sanyang/fjtaa6zaae01m70hjb45f0qg/image_1b4tnnlq1gco1r2pf5nod81tn313.png" alt="image_1b4tnnlq1gco1r2pf5nod81tn313.png-463.3kB"></p>
+<h3 id="创建型模式-5"><a href="#创建型模式-5" class="headerlink" title="创建型模式(5)"></a>创建型模式(5)</h3><h4 id="简单工厂模式"><a href="#简单工厂模式" class="headerlink" title="简单工厂模式"></a>简单工厂模式</h4><h4 id="抽象工厂模式"><a href="#抽象工厂模式" class="headerlink" title="抽象工厂模式"></a>抽象工厂模式</h4><h4 id="单例模式"><a href="#单例模式" class="headerlink" title="单例模式"></a>单例模式</h4><h4 id="原型模式"><a href="#原型模式" class="headerlink" title="原型模式"></a>原型模式</h4><h4 id="建造者模式"><a href="#建造者模式" class="headerlink" title="建造者模式"></a>建造者模式</h4><h3 id="结构型模式-7"><a href="#结构型模式-7" class="headerlink" title="结构型模式(7)"></a>结构型模式(7)</h3><h4 id="桥梁模式"><a href="#桥梁模式" class="headerlink" title="桥梁模式"></a>桥梁模式</h4><h4 id="代理模式"><a href="#代理模式" class="headerlink" title="代理模式"></a>代理模式</h4><h4 id="外观模式"><a href="#外观模式" class="headerlink" title="外观模式"></a>外观模式</h4><h4 id="装饰模式"><a href="#装饰模式" class="headerlink" title="装饰模式"></a>装饰模式</h4><h4 id="适配器模式"><a href="#适配器模式" class="headerlink" title="适配器模式"></a>适配器模式</h4><h4 id="组合模式"><a href="#组合模式" class="headerlink" title="组合模式"></a>组合模式</h4><h4 id="享元模式"><a href="#享元模式" class="headerlink" title="享元模式"></a>享元模式</h4><h3 id="行为型模式-11"><a href="#行为型模式-11" class="headerlink" title="行为型模式(11)"></a>行为型模式(11)</h3><h4 id="策略模式"><a href="#策略模式" class="headerlink" title="策略模式"></a>策略模式</h4><h4 id="模板方法模式"><a href="#模板方法模式" class="headerlink" title="模板方法模式"></a>模板方法模式</h4><h4 id="观察者模式"><a href="#观察者模式" class="headerlink" title="观察者模式"></a>观察者模式</h4><h4 id="迭代器模式"><a href="#迭代器模式" class="headerlink" title="迭代器模式"></a>迭代器模式</h4><h4 id="职责链模式"><a href="#职责链模式" class="headerlink" title="职责链模式"></a>职责链模式</h4><h4 id="命令模式"><a href="#命令模式" class="headerlink" title="命令模式"></a>命令模式</h4><h4 id="备忘录模式"><a href="#备忘录模式" class="headerlink" title="备忘录模式"></a>备忘录模式</h4><h4 id="状态模式"><a href="#状态模式" class="headerlink" title="状态模式"></a>状态模式</h4><h4 id="访问者模式"><a href="#访问者模式" class="headerlink" title="访问者模式"></a>访问者模式</h4><h4 id="中介者模式"><a href="#中介者模式" class="headerlink" title="中介者模式"></a>中介者模式</h4><h4 id="解释器模式"><a href="#解释器模式" class="headerlink" title="解释器模式"></a>解释器模式</h4><h2 id="思维导图"><a href="#思维导图" class="headerlink" title="思维导图"></a>思维导图</h2><h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p>网站：</p>
+<ul>
+<li><a href="http://www.cnblogs.com/wuyuegb2312/archive/2013/04/09/3008320.html#" target="_blank" rel="external">《大话设计模式》Python版代码实现</a></li>
+<li><a href="http://www.runoob.com/design-pattern/design-pattern-tutorial.html" target="_blank" rel="external">设计模式详解</a></li>
+<li><a href="http://www.uml.org.cn/sjms/201211023.asp" target="_blank" rel="external">设计模式六大原则</a></li>
+</ul>
+<p>书籍：</p>
+<ul>
+<li>《大话设计模式》</li>
+<li>《设计模式导论》</li>
+</ul>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/pay-alipay.png">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/pay-wechat.png">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags"></i>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/设计模式/">设计模式</a></li></ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+	<i class="icon-book icon"></i>
+	<a class="article-category-link" href="/categories/技术/">技术</a>
+	</div>
+
+
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://woshijingshenbing.com/2016/12/12/大话设计模式/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+  
+<nav id="article-nav">
+  
+    <a href="/2016/12/21/MongoDB-随记/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          MongoDB 随记
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/10/16/VIM-随记/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">VIM 随记</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="大话设计模式" data-title="大话设计模式" data-url="http://woshijingshenbing.com/2016/12/12/大话设计模式/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"woshijingshenbing"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+
+
+          </div>
+        </div>
+      </div>
+      <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+
+<footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2016 Codreamer
+    	</div>
+      	<div class="footer-right">
+      	<span id="busuanzi_container_site_uv">
+          本站访客数<span id="busuanzi_value_site_uv"></span>人次
+        </span>
+      	</div>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <script>
+	var yiliaConfig = {
+		mathjax: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false,
+		root: "/",
+		innerArchive: true
+	}
+</script>
+
+<script src="/./main.js?v=4.0.0.js"></script>
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+    
+<div class="tools-col" q-class="show:isShow,hide:isShow|isFalse" q-on="click:stop(e)">
+  <div class="tools-wrap">
+    
+    	<section class="tools-section tools-section-all" q-show="innerArchive">
+        <div class="search-wrap">
+          <input class="search-ipt" q-model="search" type="text" placeholder="find something…">
+          <i class="icon-search icon" q-show="search|isEmptyStr"></i>
+          <i class="icon-close icon" q-show="search|isNotEmptyStr" q-on="click:clearChose(e)"></i>
+        </div>
+        <div class="widget tagcloud search-tag">
+          <p class="search-tag-wording">tag:</p>
+          <label class="search-switch">
+            <input type="checkbox" q-on="click:toggleTag(e)" q-attr="checked:showTags">
+          </label>
+          <ul class="article-tag-list" q-show="showTags">
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">http</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">Mysql</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">Markdown</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">Git</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">MongoDB</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">VIM</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">mac</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">hexo</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">nodejs</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">定时任务</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">python</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">并发</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">线程</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">进程</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">协程</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">pycharm</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">随记</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">买房</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">北京</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">游记</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">马尔代夫</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">设计模式</a>
+              </li>
+            
+            <div class="clearfix"></div>
+          </ul>
+        </div>
+        <ul class="search-ul">
+          <p q-show="jsonFail" style="padding: 20px; font-size: 12px;">
+            缺失模块。<br/>1、在博客根目录（注意不是yilia根目录）执行以下命令：<br/> npm i hexo-generator-json-content --save<br/><br/>
+            2、在根目录_config.yml里添加配置：
+<pre style="font-size: 12px;" q-show="jsonFail">
+  jsonContent:
+    meta: false
+    pages: false
+    posts:
+      title: true
+      date: true
+      path: true
+      text: true
+      raw: false
+      content: false
+      slug: false
+      updated: false
+      comments: false
+      link: false
+      permalink: false
+      excerpt: false
+      categories: false
+      tags: true
+</pre>
+          </p>
+          <li class="search-li" q-repeat="items" q-show="isShow">
+            <a q-attr="href:path|urlformat" class="search-title"><i class="icon-quo-left icon"></i><span q-text="title"></span></a>
+            <p class="search-time">
+              <i class="icon-calendar icon"></i>
+              <span q-text="date|dateformat"></span>
+            </p>
+            <p class="search-tag">
+              <i class="icon-price-tags icon"></i>
+              <span q-repeat="tags" q-on="click:choseTag(e, name)" q-text="name|tagformat"></span>
+            </p>
+          </li>
+        </ul>
+    	</section>
+    
+
+    
+    	<section class="tools-section tools-section-friends" q-show="friends">
+  		
+        <ul class="search-ul">
+          
+            <li class="search-li">
+              <a href="https://coderq.com,一个面向程序员交流分享的新一代社区" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>码农圈</a>
+            </li>
+          
+            <li class="search-li">
+              <a href="http://weavesilk.com/,HTML5实现的魔幻效果" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>weavesilk</a>
+            </li>
+          
+        </ul>
+  		
+    	</section>
+    
+
+    
+    	<section class="tools-section tools-section-me" q-show="aboutme">
+  	  	
+  	  		<div class="aboutme-wrap" id="js-aboutme">他真诚地将自己的挑剔,&lt;br /&gt;误认为是对美的不懈追求，&lt;br /&gt;把自己的孤僻,&lt;br /&gt;误认为是不食人间烟火，&lt;br /&gt;把自己的散漫,&lt;br /&gt;误认为是对于自由的热爱。&lt;br /&gt;&lt;br /&gt;他的思想因为追求风雅而变得庸俗起来，&lt;br /&gt;他的行为因为小心翼翼而变得放纵不羁。&lt;br /&gt;&lt;br /&gt;他有很强的责任感，&lt;br /&gt;却也因此害怕做出承诺。&lt;br /&gt;&lt;br /&gt;他批判世上的所有东西，&lt;br /&gt;包括他自己。&lt;br /&gt;&lt;br /&gt;当别人指出他的自相矛盾后，&lt;br /&gt;他无法自圆其说，&lt;br /&gt;于是只好沉默。&lt;br /&gt;&lt;br /&gt;他是个不可理喻的人。</div>
+  	  	
+    	</section>
+    
+  </div>
+  
+</div>
+    <!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+  </div>
+</body>
+</html>

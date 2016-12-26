@@ -1,0 +1,697 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <link rel="dns-prefetch" href="http://woshijingshenbing.com">
+  <title>pycharm随记 | Codreamer的博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="概述pycharm是一款重量级的IDE,天生为python程序开发而生,尽管有人会说vim或sublime配置好了也是神器,但pycharm难道就不是了吗?">
+<meta property="og:type" content="article">
+<meta property="og:title" content="pycharm随记">
+<meta property="og:url" content="http://woshijingshenbing.com/2016/05/03/pycharm随记/index.html">
+<meta property="og:site_name" content="Codreamer的博客">
+<meta property="og:description" content="概述pycharm是一款重量级的IDE,天生为python程序开发而生,尽管有人会说vim或sublime配置好了也是神器,但pycharm难道就不是了吗?">
+<meta property="og:image" content="http://7u2qu2.com1.z0.glb.clouddn.com/2014060609184028.png">
+<meta property="og:image" content="http://7u2qu2.com1.z0.glb.clouddn.com/2014060609184029.png">
+<meta property="og:image" content="http://7u2qu2.com1.z0.glb.clouddn.com/okplkjkopejkrtpoejgfio.png">
+<meta property="og:updated_time" content="2016-12-21T05:54:09.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="pycharm随记">
+<meta name="twitter:description" content="概述pycharm是一款重量级的IDE,天生为python程序开发而生,尽管有人会说vim或sublime配置好了也是神器,但pycharm难道就不是了吗?">
+<meta name="twitter:image" content="http://7u2qu2.com1.z0.glb.clouddn.com/2014060609184028.png">
+  
+    <link rel="alternative" href="/atom.xml" title="Codreamer的博客" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link rel="stylesheet" href="/main.css?v=4.0.0.css">
+  
+
+  
+<script>
+var _hmt = _hmt || [];
+(function() {
+	var hm = document.createElement("script");
+	hm.src = "https://hm.baidu.com/hm.js?45db6f44750c33b1afd7970532c8b3fb";
+	var s = document.getElementsByTagName("script")[0]; 
+	s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+</head>
+
+<body>
+  <div id="container" q-class="show:isCtnShow">
+    <canvas id="anm-canvas" class="anm-canvas"></canvas>
+    <div class="left-col" q-class="show:isShow">
+      <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			<img src="/img/avatar.png" class="js-avatar">
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">Codreamer</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">除非你改变了交往的人和阅读的书，否则，你的五年之后和现在完全一样</p>
+		
+
+		<nav class="header-menu">
+			<ul>
+			
+				<li><a href="/">主页</a></li>
+	        
+				<li><a href="/photos">相册</a></li>
+	        
+			</ul>
+		</nav>
+		<nav class="header-smart-menu">
+	        
+    		
+    			
+    			<a data-idx="0" q-on="click: openSlider(e, 'innerArchive')" href="javascript:void(0)">所有文章</a>
+    			
+    			
+            
+    			
+    			<a data-idx="1" q-on="click: openSlider(e, 'friends')" href="javascript:void(0)">友链</a>
+    			
+    			
+            
+    			
+    			<a data-idx="2" q-on="click: openSlider(e, 'aboutme')" href="javascript:void(0)">关于我</a>
+    			
+    			
+            
+		</nav>
+		<nav class="header-nav">
+			<div class="social">
+				
+					<a class="github" target="_blank" href="https://github.com/sniperyen" title="github"><i class="icon-github"></i></a>
+		        
+					<a class="weibo" target="_blank" href="http://weibo.com/ddhj" title="weibo"><i class="icon-weibo"></i></a>
+		        
+					<a class="qq" target="_blank" href="/871757525" title="qq"><i class="icon-qq"></i></a>
+		        
+					<a class="mail" target="_blank" href="mailto:871757525@qq.com" title="mail"><i class="icon-mail"></i></a>
+		        
+			</div>
+		</nav>
+	</header>		
+</div>
+
+    </div>
+    <div class="mid-col" q-class="show:isShow,hide:isShow|isFalse">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"><i class="icon-sort"></i></div>
+  		<h1 class="header-author js-mobile-header hide">Codreamer</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				<img src="/img/avatar.png" class="js-avatar">
+			</div>
+			<hgroup>
+			  <h1 class="header-author">Codreamer</h1>
+			</hgroup>
+			
+			<p class="header-subtitle">除非你改变了交往的人和阅读的书，否则，你的五年之后和现在完全一样</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/photos">相册</a></li>
+		        
+		        
+		        	<li><a href="/archives/">所有文章</a></li>
+		        
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/sniperyen" title="github"><i class="icon-github"></i></a>
+			        
+						<a class="weibo" target="_blank" href="http://weibo.com/ddhj" title="weibo"><i class="icon-weibo"></i></a>
+			        
+						<a class="qq" target="_blank" href="/871757525" title="qq"><i class="icon-qq"></i></a>
+			        
+						<a class="mail" target="_blank" href="mailto:871757525@qq.com" title="mail"><i class="icon-mail"></i></a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+
+      <div id="wrapper" class="body-wrap">
+        <div class="menu-l">
+          <div class="canvas-wrap">
+            <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
+          </div>
+          <div id="js-content" class="content-ll">
+            <article id="post-pycharm随记" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      pycharm随记
+    </h1>
+  
+
+        <a href="/2016/05/03/pycharm随记/" class="archive-article-date">
+  	<time datetime="2016-05-03T04:02:03.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-05-03</time>
+</a>
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h3><p>pycharm是一款重量级的IDE,天生为python程序开发而生,尽管有人会说vim或sublime配置好了也是神器,但pycharm难道就不是了吗?</p>
+<a id="more"></a>
+<h3 id="快捷键"><a href="#快捷键" class="headerlink" title="快捷键"></a>快捷键</h3><h4 id="提示"><a href="#提示" class="headerlink" title="提示"></a>提示</h4><ul>
+<li>CTRL 空格: 在参数列表位置，显示可以输入的所有参数</li>
+<li>CTRL Q: 查看选中方法的文档字符串</li>
+</ul>
+<h4 id="阅读"><a href="#阅读" class="headerlink" title="阅读"></a>阅读</h4><ul>
+<li>CTRL -: 折叠当前代码</li>
+<li>CTRL +: 展开当前代码</li>
+<li>CTRL (SHIFT) -: 折叠(所有)代码</li>
+<li>CTRL (SHIFT) +: 展开(所有)代码</li>
+<li>CTRL F11 | F11: 设置书签.</li>
+<li>SHIFT F11: 显示所有书签。</li>
+<li>CTRL F12: 当一个文件中方法太多，要快速跳到某个方法时，可以用此快捷键打开LIST。</li>
+<li>CTRL E: 最近访问的文件列表</li>
+<li>ESC: 焦点从其它窗口到编辑窗口</li>
+<li>SHIFT ESC: 隐藏当前窗口，焦点到编辑窗口</li>
+<li>F12: 焦点从编辑窗口到上一个使用窗口</li>
+</ul>
+<h4 id="移动"><a href="#移动" class="headerlink" title="移动"></a>移动</h4><ul>
+<li>ALT UP: 移到上一个方法</li>
+<li>ALT DOWN: 移到下一个方法</li>
+<li>CTRL B | CTRL 单击： 转到方法定义处(ALT ← 返回到跳转处)</li>
+<li>CTRL SHIFT UP: 将当前定义上移一行</li>
+<li>CTRL SHIFT UP: 将当前定义下移一行</li>
+<li>CTRL ALT UP: 将当前行上移一行</li>
+<li>CTRL ALT UP: 将当前行下移一行</li>
+<li>SHIFT ENTER: 在行中间执行时，跳转到下一行，并插入一空行。</li>
+<li>CTRL ENTER: 在行中间执行时，跳转到上一行，并插入一空行。</li>
+</ul>
+<h4 id="编辑"><a href="#编辑" class="headerlink" title="编辑"></a>编辑</h4><ul>
+<li>CTRL D: 未选中时，复制当前行到下一行，选中时复制粘贴选中部分。</li>
+<li>CTRL J: 输入模板</li>
+<li>CTRL ALT T: 引入代码块</li>
+<li>CTRL ALT L: 选中的代码格式化</li>
+<li>CTRY Y: 删除当前行</li>
+</ul>
+<h4 id="其它"><a href="#其它" class="headerlink" title="其它"></a>其它</h4><p>Alt + Enter: 快速提示操作的快捷菜单<br>CTRL F8: 设置/取消断点<br>编辑器右键，local history, show history： 显示本地修改记录</p>
+<h3 id="设置"><a href="#设置" class="headerlink" title="设置"></a>设置</h3><h4 id="设置行号"><a href="#设置行号" class="headerlink" title="设置行号"></a>设置行号</h4><p>File –&gt; Settings –&gt;Editor –&gt;Appearance ,  之后勾选Show Line Numbers</p>
+<h4 id="滚轮改变大小和自动换行"><a href="#滚轮改变大小和自动换行" class="headerlink" title="滚轮改变大小和自动换行"></a>滚轮改变大小和自动换行</h4><p>Setting -&gt;Editor-〉General 中设置</p>
+<h4 id="设置字体大小"><a href="#设置字体大小" class="headerlink" title="设置字体大小"></a>设置字体大小</h4><p>Settings–&gt;Editor–&gt;Colors &amp; Fonts–&gt;Font</p>
+<h4 id="pycharm-不支持-svn-时怎么处理-for-windows"><a href="#pycharm-不支持-svn-时怎么处理-for-windows" class="headerlink" title="pycharm 不支持 svn 时怎么处理(for windows)"></a>pycharm 不支持 svn 时怎么处理(for windows)</h4><ol>
+<li>到<a href="http://download.csdn.net/detail/u013177568/7723151下载svn命令行安装包" target="_blank" rel="external">http://download.csdn.net/detail/u013177568/7723151下载svn命令行安装包</a><br>例如：安装到 D:\software\svn目录下</li>
+<li>安装成功后，打开 File -&gt;Settings -&gt; Version Control -&gt;Subversion-&gt;General  配置如下两点：<br>a ：Use command line client 指到 D:\software\svn\bin\svn.exe<br>b： Use system default Subversion configuration directory 指向 D:\softfware\svn\bin即可 </li>
+</ol>
+<h3 id="实用功能"><a href="#实用功能" class="headerlink" title="实用功能"></a>实用功能</h3><h4 id="实时比较"><a href="#实时比较" class="headerlink" title="实时比较"></a>实时比较</h4><p>PyCharm 对一个文件里你做的改动保持实时的跟踪，通过在编辑器的左侧栏显示一个蓝色的标记。</p>
+<p><img src="http://7u2qu2.com1.z0.glb.clouddn.com/2014060609184028.png" alt="实时比较"></p>
+<p>点击那个标记，会显示出之前的内容以及一个工具栏，<br>很容易地回滚这些改动，在一个详尽的对话框中查看这些改动或是将之前的文本粘贴到剪切板上。</p>
+<h4 id="提交时的比较预览"><a href="#提交时的比较预览" class="headerlink" title="提交时的比较预览"></a>提交时的比较预览</h4><p>提交时可以查看对比当前变化的文件，并可以实时的进行修改。</p>
+<p><img src="http://7u2qu2.com1.z0.glb.clouddn.com/2014060609184029.png" alt="比较预览"></p>
+<h4 id="提交时检查"><a href="#提交时检查" class="headerlink" title="提交时检查"></a>提交时检查</h4><p>在提交过程中，我们还可以在实际提交前执行其他一些选项，像格式化代码，优化导入（排序并移除未使用过的导入），<br>检查变动集合中的待完成项 等等。</p>
+<p><img src="http://7u2qu2.com1.z0.glb.clouddn.com/okplkjkopejkrtpoejgfio.png" alt="提交时检查"></p>
+<h4 id="自动重命名"><a href="#自动重命名" class="headerlink" title="自动重命名"></a>自动重命名</h4><p>重命名时用 SHIFT + F6 组合键，不管是方法名、变量名，甚至是文件名或文件夹名，会将所有引用的地方或路径一起修改过来。</p>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/pay-alipay.png">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/pay-wechat.png">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags"></i>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/pycharm/">pycharm</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/随记/">随记</a></li></ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+	<i class="icon-book icon"></i>
+	<a class="article-category-link" href="/categories/技术/">技术</a>
+	</div>
+
+
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://woshijingshenbing.com/2016/05/03/pycharm随记/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+  
+<nav id="article-nav">
+  
+    <a href="/2016/10/03/京城浮生/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          京城浮生
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2015/11/11/python并发编程/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">python并发编程</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="pycharm随记" data-title="pycharm随记" data-url="http://woshijingshenbing.com/2016/05/03/pycharm随记/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"woshijingshenbing"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+
+
+          </div>
+        </div>
+      </div>
+      <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+
+<footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2016 Codreamer
+    	</div>
+      	<div class="footer-right">
+      	<span id="busuanzi_container_site_uv">
+          本站访客数<span id="busuanzi_value_site_uv"></span>人次
+        </span>
+      	</div>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <script>
+	var yiliaConfig = {
+		mathjax: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false,
+		root: "/",
+		innerArchive: true
+	}
+</script>
+
+<script src="/./main.js?v=4.0.0.js"></script>
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+    
+<div class="tools-col" q-class="show:isShow,hide:isShow|isFalse" q-on="click:stop(e)">
+  <div class="tools-wrap">
+    
+    	<section class="tools-section tools-section-all" q-show="innerArchive">
+        <div class="search-wrap">
+          <input class="search-ipt" q-model="search" type="text" placeholder="find something…">
+          <i class="icon-search icon" q-show="search|isEmptyStr"></i>
+          <i class="icon-close icon" q-show="search|isNotEmptyStr" q-on="click:clearChose(e)"></i>
+        </div>
+        <div class="widget tagcloud search-tag">
+          <p class="search-tag-wording">tag:</p>
+          <label class="search-switch">
+            <input type="checkbox" q-on="click:toggleTag(e)" q-attr="checked:showTags">
+          </label>
+          <ul class="article-tag-list" q-show="showTags">
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">http</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">Mysql</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">Markdown</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">Git</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">MongoDB</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">VIM</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">mac</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">hexo</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">nodejs</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">定时任务</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">python</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">并发</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">线程</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">进程</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">协程</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">pycharm</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">随记</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">买房</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">北京</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">游记</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">马尔代夫</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">设计模式</a>
+              </li>
+            
+            <div class="clearfix"></div>
+          </ul>
+        </div>
+        <ul class="search-ul">
+          <p q-show="jsonFail" style="padding: 20px; font-size: 12px;">
+            缺失模块。<br/>1、在博客根目录（注意不是yilia根目录）执行以下命令：<br/> npm i hexo-generator-json-content --save<br/><br/>
+            2、在根目录_config.yml里添加配置：
+<pre style="font-size: 12px;" q-show="jsonFail">
+  jsonContent:
+    meta: false
+    pages: false
+    posts:
+      title: true
+      date: true
+      path: true
+      text: true
+      raw: false
+      content: false
+      slug: false
+      updated: false
+      comments: false
+      link: false
+      permalink: false
+      excerpt: false
+      categories: false
+      tags: true
+</pre>
+          </p>
+          <li class="search-li" q-repeat="items" q-show="isShow">
+            <a q-attr="href:path|urlformat" class="search-title"><i class="icon-quo-left icon"></i><span q-text="title"></span></a>
+            <p class="search-time">
+              <i class="icon-calendar icon"></i>
+              <span q-text="date|dateformat"></span>
+            </p>
+            <p class="search-tag">
+              <i class="icon-price-tags icon"></i>
+              <span q-repeat="tags" q-on="click:choseTag(e, name)" q-text="name|tagformat"></span>
+            </p>
+          </li>
+        </ul>
+    	</section>
+    
+
+    
+    	<section class="tools-section tools-section-friends" q-show="friends">
+  		
+        <ul class="search-ul">
+          
+            <li class="search-li">
+              <a href="https://coderq.com,一个面向程序员交流分享的新一代社区" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>码农圈</a>
+            </li>
+          
+            <li class="search-li">
+              <a href="http://weavesilk.com/,HTML5实现的魔幻效果" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>weavesilk</a>
+            </li>
+          
+        </ul>
+  		
+    	</section>
+    
+
+    
+    	<section class="tools-section tools-section-me" q-show="aboutme">
+  	  	
+  	  		<div class="aboutme-wrap" id="js-aboutme">他真诚地将自己的挑剔,&lt;br /&gt;误认为是对美的不懈追求，&lt;br /&gt;把自己的孤僻,&lt;br /&gt;误认为是不食人间烟火，&lt;br /&gt;把自己的散漫,&lt;br /&gt;误认为是对于自由的热爱。&lt;br /&gt;&lt;br /&gt;他的思想因为追求风雅而变得庸俗起来，&lt;br /&gt;他的行为因为小心翼翼而变得放纵不羁。&lt;br /&gt;&lt;br /&gt;他有很强的责任感，&lt;br /&gt;却也因此害怕做出承诺。&lt;br /&gt;&lt;br /&gt;他批判世上的所有东西，&lt;br /&gt;包括他自己。&lt;br /&gt;&lt;br /&gt;当别人指出他的自相矛盾后，&lt;br /&gt;他无法自圆其说，&lt;br /&gt;于是只好沉默。&lt;br /&gt;&lt;br /&gt;他是个不可理喻的人。</div>
+  	  	
+    	</section>
+    
+  </div>
+  
+</div>
+    <!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+  </div>
+</body>
+</html>

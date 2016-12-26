@@ -1,0 +1,685 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <link rel="dns-prefetch" href="http://woshijingshenbing.com">
+  <title>github+hexo 搭建个人博客 | Codreamer的博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="安装准备：
+
+github账号（用户名sniperyen）
+github上的一个仓库（仓库名sniperyen.github.io=用户名sniperyen+.github.io）
+homebrew（mac电脑上的工具）">
+<meta property="og:type" content="article">
+<meta property="og:title" content="github+hexo 搭建个人博客">
+<meta property="og:url" content="http://woshijingshenbing.com/2016/12/22/github+hexo 搭建个人博客/index.html">
+<meta property="og:site_name" content="Codreamer的博客">
+<meta property="og:description" content="安装准备：
+
+github账号（用户名sniperyen）
+github上的一个仓库（仓库名sniperyen.github.io=用户名sniperyen+.github.io）
+homebrew（mac电脑上的工具）">
+<meta property="og:image" content="http://static.zybuluo.com/sanyang/fmwdp01hhj3kg4o56dbwwt57/image_1av45a7uq1uo21nbs13ar1oegjel9.png">
+<meta property="og:updated_time" content="2016-12-25T01:17:56.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="github+hexo 搭建个人博客">
+<meta name="twitter:description" content="安装准备：
+
+github账号（用户名sniperyen）
+github上的一个仓库（仓库名sniperyen.github.io=用户名sniperyen+.github.io）
+homebrew（mac电脑上的工具）">
+<meta name="twitter:image" content="http://static.zybuluo.com/sanyang/fmwdp01hhj3kg4o56dbwwt57/image_1av45a7uq1uo21nbs13ar1oegjel9.png">
+  
+    <link rel="alternative" href="/atom.xml" title="Codreamer的博客" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link rel="stylesheet" href="/main.css?v=4.0.0.css">
+  
+
+  
+<script>
+var _hmt = _hmt || [];
+(function() {
+	var hm = document.createElement("script");
+	hm.src = "https://hm.baidu.com/hm.js?45db6f44750c33b1afd7970532c8b3fb";
+	var s = document.getElementsByTagName("script")[0]; 
+	s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+</head>
+
+<body>
+  <div id="container" q-class="show:isCtnShow">
+    <canvas id="anm-canvas" class="anm-canvas"></canvas>
+    <div class="left-col" q-class="show:isShow">
+      <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			<img src="/img/avatar.png" class="js-avatar">
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">Codreamer</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">除非你改变了交往的人和阅读的书，否则，你的五年之后和现在完全一样</p>
+		
+
+		<nav class="header-menu">
+			<ul>
+			
+				<li><a href="/">主页</a></li>
+	        
+				<li><a href="/photos">相册</a></li>
+	        
+			</ul>
+		</nav>
+		<nav class="header-smart-menu">
+	        
+    		
+    			
+    			<a data-idx="0" q-on="click: openSlider(e, 'innerArchive')" href="javascript:void(0)">所有文章</a>
+    			
+    			
+            
+    			
+    			<a data-idx="1" q-on="click: openSlider(e, 'friends')" href="javascript:void(0)">友链</a>
+    			
+    			
+            
+    			
+    			<a data-idx="2" q-on="click: openSlider(e, 'aboutme')" href="javascript:void(0)">关于我</a>
+    			
+    			
+            
+		</nav>
+		<nav class="header-nav">
+			<div class="social">
+				
+					<a class="github" target="_blank" href="https://github.com/sniperyen" title="github"><i class="icon-github"></i></a>
+		        
+					<a class="weibo" target="_blank" href="http://weibo.com/ddhj" title="weibo"><i class="icon-weibo"></i></a>
+		        
+					<a class="qq" target="_blank" href="/871757525" title="qq"><i class="icon-qq"></i></a>
+		        
+					<a class="mail" target="_blank" href="mailto:871757525@qq.com" title="mail"><i class="icon-mail"></i></a>
+		        
+			</div>
+		</nav>
+	</header>		
+</div>
+
+    </div>
+    <div class="mid-col" q-class="show:isShow,hide:isShow|isFalse">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"><i class="icon-sort"></i></div>
+  		<h1 class="header-author js-mobile-header hide">Codreamer</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				<img src="/img/avatar.png" class="js-avatar">
+			</div>
+			<hgroup>
+			  <h1 class="header-author">Codreamer</h1>
+			</hgroup>
+			
+			<p class="header-subtitle">除非你改变了交往的人和阅读的书，否则，你的五年之后和现在完全一样</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/photos">相册</a></li>
+		        
+		        
+		        	<li><a href="/archives/">所有文章</a></li>
+		        
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/sniperyen" title="github"><i class="icon-github"></i></a>
+			        
+						<a class="weibo" target="_blank" href="http://weibo.com/ddhj" title="weibo"><i class="icon-weibo"></i></a>
+			        
+						<a class="qq" target="_blank" href="/871757525" title="qq"><i class="icon-qq"></i></a>
+			        
+						<a class="mail" target="_blank" href="mailto:871757525@qq.com" title="mail"><i class="icon-mail"></i></a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+
+      <div id="wrapper" class="body-wrap">
+        <div class="menu-l">
+          <div class="canvas-wrap">
+            <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
+          </div>
+          <div id="js-content" class="content-ll">
+            <article id="post-github+hexo 搭建个人博客" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      github+hexo 搭建个人博客
+    </h1>
+  
+
+        <a href="/2016/12/22/github+hexo 搭建个人博客/" class="archive-article-date">
+  	<time datetime="2016-12-22T08:59:26.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-12-22</time>
+</a>
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>准备：</p>
+<ul>
+<li>github账号（用户名sniperyen）</li>
+<li>github上的一个仓库（仓库名sniperyen.github.io=用户名sniperyen+.github.io）</li>
+<li>homebrew（mac电脑上的工具）<a id="more"></a>
+</li>
+</ul>
+<h3 id="安装-nodejs"><a href="#安装-nodejs" class="headerlink" title="安装 nodejs"></a>安装 nodejs</h3><figure class="highlight cmake"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># mac中安装</span></div><div class="line">brew tap homebrew/versions  <span class="comment"># 安装homebrew-version</span></div><div class="line">brew <span class="keyword">install</span> homebrew/versions/node  <span class="comment">#  查看可安装的node版本</span></div><div class="line">brew <span class="keyword">install</span> homebrew/versions/node5  <span class="comment"># 选择一个版本的node安装</span></div><div class="line"></div><div class="line"><span class="comment"># ubuntu中安装</span></div><div class="line">sudo apt-get <span class="keyword">install</span> nodejs</div></pre></td></tr></table></figure>
+<h3 id="npm设置源"><a href="#npm设置源" class="headerlink" title="npm设置源"></a>npm设置源</h3><p>npm是nodejs的包管理软件，类似于python中的pip，但其在国内安装速度太坑爹，故用第三方插件，可以更改源地址。</p>
+<figure class="highlight vala"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="meta"># 安装</span></div><div class="line">npm install -g nrm</div><div class="line"><span class="meta"># 查看源列表</span></div><div class="line">nrm ls</div><div class="line">* npm -----  https:<span class="comment">//registry.npmjs.org/</span></div><div class="line">  cnpm ----  http:<span class="comment">//r.cnpmjs.org/</span></div><div class="line">  taobao --  https:<span class="comment">//registry.npm.taobao.org/</span></div><div class="line">  nj ------  https:<span class="comment">//registry.nodejitsu.com/</span></div><div class="line">  rednpm -- http:<span class="comment">//registry.mirror.cqupt.edu.cn</span></div><div class="line">  skimdb -- https:<span class="comment">//skimdb.npmjs.com/registry</span></div><div class="line"><span class="meta"># 切换源</span></div><div class="line">nrm use cnpm</div></pre></td></tr></table></figure>
+<h3 id="初始化安装"><a href="#初始化安装" class="headerlink" title="初始化安装"></a>初始化安装</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">sudo npm <span class="keyword">install</span> -g hexo  # 安装 hexo</div><div class="line">npm <span class="keyword">install</span> hexo-deployer-git <span class="comment">--save  # hexo部署包</span></div><div class="line">cd ~/dev</div><div class="line">mkdir blog</div><div class="line">cd blog</div><div class="line">hexo init  # 初始化工作目录</div><div class="line">hexo g  # 生成静态页面</div><div class="line">hexo s  # 启动本地调试服务器</div><div class="line"></div><div class="line"># 下面几个扩展包按需安装</div><div class="line">npm <span class="keyword">install</span> hexo-renderer-<span class="keyword">less</span> <span class="comment">--save </span></div><div class="line">npm <span class="keyword">install</span> hexo-generator-feed <span class="comment">--save</span></div><div class="line">npm <span class="keyword">install</span> hexo-generator-sitemap <span class="comment">--save</span></div><div class="line">npm <span class="keyword">install</span> hexo-generator-baidu-sitemap <span class="comment">--save</span></div><div class="line">npm <span class="keyword">install</span> hexo-generator-<span class="keyword">json</span>-<span class="keyword">content</span> <span class="comment">--save</span></div></pre></td></tr></table></figure>
+<h3 id="配置博客"><a href="#配置博客" class="headerlink" title="配置博客"></a>配置博客</h3><p>hexo的目录和文件：<br><img src="http://static.zybuluo.com/sanyang/fmwdp01hhj3kg4o56dbwwt57/image_1av45a7uq1uo21nbs13ar1oegjel9.png" alt="image_1av45a7uq1uo21nbs13ar1oegjel9.png-48.6kB"></p>
+<p>1、 scaffolds ：模板文件夹，新建文章时，Hexo 会根据 scaffold 来建立文件。Hexo 有三种默认布局： post 、 page 和 draft ，它们分别对应不同的路径。新建文件的默认布局是 post ，可以在配置文件中更改布局。用 draft 布局生成的文件会被保存到 source/_drafts 文件夹。</p>
+<p>2、 source ：资源文件夹是存放用户资源的地方。</p>
+<p>3、 source/_post ：文件箱。（低版本的hexo还会存在一个 _draft ，这是草稿箱）除 <em>posts 文件夹之外，开头命名为 </em> (下划线)的文件/ 文件夹和隐藏的文件将会被忽略。Markdown 和 HTML 文件会被解析并放到 public 文件夹，而其他文件会被拷贝过去</p>
+<p>4、 themes ：主题 文件夹。Hexo 会根据主题来生成静态页面。</p>
+<p>5、 themes/landscape ：默认的皮肤文件夹</p>
+<p>6、 _config.yml ：全局的配置文件，每次更改要重启服务。</p>
+<p>低版本的Hexo还会生成scripts文件夹，里面用于保存扩展Hexo的脚本文件。</p>
+<h4 id="全局配置"><a href="#全局配置" class="headerlink" title="全局配置"></a>全局配置</h4><p>根目录下的 _config.yml 负责全局的相关配置：</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># Hexo Configuration</span></div><div class="line"><span class="comment">## Docs: http://hexo.io/docs/configuration.html</span></div><div class="line"><span class="comment">## Source: https://github.com/hexojs/hexo/</span></div><div class="line"><span class="comment"># Site 站点配置</span></div><div class="line"><span class="attr">title:</span> Hexo-demo <span class="comment">#网站标题</span></div><div class="line"><span class="attr">subtitle:</span> hexo is simple and easy to study <span class="comment">#网站副标题</span></div><div class="line"><span class="attr">description:</span> this is hexo-demo <span class="comment">#网栈描述</span></div><div class="line"><span class="attr">author:</span> pomy <span class="comment">#你的名字</span></div><div class="line"><span class="attr">language:</span> zh-CN <span class="comment">#网站使用的语言</span></div><div class="line"><span class="attr">timezone:</span> Asia/Shanghai <span class="comment">#网站时区</span></div><div class="line"></div><div class="line"><span class="comment"># URL #可以不用配置</span></div><div class="line"><span class="comment">## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'</span></div><div class="line"><span class="attr">url:</span> http://yoursite.com <span class="comment">#网址，搜索时会在搜索引擎中显示</span></div><div class="line"><span class="attr">root:</span> / <span class="comment">#网站根目录</span></div><div class="line"><span class="attr">permalink:</span> :year/:month/:day/:title/ <span class="comment">#永久链接格式</span></div><div class="line"><span class="attr">permalink_defaults:</span> <span class="comment">#永久链接中各部分的默认值</span></div><div class="line"></div><div class="line"><span class="comment"># Directory 目录配置</span></div><div class="line"><span class="attr">source_dir:</span> source <span class="comment">#资源文件夹，这个文件夹用来存放内容</span></div><div class="line"><span class="attr">public_dir:</span> public <span class="comment">#公共文件夹，这个文件夹用于存放生成的站点文件</span></div><div class="line"><span class="attr">tag_dir:</span> tags <span class="comment">#标签文件夹</span></div><div class="line"><span class="attr">archive_dir:</span> archives <span class="comment">#归档文件夹</span></div><div class="line"><span class="attr">category_dir:</span> categories <span class="comment">#分类文件夹</span></div><div class="line"><span class="attr">code_dir:</span> downloads/code <span class="comment">#Include code 文件夹</span></div><div class="line"><span class="attr">i18n_dir:</span> :lang <span class="comment">#国际化文件夹</span></div><div class="line"><span class="attr">skip_render:</span> <span class="comment">#跳过指定文件的渲染，您可使用 glob 来配置路径</span></div><div class="line"></div><div class="line"><span class="comment"># Writing 写作配置</span></div><div class="line"><span class="attr">new_post_name:</span> :title.md <span class="comment"># 新文章的文件名称</span></div><div class="line"><span class="attr">default_layout:</span> post <span class="comment">#默认布局</span></div><div class="line"><span class="attr">titlecase:</span> <span class="literal">false</span> <span class="comment"># Transform title into titlecase</span></div><div class="line"><span class="attr">external_link:</span> <span class="literal">true</span> <span class="comment"># Open external links in new tab</span></div><div class="line"><span class="attr">filename_case:</span> <span class="number">0</span> <span class="comment">#把文件名称转换为 (1) 小写或 (2) 大写</span></div><div class="line"><span class="attr">render_drafts:</span> <span class="literal">false</span> <span class="comment">#显示草稿</span></div><div class="line"><span class="attr">post_asset_folder:</span> <span class="literal">false</span> <span class="comment">#是否启动资源文件夹</span></div><div class="line"><span class="attr">relative_link:</span> <span class="literal">false</span> <span class="comment">#把链接改为与根目录的相对位址</span></div><div class="line"><span class="attr">future:</span> <span class="literal">true</span></div><div class="line"></div><div class="line"><span class="comment">#代码块的设置</span></div><div class="line"><span class="attr">highlight:</span></div><div class="line"><span class="attr">  enable:</span> <span class="literal">true</span></div><div class="line"><span class="attr">  line_number:</span> <span class="literal">true</span></div><div class="line"><span class="attr">  auto_detect:</span> <span class="literal">true</span></div><div class="line"><span class="attr">  tab_replace:</span></div><div class="line"></div><div class="line"><span class="comment"># Category &amp; Tag 分类 &amp; 标签</span></div><div class="line"><span class="attr">default_category:</span> uncategorized <span class="comment">#默认分类</span></div><div class="line"><span class="attr">category_map:</span> <span class="comment">#分类别名</span></div><div class="line"><span class="attr">tag_map:</span> <span class="comment">#标签别名</span></div><div class="line"></div><div class="line"><span class="comment"># Date / Time format 时间和日期</span></div><div class="line"><span class="comment">## Hexo uses Moment.js to parse and display date. You can customize the date format as defined in http://momentjs.com/docs/#/displaying/format/</span></div><div class="line"><span class="attr">date_format:</span> YYYY-MM-DD</div><div class="line"><span class="attr">time_format:</span> HH:mm:ss</div><div class="line"></div><div class="line"><span class="comment"># Pagination 分页</span></div><div class="line"><span class="comment">## Set per_page to 0 to disable pagination</span></div><div class="line"><span class="attr">per_page:</span> <span class="number">10</span> <span class="comment">#每页显示的文章量 (0 = 关闭分页功能)</span></div><div class="line"><span class="attr">pagination_dir:</span> page <span class="comment">#分页目录</span></div><div class="line"></div><div class="line"><span class="comment"># Extensions 扩展</span></div><div class="line"><span class="comment">## Plugins: http://hexo.io/plugins/ 插件</span></div><div class="line"><span class="comment">## Themes: http://hexo.io/themes/ 主题</span></div><div class="line"><span class="attr">theme:</span> landscape <span class="comment">#当前主题名称</span></div><div class="line"></div><div class="line"><span class="comment"># Deployment #部署到github</span></div><div class="line"><span class="comment">## Docs: http://hexo.io/docs/deployment.html</span></div><div class="line"><span class="attr">deploy:</span></div><div class="line"><span class="attr">  type:</span> git</div><div class="line"><span class="attr">  repository:</span> https://github.com/sniperyen/sniperyen.github.io.git</div><div class="line"><span class="attr">  branch:</span> master</div></pre></td></tr></table></figure>
+<p><strong>修改全局配置时，注意缩进，同时注意冒号后面要有一个空格。</strong></p>
+<h3 id="单页配置"><a href="#单页配置" class="headerlink" title="单页配置"></a>单页配置</h3><p>在md文件头的设置：<br><figure class="highlight subunit"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">title: 博客标题</div><div class="line"><span class="keyword">tags:</span> [标签一,标签二]</div><div class="line">date: 2015<span class="string">-12</span><span class="string">-12</span> 10:50:37  # 如果不设置此项，时间显示deploy的时间；如果不想显示时间，设置 noDate: "true"</div><div class="line">comments: false  # 不显示评论</div></pre></td></tr></table></figure></p>
+<h3 id="主题配置"><a href="#主题配置" class="headerlink" title="主题配置"></a>主题配置</h3><p>主题的配置文件在 /themes/主题文件夹/_config.yml ，一般包括导航配置(menu)，内容配置(content)，评论插件，图片效果(fancybox)和边栏(sidebar)。</p>
+<ul>
+<li><a href="https://github.com/dwqs/nx/blob/master/README_zh.md" target="_blank" rel="external">安装方法</a></li>
+<li><a href="https://github.com/hexojs/hexo/wiki/Themes" target="_blank" rel="external">更多主题</a></li>
+</ul>
+<p>常用部署步骤<br><figure class="highlight verilog"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">hexo n <span class="string">"新文章"</span></div><div class="line">hexo clean</div><div class="line">hexo <span class="keyword">generate</span></div><div class="line">hexo deploy</div></pre></td></tr></table></figure></p>
+<h3 id="添加相册"><a href="#添加相册" class="headerlink" title="添加相册"></a>添加相册</h3><ol>
+<li>webpack的安装和配置<br><a href="http://2914905399.iteye.com/blog/2314533" target="_blank" rel="external">http://2914905399.iteye.com/blog/2314533</a></li>
+<li>添加自定义相册<br><a href="http://www.cnblogs.com/jarson-7426/p/5515870.html" target="_blank" rel="external">http://www.cnblogs.com/jarson-7426/p/5515870.html</a></li>
+</ol>
+<h3 id="添加访问次数统计功能"><a href="#添加访问次数统计功能" class="headerlink" title="添加访问次数统计功能"></a>添加访问次数统计功能</h3><p>参考： <a href="http://ibruce.info/2013/12/22/count-views-of-hexo/" target="_blank" rel="external">http://ibruce.info/2013/12/22/count-views-of-hexo/</a></p>
+<h3 id="连接自己的域名"><a href="#连接自己的域名" class="headerlink" title="连接自己的域名"></a>连接自己的域名</h3><ol>
+<li>在source中新建一CNAME文件，写入自己的域名不带www</li>
+<li>在阿里云或其他云平台设置域名，一个A解析，一个cname解析 </li>
+</ol>
+<h3 id="如何使一些不变的文件在部署时不被删除"><a href="#如何使一些不变的文件在部署时不被删除" class="headerlink" title="如何使一些不变的文件在部署时不被删除"></a>如何使一些不变的文件在部署时不被删除</h3><p>将需要上传至github的内容放在source文件夹，例如CNAME、favicon.ico、images等。</p>
+<h3 id="不处理source目录的个别文件"><a href="#不处理source目录的个别文件" class="headerlink" title="不处理source目录的个别文件"></a>不处理source目录的个别文件</h3><p>可以通过在 _config.yml设置skip_render来忽略的目录，具体如下<br><figure class="highlight haml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">skip_render:</div><div class="line">    -<span class="ruby"> <span class="string">'demo/*.html'</span></span></div><div class="line">    -<span class="ruby"> <span class="string">'demo/**'</span></span></div></pre></td></tr></table></figure></p>
+<h3 id="错误处理"><a href="#错误处理" class="headerlink" title="错误处理"></a>错误处理</h3><ol>
+<li><p><code>ERROR Plugin load failed: hexo-generator-json-content</code></p>
+<p> 解决方案： <code>sudo npm install dtrace-provider</code></p>
+</li>
+</ol>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/pay-alipay.png">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/pay-wechat.png">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags"></i>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hexo/">hexo</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/mac/">mac</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/nodejs/">nodejs</a></li></ul>
+	</div>
+
+      
+
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://woshijingshenbing.com/2016/12/22/github+hexo 搭建个人博客/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+  
+<nav id="article-nav">
+  
+  
+    <a href="/2016/12/21/MongoDB-随记/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">MongoDB 随记</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="github+hexo 搭建个人博客" data-title="github+hexo 搭建个人博客" data-url="http://woshijingshenbing.com/2016/12/22/github+hexo 搭建个人博客/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"woshijingshenbing"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+
+
+          </div>
+        </div>
+      </div>
+      <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+
+<footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2016 Codreamer
+    	</div>
+      	<div class="footer-right">
+      	<span id="busuanzi_container_site_uv">
+          本站访客数<span id="busuanzi_value_site_uv"></span>人次
+        </span>
+      	</div>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <script>
+	var yiliaConfig = {
+		mathjax: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false,
+		root: "/",
+		innerArchive: true
+	}
+</script>
+
+<script src="/./main.js?v=4.0.0.js"></script>
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+    
+<div class="tools-col" q-class="show:isShow,hide:isShow|isFalse" q-on="click:stop(e)">
+  <div class="tools-wrap">
+    
+    	<section class="tools-section tools-section-all" q-show="innerArchive">
+        <div class="search-wrap">
+          <input class="search-ipt" q-model="search" type="text" placeholder="find something…">
+          <i class="icon-search icon" q-show="search|isEmptyStr"></i>
+          <i class="icon-close icon" q-show="search|isNotEmptyStr" q-on="click:clearChose(e)"></i>
+        </div>
+        <div class="widget tagcloud search-tag">
+          <p class="search-tag-wording">tag:</p>
+          <label class="search-switch">
+            <input type="checkbox" q-on="click:toggleTag(e)" q-attr="checked:showTags">
+          </label>
+          <ul class="article-tag-list" q-show="showTags">
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">http</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">Mysql</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">Markdown</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">Git</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">MongoDB</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">VIM</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">mac</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">hexo</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">nodejs</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">定时任务</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">python</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">并发</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">线程</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">进程</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">协程</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">pycharm</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">随记</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">买房</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">北京</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">游记</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">马尔代夫</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">设计模式</a>
+              </li>
+            
+            <div class="clearfix"></div>
+          </ul>
+        </div>
+        <ul class="search-ul">
+          <p q-show="jsonFail" style="padding: 20px; font-size: 12px;">
+            缺失模块。<br/>1、在博客根目录（注意不是yilia根目录）执行以下命令：<br/> npm i hexo-generator-json-content --save<br/><br/>
+            2、在根目录_config.yml里添加配置：
+<pre style="font-size: 12px;" q-show="jsonFail">
+  jsonContent:
+    meta: false
+    pages: false
+    posts:
+      title: true
+      date: true
+      path: true
+      text: true
+      raw: false
+      content: false
+      slug: false
+      updated: false
+      comments: false
+      link: false
+      permalink: false
+      excerpt: false
+      categories: false
+      tags: true
+</pre>
+          </p>
+          <li class="search-li" q-repeat="items" q-show="isShow">
+            <a q-attr="href:path|urlformat" class="search-title"><i class="icon-quo-left icon"></i><span q-text="title"></span></a>
+            <p class="search-time">
+              <i class="icon-calendar icon"></i>
+              <span q-text="date|dateformat"></span>
+            </p>
+            <p class="search-tag">
+              <i class="icon-price-tags icon"></i>
+              <span q-repeat="tags" q-on="click:choseTag(e, name)" q-text="name|tagformat"></span>
+            </p>
+          </li>
+        </ul>
+    	</section>
+    
+
+    
+    	<section class="tools-section tools-section-friends" q-show="friends">
+  		
+        <ul class="search-ul">
+          
+            <li class="search-li">
+              <a href="https://coderq.com,一个面向程序员交流分享的新一代社区" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>码农圈</a>
+            </li>
+          
+            <li class="search-li">
+              <a href="http://weavesilk.com/,HTML5实现的魔幻效果" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>weavesilk</a>
+            </li>
+          
+        </ul>
+  		
+    	</section>
+    
+
+    
+    	<section class="tools-section tools-section-me" q-show="aboutme">
+  	  	
+  	  		<div class="aboutme-wrap" id="js-aboutme">他真诚地将自己的挑剔,&lt;br /&gt;误认为是对美的不懈追求，&lt;br /&gt;把自己的孤僻,&lt;br /&gt;误认为是不食人间烟火，&lt;br /&gt;把自己的散漫,&lt;br /&gt;误认为是对于自由的热爱。&lt;br /&gt;&lt;br /&gt;他的思想因为追求风雅而变得庸俗起来，&lt;br /&gt;他的行为因为小心翼翼而变得放纵不羁。&lt;br /&gt;&lt;br /&gt;他有很强的责任感，&lt;br /&gt;却也因此害怕做出承诺。&lt;br /&gt;&lt;br /&gt;他批判世上的所有东西，&lt;br /&gt;包括他自己。&lt;br /&gt;&lt;br /&gt;当别人指出他的自相矛盾后，&lt;br /&gt;他无法自圆其说，&lt;br /&gt;于是只好沉默。&lt;br /&gt;&lt;br /&gt;他是个不可理喻的人。</div>
+  	  	
+    	</section>
+    
+  </div>
+  
+</div>
+    <!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,926 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <link rel="dns-prefetch" href="http://woshijingshenbing.com">
+  <title>MongoDB 随记 | Codreamer的博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="基本操作
+启动mongo服务:mongod –dbpath=/data/db –logpath=/data/log/r3.log –fork
+进入mongo交互界面:mongo
+进入交互界面直接转到 test 数据库，可以这样写: mongo test
+查看数据库:show dbs 
+转到数据库:use test
+删除当前数据库:db.dropDatabase()
+查看当前数据库下的表:show">
+<meta property="og:type" content="article">
+<meta property="og:title" content="MongoDB 随记">
+<meta property="og:url" content="http://woshijingshenbing.com/2016/12/21/MongoDB-随记/index.html">
+<meta property="og:site_name" content="Codreamer的博客">
+<meta property="og:description" content="基本操作
+启动mongo服务:mongod –dbpath=/data/db –logpath=/data/log/r3.log –fork
+进入mongo交互界面:mongo
+进入交互界面直接转到 test 数据库，可以这样写: mongo test
+查看数据库:show dbs 
+转到数据库:use test
+删除当前数据库:db.dropDatabase()
+查看当前数据库下的表:show">
+<meta property="og:image" content="http://static.zybuluo.com/sanyang/cnfy9u1y7adudi4sbmu008e3/image_1ao3m6lkk3k51fe21nu7314j899.png">
+<meta property="og:image" content="http://static.zybuluo.com/sanyang/tk4hhj3fhfr9c2botrnthnod/image_1ao5n7h9n13a3pr4ci31ps14csm.png">
+<meta property="og:image" content="http://static.zybuluo.com/sanyang/zjg93ks9j8ddw13uzal1olol/image_1ao5n9vehm3v1j5a1iuhe4afqv13.png">
+<meta property="og:image" content="http://static.zybuluo.com/sanyang/oajx5hgeejr251jhe47tlmu2/image_1ao6btcut1nmd96gd8q1tqcnth9.png">
+<meta property="og:image" content="http://cloudaice.com/images/Mysql&&MongoDB.png">
+<meta property="og:updated_time" content="2016-12-21T05:04:35.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="MongoDB 随记">
+<meta name="twitter:description" content="基本操作
+启动mongo服务:mongod –dbpath=/data/db –logpath=/data/log/r3.log –fork
+进入mongo交互界面:mongo
+进入交互界面直接转到 test 数据库，可以这样写: mongo test
+查看数据库:show dbs 
+转到数据库:use test
+删除当前数据库:db.dropDatabase()
+查看当前数据库下的表:show">
+<meta name="twitter:image" content="http://static.zybuluo.com/sanyang/cnfy9u1y7adudi4sbmu008e3/image_1ao3m6lkk3k51fe21nu7314j899.png">
+  
+    <link rel="alternative" href="/atom.xml" title="Codreamer的博客" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link rel="stylesheet" href="/main.css?v=4.0.0.css">
+  
+
+  
+<script>
+var _hmt = _hmt || [];
+(function() {
+	var hm = document.createElement("script");
+	hm.src = "https://hm.baidu.com/hm.js?45db6f44750c33b1afd7970532c8b3fb";
+	var s = document.getElementsByTagName("script")[0]; 
+	s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+</head>
+
+<body>
+  <div id="container" q-class="show:isCtnShow">
+    <canvas id="anm-canvas" class="anm-canvas"></canvas>
+    <div class="left-col" q-class="show:isShow">
+      <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			<img src="/img/avatar.png" class="js-avatar">
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">Codreamer</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">除非你改变了交往的人和阅读的书，否则，你的五年之后和现在完全一样</p>
+		
+
+		<nav class="header-menu">
+			<ul>
+			
+				<li><a href="/">主页</a></li>
+	        
+				<li><a href="/photos">相册</a></li>
+	        
+			</ul>
+		</nav>
+		<nav class="header-smart-menu">
+	        
+    		
+    			
+    			<a data-idx="0" q-on="click: openSlider(e, 'innerArchive')" href="javascript:void(0)">所有文章</a>
+    			
+    			
+            
+    			
+    			<a data-idx="1" q-on="click: openSlider(e, 'friends')" href="javascript:void(0)">友链</a>
+    			
+    			
+            
+    			
+    			<a data-idx="2" q-on="click: openSlider(e, 'aboutme')" href="javascript:void(0)">关于我</a>
+    			
+    			
+            
+		</nav>
+		<nav class="header-nav">
+			<div class="social">
+				
+					<a class="github" target="_blank" href="https://github.com/sniperyen" title="github"><i class="icon-github"></i></a>
+		        
+					<a class="weibo" target="_blank" href="http://weibo.com/ddhj" title="weibo"><i class="icon-weibo"></i></a>
+		        
+					<a class="qq" target="_blank" href="/871757525" title="qq"><i class="icon-qq"></i></a>
+		        
+					<a class="mail" target="_blank" href="mailto:871757525@qq.com" title="mail"><i class="icon-mail"></i></a>
+		        
+			</div>
+		</nav>
+	</header>		
+</div>
+
+    </div>
+    <div class="mid-col" q-class="show:isShow,hide:isShow|isFalse">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"><i class="icon-sort"></i></div>
+  		<h1 class="header-author js-mobile-header hide">Codreamer</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				<img src="/img/avatar.png" class="js-avatar">
+			</div>
+			<hgroup>
+			  <h1 class="header-author">Codreamer</h1>
+			</hgroup>
+			
+			<p class="header-subtitle">除非你改变了交往的人和阅读的书，否则，你的五年之后和现在完全一样</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/photos">相册</a></li>
+		        
+		        
+		        	<li><a href="/archives/">所有文章</a></li>
+		        
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/sniperyen" title="github"><i class="icon-github"></i></a>
+			        
+						<a class="weibo" target="_blank" href="http://weibo.com/ddhj" title="weibo"><i class="icon-weibo"></i></a>
+			        
+						<a class="qq" target="_blank" href="/871757525" title="qq"><i class="icon-qq"></i></a>
+			        
+						<a class="mail" target="_blank" href="mailto:871757525@qq.com" title="mail"><i class="icon-mail"></i></a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+
+      <div id="wrapper" class="body-wrap">
+        <div class="menu-l">
+          <div class="canvas-wrap">
+            <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
+          </div>
+          <div id="js-content" class="content-ll">
+            <article id="post-MongoDB-随记" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      MongoDB 随记
+    </h1>
+  
+
+        <a href="/2016/12/21/MongoDB-随记/" class="archive-article-date">
+  	<time datetime="2016-12-21T05:04:35.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-12-21</time>
+</a>
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="基本操作"><a href="#基本操作" class="headerlink" title="基本操作"></a>基本操作</h2><ul>
+<li>启动mongo服务:mongod –dbpath=/data/db –logpath=/data/log/r3.log –fork</li>
+<li>进入mongo交互界面:mongo</li>
+<li>进入交互界面直接转到 test 数据库，可以这样写: mongo test</li>
+<li>查看数据库:show dbs </li>
+<li>转到数据库:use test</li>
+<li>删除当前数据库:db.dropDatabase()</li>
+<li>查看当前数据库下的表:show collections</li>
+<li>建表:db.createCollection(“mycoll”) </li>
+<li>删表:db.mycoll.drop()</li>
+</ul>
+<a id="more"></a>
+<p>不用写建库或者建表语句,如下面示例,则新建了一个newDB的数据库,其中有张newTable表,有x和y两列.<br><code>use newDB --&gt; j={x:1,&quot;y&quot;:&quot;school&quot;} --&gt; db.newTable.save(j)</code></p>
+<p>当我们往一个集合中写入一条文档时，系统会自动生成一个名为_id的key.字段类型默认是 ObjectId. 然而_id的类型可以自由指定,但是在同一个集合中必须唯一，如果插入重复的值的话，系统将会抛出异常</p>
+<p>A simple example:<br><figure class="highlight stata"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">&gt; <span class="keyword">use</span> <span class="keyword">test</span></div><div class="line">&gt; <span class="keyword">for</span>( <span class="keyword">var</span> i = 1; i &lt; 100; i++ ) <span class="keyword">db</span>.things.<span class="keyword">save</span>( &#123; x:4, j:i &#125; ); </div><div class="line">&gt; <span class="keyword">var</span> cursor = <span class="keyword">db</span>.things.find(); #<span class="keyword">var</span>不可以缺</div><div class="line">&gt; <span class="keyword">while</span> (cursor.hasNext()) printjson(cursor.next()); #循环输出，也可以这样写 <span class="keyword">db</span>.things.find().<span class="keyword">forEach</span>(printjson);</div><div class="line">&gt; printjson(cursor[4]); #可以把游标当作数组来使用.</div><div class="line">&gt; <span class="keyword">var</span> arr = <span class="keyword">db</span>.things.find().toArray(); #可以转换成数组</div></pre></td></tr></table></figure></p>
+<p>使用游标时候请注意占用内存的问题, 特别是很大的游标对象, 有可能会内存溢出. 所以应该用迭代的方式来输出.</p>
+<h2 id="sql语句–MongoDB-shell中语句"><a href="#sql语句–MongoDB-shell中语句" class="headerlink" title="sql语句–MongoDB shell中语句"></a>sql语句–MongoDB shell中语句</h2><ol>
+<li>普通查询<br>SELECT * FROM things WHERE name=”mongo” and version=”1.6”<br>db.things.find({name:”mongo”,version:”1.6”}).forEach(printjson); </li>
+<li>返回特定元素<br>SELECT j FROM things WHERE x=4<br>db.things.find({x:4}, {j:true}).forEach(printjson); </li>
+<li>返回一条数据<br>SELECT TOP 1 * FROM things WHERE name=”mongo”<br>db.things.findOne({name:”mongo”})</li>
+<li>限制结果集的长度<br>SELECT TOP 3 * FROM things<br>db.things.find().limit(3); </li>
+<li>★修改某条记录(这里有点不一样,mongo会把这条记录重写,而不是单独修改某些字段)<br>UPDATE things SET name=”mongo_new” WHERE name=”mongo”<br>db.things.update({name:”mongo”},{$set:{name:”mongo_new”}}); </li>
+<li>删除<br>DELETE FROM things WHERE name=”mongo_new”<br>db.things.remove({name:”mongo_new”});</li>
+</ol>
+<h2 id="条件操作符"><a href="#条件操作符" class="headerlink" title="条件操作符"></a>条件操作符</h2><ul>
+<li><code>&lt;, &lt;=, &gt;, &gt;=, !=</code><figure class="highlight xquery"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">db.collection.find(&#123; <span class="string">"field"</span> : &#123; $gt: value &#125; &#125; );   // 大于:    field &gt; <span class="keyword">value</span> </div><div class="line">db.collection.find(&#123; <span class="string">"field"</span> : &#123; $lt: value &#125; &#125; );   // 小于:     field &lt; <span class="keyword">value</span> </div><div class="line">db.collection.find(&#123; <span class="string">"field"</span> : &#123; $gte: value &#125; &#125; );  // 大于等于: field &gt;= <span class="keyword">value</span> </div><div class="line">db.collection.find(&#123; <span class="string">"field"</span> : &#123; $lte: value &#125; &#125; );  // 小于等于: field &lt;= <span class="keyword">value</span> </div><div class="line">db.collection.find(&#123; <span class="string">"field"</span> : &#123; $ne: value &#125; &#125; );  // 不等于: field != <span class="keyword">value</span></div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>如果要同时满足多个条件，可以这样做<br><code>db.collection.find({ &quot;field&quot; : { $gt: value1, $lt: value2 } } );    // value1 &lt; field &lt; value</code></p>
+<ul>
+<li><p><code>$all</code> 匹配所有<br>这个操作符跟 SQL 语法的 in 类似，但不同的是, in 只需满足( )内的某一个值即可, 而<code>$all</code> 必须满足[ ]内的所有值，例如:<br><code>db.users.find({age : {$all : [6, 8]}});</code><br>可以查询出  <code>{name: &#39;David&#39;, age: 26, age: [ 6, 8, 9 ] }</code><br>但查询不出  <code>{name: &#39;David&#39;, age: 26, age: [ 6, 7, 9 ] }</code></p>
+</li>
+<li><p><code>$in</code> 包含<br>与sql标准语法的用途是一样的，即要查询的是一系列枚举值的范围内<br>查询 x 的值在 2,4,6 范围内的数据<br><code>db.things.find({x:{$in: [2,4,6]}});</code></p>
+</li>
+<li><p><code>$nin</code> 不包含<br>查询 x 的值在 2,4,6 范围外的数据<br><code>db.things.find({x:{$nin: [2,4,6]}});</code></p>
+</li>
+<li><p><code>$exists</code> 判断字段是否存在<br>查询所有存在 age 字段的记录<br><code>db.users.find({age: {$exists: true}});</code><br>查询所有不存在 name 字段的记录<br><code>db.users.find({name: {$exists: false}});</code></p>
+</li>
+<li><p>Null 值处理<br>mongo里面某个元素为NULL,可能是这个键不存在,也可能是键对应的值不存在,所以需要双重判断下<br><code>db.c2.find({age:{&quot;$in&quot;:[null], &quot;$exists&quot;:true}})</code></p>
+</li>
+<li><p><code>$mod</code> 取模运算(就是余数)<br>查询age取模10等于0的数据,如下,age等于11/21/31…类似的数据会被取出来<br><code>db.student.find( { age: { $mod : [ 10 , 1 ] } } )</code></p>
+</li>
+<li><p><code>$size</code> 数组元素个数<br>对于<code>{name: &#39;David&#39;, age: 26, favorite_number: [ 6, 7, 9 ] }</code>记录<br>匹配 <code>db.users.find({favorite_number: {$size: 3}});</code><br>不匹配 <code>db.users.find({favorite_number: {$size: 2}});</code></p>
+</li>
+<li><p>正则表达式匹配<br>查询不匹配 <code>name=B*</code>带头的记录<br><code>db.users.find({name: {$not: /^B.*/}});</code></p>
+</li>
+<li><p>Javascript 查询和$where 查询<br>查询a大于3的数据，下面的查询方法殊途同归 </p>
+<figure class="highlight stata"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">db</span>.c1.find( &#123; a : &#123; <span class="variable">$gt</span>: 3 &#125; &#125; ); </div><div class="line"><span class="keyword">db</span>.c1.find( &#123; <span class="variable">$where</span>: <span class="string">"this.a &gt; 3"</span> &#125; ); </div><div class="line"><span class="keyword">db</span>.c1.find(<span class="string">"this.a &gt; 3"</span>); </div><div class="line">f = function() &#123; <span class="keyword">return</span> this.a &gt; 3; &#125; <span class="keyword">db</span>.c1.find(f);</div></pre></td></tr></table></figure>
+</li>
+<li><p>skip 限制返回记录的起点<br>从第 3 条记录开始，返回 5 条记录(limit 3, 5)<br><code>db.users.find().skip(3).limit(5)</code></p>
+</li>
+<li><p>count 查询记录条数<br><code>db.users.find().count(); 或者 db.users.count();</code><br>以下返回的不是5,而是user表中所有的记录数量<br><code>db.users.find().skip(10).limit(5).count();</code><br>如果要返回限制之后的记录数量，要使用 count(true)或者 count(非 0)<br><code>db.users.find().skip(10).limit(5).count(true);</code></p>
+</li>
+<li><p>sort 排序<br>以年龄升序 asc<br><code>db.users.find().sort({age: 1});</code><br>以年龄降序 desc<br><code>db.users.find().sort({age: -1});</code></p>
+</li>
+</ul>
+<h2 id="存储过程"><a href="#存储过程" class="headerlink" title="存储过程"></a>存储过程</h2><p>mongo中存储过程是用js写的,万能的javascript…<br><figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&gt; db.system.js.save(&#123;_id:<span class="string">"addNumbers"</span>, value:<span class="function"><span class="keyword">function</span><span class="params">(x, y)</span></span>&#123; <span class="keyword">return</span> x + y; &#125;&#125;);</div><div class="line">&gt; db.evel(<span class="string">"addNumbers(2,3)"</span>);</div><div class="line">&gt; db.<span class="keyword">eval</span>( <span class="function"><span class="keyword">function</span><span class="params">()</span> </span>&#123; <span class="keyword">return</span> <span class="number">3</span>+<span class="number">3</span>; &#125; );  <span class="comment">#db.eval()是一个比较奇怪的东西，我们可以将存储过程的逻辑直接在里面并同时调用，而无需事先声明存储过程的逻辑</span></div><div class="line">db.system.js.save(&#123;_id:<span class="string">"get_count"</span>, value:<span class="function"><span class="keyword">function</span><span class="params">()</span></span>&#123; <span class="keyword">return</span> db.c1.count(); &#125;&#125;); </div><div class="line"><span class="comment">#可以直接读取库中其他表的信息,或者修改删除等工作皆可.</span></div></pre></td></tr></table></figure></p>
+<h2 id="Capped-封顶-Collection"><a href="#Capped-封顶-Collection" class="headerlink" title="Capped(封顶) Collection"></a>Capped(封顶) Collection</h2><p>介绍:capped collections 是性能出色的有着固定大小的集合，以 LRU(Least Recently Used 最近最少使用)规则和插入顺序进行 age-out(老化移出)处理，自动维护集合中对象的插入顺序，在创建时要预先指定大小。如果空间用完，新添加的对象将会取代集合中最旧的对象。<br>作用:logging、cache、autoarchiving<br>建议：</p>
+<ol>
+<li>为了发挥capped collection的最大性能，如果写比读多，最好不要在上面建索引，否则插入速度从”log speed”降为”database speed”。 </li>
+<li>使用”nature ordering”可以有效地检索最近插入的元素，因为 capped collection 能够保证自然排序就是插入时的顺序，类似于 log 文件上的 tail(尾随) 操作。<figure class="highlight processing"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&gt; db.createCollection(<span class="string">"mycoll"</span>, &#123;capped:<span class="keyword">true</span>, <span class="built_in">size</span>:<span class="number">100000</span>, <span class="built_in">max</span>:<span class="number">100</span>&#125;);  #创建集合是一定要指定<span class="built_in">size</span>和<span class="built_in">max</span>,因为总是先检查<span class="built_in">size</span>,后检查maxRowNumber; <span class="built_in">max</span>为<span class="number">1</span>时,不限量存放</div><div class="line">&gt; db.mycoll.validate();</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>createCollection 也可以创建普通的集合,还有一个参数”autoIndexID”，决定是否自动创建索引.<br>db.createCollection(“mycoll”, {size:10000000, autoIndexId:false})。<br>默认情况下对一般的 collection 是创建索引的，但不会对 capped collection 创建。</p>
+<h2 id="GridFS"><a href="#GridFS" class="headerlink" title="GridFS"></a>GridFS</h2><p>GridFS 是一种将大型文件存储在 MongoDB 数据库中的文件规范。<br>GridFS 使用两个表来存储数据： </p>
+<ol>
+<li>files 包含元数据对象 </li>
+<li>chunks 包含其他一些相关信息的二进制块<br>为了使多个 GridFS 命名为一个单一的数据库，文件和块都有一个前缀，默认情况下，前缀是 fs，所以任何默认的 GridFS 存储将包括命名空间 fs.files 和 fs.chunks。各种第三方语言的驱动有权限改变这个前缀，所以你可以尝试设置另一个 GridFS 命名空间用于存储照片，它的具体位置为:photos.files 和 photos.chunks。</li>
+</ol>
+<p>可以用 mongofiles 工具进行操作：<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="selector-attr">[root@localhost bin]</span># <span class="selector-tag">mongofiles</span> <span class="selector-tag">put</span> <span class="selector-tag">testfile</span> #插入文件</div><div class="line"><span class="selector-attr">[root@localhost bin]</span># <span class="selector-tag">mongofiles</span> <span class="selector-tag">list</span>  #可以查看库里有哪些 <span class="selector-tag">GridFS</span></div><div class="line">&gt; <span class="selector-tag">show</span> <span class="selector-tag">collections</span> #可以看到库里多了<span class="selector-tag">fs</span><span class="selector-class">.files</span>和<span class="selector-tag">fs</span><span class="selector-class">.chunks</span>两张表</div><div class="line">&gt; <span class="selector-tag">db</span><span class="selector-class">.fs</span><span class="selector-class">.files</span><span class="selector-class">.find</span>(); </div><div class="line">&gt; <span class="selector-tag">db</span><span class="selector-class">.fs</span><span class="selector-class">.chunks</span><span class="selector-class">.find</span>(); <span class="selector-id">#file</span>跟<span class="selector-tag">chunk</span>是一对多的关系,<span class="selector-tag">file</span>里面只是存储文件名之类的描述信息,然后分成多个<span class="selector-tag">chunk</span>存储</div><div class="line"><span class="selector-attr">[root@localhost bin]</span># <span class="selector-tag">mongofiles</span> <span class="selector-tag">get</span> <span class="selector-tag">testfile</span> #获取文件</div></pre></td></tr></table></figure></p>
+<h2 id="MapReduce"><a href="#MapReduce" class="headerlink" title="MapReduce"></a>MapReduce</h2><p>类似于MySql中的”group by”<br><figure class="highlight cs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">db.runCommand( </div><div class="line"> &#123; mapreduce : &lt;collection&gt;,  <span class="meta">#要操作的目标集合</span></div><div class="line">   map : &lt;mapfunction&gt;, <span class="meta">#映射函数 (生成键值对序列，作为 reduce 函数参数)。</span></div><div class="line">   reduce : &lt;reducefunction&gt; <span class="meta">#统计函数</span></div><div class="line">   [, query : &lt;query filter <span class="keyword">object</span>&gt;] <span class="meta">#目标记录过滤</span></div><div class="line">   [, sort : &lt;sorts the input objects <span class="keyword">using</span> <span class="keyword">this</span> key. Useful <span class="keyword">for</span> optimization, like sorting <span class="keyword">by</span> the emit key <span class="keyword">for</span> fewer reduces&gt;] <span class="meta">#目标记录排序。</span></div><div class="line">   [, limit : &lt;number of objects to <span class="keyword">return</span> <span class="keyword">from</span> collection&gt;] <span class="meta">#限制目标记录数量</span></div><div class="line">   [, <span class="keyword">out</span> : &lt;see output options below&gt;] <span class="meta">#统计结果存放集合 (不指定则使用临时集合，在客户端断开后自动删除)。 </span></div><div class="line">   [, keeptemp: &lt;<span class="literal">true</span>|<span class="literal">false</span>&gt;] <span class="meta">#是否保留临时集合</span></div><div class="line">   [, finalize : &lt;finalizefunction&gt;] <span class="meta">#最终处理函数 (对 reduce 返回结果进行最终整理后存入结果集合)。 </span></div><div class="line">   [, scope : &lt;<span class="keyword">object</span> <span class="keyword">where</span> fields go <span class="keyword">into</span> javascript <span class="keyword">global</span> scope &gt;] <span class="meta">#向 map、reduce、finalize 导入外部变量。</span></div><div class="line">   [, verbose : <span class="literal">true</span>] <span class="meta">#显示详细的时间统计信息。</span></div><div class="line"> &#125; </div><div class="line">);</div></pre></td></tr></table></figure></p>
+<p>示例：<br><figure class="highlight r"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div></pre></td><td class="code"><pre><div class="line">&gt; db.students.insert(&#123;classid:<span class="number">1</span>, age:<span class="number">14</span>, name:<span class="string">'Tom'</span>&#125;) </div><div class="line">&gt; db.students.insert(&#123;classid:<span class="number">1</span>, age:<span class="number">12</span>, name:<span class="string">'Jacky'</span>&#125;) </div><div class="line">&gt; db.students.insert(&#123;classid:<span class="number">2</span>, age:<span class="number">16</span>, name:<span class="string">'Lily'</span>&#125;) </div><div class="line">&gt; db.students.insert(&#123;classid:<span class="number">2</span>, age:<span class="number">9</span>, name:<span class="string">'Tony'</span>&#125;) </div><div class="line">&gt; db.students.insert(&#123;classid:<span class="number">2</span>, age:<span class="number">19</span>, name:<span class="string">'Harry'</span>&#125;) </div><div class="line">&gt; db.students.insert(&#123;classid:<span class="number">2</span>, age:<span class="number">13</span>, name:<span class="string">'Vincent'</span>&#125;) </div><div class="line">&gt; db.students.insert(&#123;classid:<span class="number">1</span>, age:<span class="number">14</span>, name:<span class="string">'Bill'</span>&#125;) </div><div class="line">&gt; db.students.insert(&#123;classid:<span class="number">2</span>, age:<span class="number">17</span>, name:<span class="string">'Bruce'</span>&#125;) </div><div class="line">&gt; </div><div class="line">&gt; m = <span class="keyword">function</span>() &#123; emit(this.classid, <span class="number">1</span>) &#125; <span class="comment">#emit(this.classid, &#123;count:1&#125;) 亦可</span></div><div class="line"><span class="comment">#将 Map 返回的键值序列组合成 &#123; key, [value1, value2, value3, value...] &#125; 传递给 reduce。</span></div><div class="line">&gt; r = <span class="keyword">function</span>(key, values) &#123; </div><div class="line"><span class="keyword">...</span> var x = <span class="number">0</span>; </div><div class="line"><span class="keyword">...</span> values.forEach(<span class="keyword">function</span>(v) &#123; x += v &#125;); </div><div class="line"><span class="keyword">...</span> <span class="keyword">return</span> x; </div><div class="line"><span class="keyword">...</span> &#125; </div><div class="line">&gt; f = <span class="keyword">function</span>(key, value) &#123; <span class="keyword">return</span> &#123;classid:key, count:value&#125;; &#125; </div><div class="line">&gt; res = db.runCommand(&#123; </div><div class="line"><span class="keyword">...</span> mapreduce:<span class="string">"students"</span>, </div><div class="line"><span class="keyword">...</span> map:m, </div><div class="line"><span class="keyword">...</span> reduce:r, </div><div class="line"><span class="keyword">...</span> out:<span class="string">"students_res"</span>, </div><div class="line"><span class="keyword">...</span> finalize:f</div><div class="line"><span class="keyword">...</span> &#125;);  </div><div class="line">&gt; db.students_res.find() </div><div class="line">&#123; <span class="string">"_id"</span> : <span class="number">1</span>, <span class="string">"value"</span> : &#123; <span class="string">"classid"</span> : <span class="number">1</span>, <span class="string">"count"</span> : <span class="number">3</span> &#125; &#125; </div><div class="line">&#123; <span class="string">"_id"</span> : <span class="number">2</span>, <span class="string">"value"</span> : &#123; <span class="string">"classid"</span> : <span class="number">2</span>, <span class="string">"count"</span> : <span class="number">5</span> &#125; &#125; </div><div class="line">&gt; res = db.runCommand(&#123; </div><div class="line"><span class="keyword">...</span> mapreduce:<span class="string">"students"</span>, </div><div class="line"><span class="keyword">...</span> map:m, </div><div class="line"><span class="keyword">...</span> reduce:r, </div><div class="line"><span class="keyword">...</span> out:<span class="string">"students_res"</span>, </div><div class="line"><span class="keyword">...</span> finalize:f, </div><div class="line"><span class="keyword">...</span> query:&#123;age:&#123;$lt:<span class="number">10</span>&#125;&#125; <span class="comment">#只取 age&lt;10 的数据，然后再进行统计</span></div><div class="line"><span class="keyword">...</span> &#125;);</div><div class="line">&gt; db.students_res.find(); </div><div class="line">&#123; <span class="string">"_id"</span> : <span class="number">2</span>, <span class="string">"value"</span> : &#123; <span class="string">"classid"</span> : <span class="number">2</span>, <span class="string">"count"</span> : <span class="number">1</span> &#125; &#125;</div></pre></td></tr></table></figure></p>
+<p>上面最后一个查询的操作等同于<br><code>select _id,classid,count(classid) as count,  from students where age&lt;10 group by classid</code></p>
+<h2 id="数据导出和导入"><a href="#数据导出和导入" class="headerlink" title="数据导出和导入"></a>数据导出和导入</h2><p>导出：<br><code>[root@localhost bin]# mongoexport -d my_mongodb -c user -o user.dat</code><br>参数说明:<br>-d 指明使用的库, 本例中为” my_mongodb”<br>-c 指明要导出的表, 本例中为”user”<br>-o 指明要导出的文件名, 本例中为”user.dat”<br>[root@localhost bin]# mongoexport -d my_mongodb -c user –csv -f uid,username,age -o user_csv.dat<br>-csv 指要要导出为 csv 格式<br>-f   指明需要导出哪些例</p>
+<p>导入：(如果数据库中表不存在，会根据导入的数据结构自动建立)<br><figure class="highlight elm"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">[root@localhost bin]# mongo<span class="keyword">import</span> -d my_mongodb -c user user.dat </div><div class="line">[root@localhost bin]# mongo<span class="keyword">import</span> -d my_mongodb -c user <span class="comment">--type csv --headerline --file user_csv.dat </span></div><div class="line">-<span class="keyword">type</span> 指明要导入的文件格式 </div><div class="line">-headerline 批明不导入第一行，因为第一行是列名 </div><div class="line">-file  指明要导入的文件路径</div></pre></td></tr></table></figure></p>
+<h2 id="数据备份和恢复"><a href="#数据备份和恢复" class="headerlink" title="数据备份和恢复"></a>数据备份和恢复</h2><ul>
+<li><p>备份:<br>此时会在当前目录下创建一个 dump 目录，用于存放备份出来的文件，也可以指定备份存放的目录，</p>
+<figure class="highlight autoit"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">[root<span class="symbol">@localhost</span> bin]<span class="meta"># mongodump -d my_mongodb  </span></div><div class="line">[root<span class="symbol">@localhost</span> bin]<span class="meta"># mongodump -d my_mongodb -o my_mongodb_dump</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>恢复:<br><code>[root@localhost bin]# mongorestore -d my_mongodb my_mongodb_dump/*</code></p>
+</li>
+</ul>
+<h2 id="访问控制"><a href="#访问控制" class="headerlink" title="访问控制"></a>访问控制</h2><p>可以写到配置文件中<br>绑定 IP 内网地址访问 MongoDB 服务:<br><code>[root@localhost bin]# mongod --bind_ip 192.168.1.103</code><br>客户端访问时需要明确指定服务端的 IP，否则会报错</p>
+<p>设置监听端口:<br><code>[root@localhost bin]# mongod --bind_ip 192.168.1.103 --port 28018</code><br>客户端访问时需要明确指定服务端的 IP和port，否则会报错，要这样访问 <code>mongo 192.168.1.102:28018</code></p>
+<p>使用用户名和口令登录:<br><code>[root@localhost bin]# mongod --auth</code></p>
+<p>★这里用户名口令的验证,直到你在 admin.system.users 中添加了用户才有效.<br><figure class="highlight autoit"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&gt; db.addUser(<span class="string">"root"</span>,<span class="string">"111"</span>) </div><div class="line">&gt; db.auth(<span class="string">"root"</span>,<span class="string">"111"</span>)  <span class="meta">#验证用户是否添加成功，正确会返回1</span></div><div class="line">[root<span class="symbol">@localhost</span> bin]<span class="meta"># mongo -u root -111</span></div></pre></td></tr></table></figure></p>
+<p>为test库设一个只读的用户:<br><figure class="highlight elixir"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&gt; <span class="keyword">use</span> test</div><div class="line">&gt; db.addUser(<span class="string">"user_reader"</span>, <span class="string">"user_pwd"</span>, <span class="keyword">true</span>) </div><div class="line">[root<span class="variable">@localhost</span> bin]<span class="comment"># mongo -u user_reader -user_pwd</span></div></pre></td></tr></table></figure></p>
+<h2 id="命令行操作"><a href="#命令行操作" class="headerlink" title="命令行操作"></a>命令行操作</h2><p>MongoDB shell 不仅仅是一个交互式的 shell，它也支持执行指定 javascript 文件，也支持执行指定的命令片断<br><figure class="highlight autoit"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">[root<span class="symbol">@localhost</span> bin]<span class="meta"># mongo test --eval <span class="string">"printjson(db.t1.count())"</span> </span></div><div class="line">[root<span class="symbol">@localhost</span> bin]<span class="meta"># mongo --quiet  t1_count.js  </span></div><div class="line">★--quiet 可以将一些登录信息屏蔽掉，这样可以让结果更清晰。</div></pre></td></tr></table></figure></p>
+<h2 id="进程控制"><a href="#进程控制" class="headerlink" title="进程控制"></a>进程控制</h2><p>查看活动进程:<br><code>&gt; db.currentOp();</code><br>结束进程:<br><code>&gt; db.killOp(1234/*opid*/)</code><br>★不要 kill 内部发起的操作，比如说 replica set 发起的 sync 操作等</p>
+<h2 id="性能篇"><a href="#性能篇" class="headerlink" title="性能篇"></a>性能篇</h2><p>创建索引:{backgroud:true}可选<br><code>&gt; db.t3.ensureIndex({age:1} , {backgroud:true})</code></p>
+<ul>
+<li><p>文档索引:<br>索引可以任何类型的字段，甚至文档 </p>
+<figure class="highlight less"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">&gt; <span class="selector-tag">db</span><span class="selector-class">.factories</span><span class="selector-class">.insert</span>( &#123; <span class="attribute">name</span>: <span class="string">"wwl"</span>, <span class="attribute">addr</span>: &#123; <span class="attribute">city</span>: <span class="string">"Beijing"</span>, <span class="attribute">state</span>: <span class="string">"BJ"</span> &#125; &#125; ); </div><div class="line">&gt; <span class="selector-tag">db</span><span class="selector-class">.factories</span><span class="selector-class">.ensureIndex</span>( &#123; <span class="attribute">addr </span>: <span class="number">1</span> &#125; ); #在 <span class="selector-tag">addr</span> 列上创建索引 </div><div class="line"><span class="comment">//下面这个查询将会用到我们刚刚建立的索引 </span></div><div class="line">&gt; <span class="selector-tag">db</span><span class="selector-class">.factories</span><span class="selector-class">.find</span>( &#123; <span class="attribute">addr</span>: &#123; <span class="attribute">city</span>: <span class="string">"Beijing"</span>, <span class="attribute">state</span>: <span class="string">"BJ"</span> &#125; &#125; ); </div><div class="line"><span class="comment">//但是下面这个查询将不会用到索引，因为查询的顺序跟索引建立的顺序不一样 </span></div><div class="line">&gt; <span class="selector-tag">db</span><span class="selector-class">.factories</span><span class="selector-class">.find</span>( &#123; <span class="attribute">addr</span>: &#123; <span class="attribute">state</span>: <span class="string">"BJ"</span> , <span class="attribute">city</span>: <span class="string">"Beijing"</span>&#125; &#125; );</div></pre></td></tr></table></figure>
+</li>
+<li><p>组合索引:<br><code>&gt; db.factories.ensureIndex( { &quot;addr.city&quot; : 1, &quot;addr.state&quot; : 1 } );</code></p>
+</li>
+<li><p>唯一索引:<br><code>&gt; db.factories.ensureIndex( { addr : 1 }{unique: true});</code></p>
+</li>
+</ul>
+<p>面向文档的 NoSQL 数据库主要解决的问题不是高性能的并发读写，而是保证海量数据存储的同时，具有良好的查询性能。</p>
+<ul>
+<li>MongoDB 在 bin 目录下提供了一系列有用的工具，这些工具提供了 MongoDB 在运维管理上的方便。 </li>
+<li>bsondump: 将 bson 格式的文件转储为 json 格式的数据 </li>
+<li>mongo: 客户端命令行工具，其实也是一个 js 解释器，支持 js 语法 </li>
+<li>mongod: 数据库服务端，每个实例启动一个进程，可以 fork 为后台运行 </li>
+<li>mongodump/ mongorestore: 数据库备份和恢复工具 </li>
+<li>mongoexport/ mongoimport: 数据导出和导入工具 </li>
+<li>mongofiles: GridFS 管理工具，可实现二制文件的存取 </li>
+<li>mongos: 分片路由，如果使用了 sharding 功能，则应用程序连接的是 mongos 而不是</li>
+<li>mongosniff: 这一工具的作用类似于 tcpdump， 不同的是他只监控 MongoDB * 相关的包请求，并且是以指定的可读性的形式输出</li>
+<li>mongostat: 实时性能监控工具 </li>
+</ul>
+<h2 id="Python操作MongoDB"><a href="#Python操作MongoDB" class="headerlink" title="Python操作MongoDB"></a>Python操作MongoDB</h2><h3 id="连接数据库"><a href="#连接数据库" class="headerlink" title="连接数据库"></a>连接数据库</h3><h4 id="用pymongo直接连接"><a href="#用pymongo直接连接" class="headerlink" title="用pymongo直接连接"></a>用pymongo直接连接</h4><figure class="highlight axapta"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">from pymongo import MongoClient</div><div class="line"><span class="keyword">client</span> = MongoClient(<span class="string">'192.168.40.87'</span>, <span class="number">27037</span>)</div><div class="line">db_name = <span class="string">'TCL_Useraction'</span></div><div class="line">db = <span class="keyword">client</span>[db_name]</div><div class="line">collection_useraction = db[<span class="string">'useraction'</span>]</div></pre></td></tr></table></figure>
+<p>这里是通过字典的方式访问数据库和集合，同时你也可以通过.（点号）的方式访问</p>
+<h4 id="用mongoengine连接"><a href="#用mongoengine连接" class="headerlink" title="用mongoengine连接"></a>用mongoengine连接</h4><figure class="highlight clean"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"># 连接单mongo</div><div class="line"><span class="keyword">from</span> mongoengine <span class="keyword">import</span> connect</div><div class="line">con = connect(<span class="string">"xcloud"</span>, host=<span class="string">"172.16.60.18:10001"</span>)</div><div class="line"></div><div class="line"># 连接集群</div><div class="line"><span class="keyword">from</span> pymongo <span class="keyword">import</span> ReadPreference</div><div class="line">con = connect(<span class="string">'xcloud'</span>, host=<span class="string">'mongodb://172.16.60.18:10000,172.16.60.18:10001/xcloud?replicaSet=setA&amp;connectTimeoutMS=10000'</span>, read_preference=ReadPreference.SECONDARY_PREFERRED)</div></pre></td></tr></table></figure>
+<p>– 读写分离（Read Preference）的几种模式  </p>
+<ul>
+<li>primary<br>主节点，默认模式，读操作只在主节点，如果主节点不可用，报错或者抛出异常。</li>
+<li>primaryPreferred<br>首选主节点，大多情况下读操作在主节点，如果主节点不可用，如故障转移，读操作在从节点。</li>
+<li>secondary<br>从节点，读操作只在从节点， 如果从节点不可用，报错或者抛出异常。</li>
+<li>secondaryPreferred<br>首选从节点，大多情况下读操作在从节点，特殊情况（如单主节点架构）读操作在主节点。</li>
+<li>nearest<br>最邻近节点，读操作在最邻近的成员，可能是主节点或者从节点</li>
+</ul>
+<h3 id="增删改查"><a href="#增删改查" class="headerlink" title="增删改查"></a>增删改查</h3><figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;</span>&gt; import pymongo</div><div class="line"><span class="meta">&gt;&gt;</span>&gt; from pymongo import Connection </div><div class="line"><span class="meta">&gt;&gt;</span>&gt; con = Connection()</div><div class="line"><span class="meta">&gt;&gt;</span>&gt; db = con.test </div><div class="line"><span class="meta">&gt;&gt;</span>&gt; posts = db.post </div><div class="line"><span class="meta">&gt;&gt;</span>&gt; posts.insert(&#123;<span class="string">"title"</span><span class="symbol">:<span class="string">"Python and MongoDB"</span></span>,<span class="string">"author"</span><span class="symbol">:<span class="string">"SErHo"</span></span>,<span class="string">"slug"</span><span class="symbol">:<span class="string">"python-mongodb"</span></span>&#125;) </div><div class="line"><span class="meta">&gt;&gt;</span>&gt; count = posts.count()</div><div class="line"><span class="meta">&gt;&gt;</span>&gt; for post in posts.find():</div><div class="line">        print post</div><div class="line"><span class="meta">&gt;&gt;</span>&gt; post = posts.find_one(&#123;<span class="string">"slug"</span><span class="symbol">:<span class="string">"python-mongodb"</span></span>&#125;)</div><div class="line"><span class="meta">&gt;&gt;</span>&gt; post[<span class="string">"slug"</span>] = <span class="string">"haha"</span></div><div class="line"><span class="meta">&gt;&gt;</span>&gt; posts.update(&#123;<span class="symbol">_id:</span>post[<span class="string">"_id"</span>]&#125;,post) </div><div class="line"><span class="comment">#这里适合大幅度修改,另外post["_id"]不能少,不然匹配出多个元素,则无法修改.</span></div><div class="line"><span class="meta">&gt;&gt;</span>&gt; posts.update(&#123;<span class="string">"_id"</span><span class="symbol">:post</span>[<span class="string">"_id"</span>]&#125;,&#123;<span class="string">"$set"</span><span class="symbol">:</span>&#123;<span class="string">"content"</span><span class="symbol">:<span class="string">"Test Update SET...."</span></span>&#125;&#125;)</div><div class="line"><span class="comment">#如果只更新一个键呢，那就不用这么大费周折了，可以使用”$set”这个修改器</span></div><div class="line"><span class="meta">&gt;&gt;</span>&gt; s = db.students.update(&#123;<span class="string">"age"</span><span class="symbol">:</span><span class="number">55</span>&#125;,&#123;<span class="string">"$unset"</span><span class="symbol">:</span>&#123;<span class="string">"ddd"</span><span class="symbol">:<span class="string">""</span></span>&#125;&#125;)</div><div class="line"><span class="comment">#删除某个键值，可以使用”$unset”</span></div><div class="line"><span class="meta">&gt;&gt;</span>&gt; posts.update(&#123;<span class="string">"_id"</span><span class="symbol">:post</span>[<span class="string">"_id"</span>]&#125;,&#123;<span class="string">"$inc"</span>:  &#123;<span class="string">"views"</span><span class="symbol">:</span><span class="number">1</span>&#125;&#125;)</div><div class="line"><span class="comment">#访问量，每访问一次加1，可以用”$inc”，这个可以用来增加已有键的值，如果没有，则创建它（此字段只能是int型的）</span></div><div class="line"><span class="meta">&gt;&gt;</span>&gt; posts.update(&#123;<span class="string">"_id"</span><span class="symbol">:post</span>[<span class="string">"_id"</span>]&#125;,&#123;<span class="string">"$push"</span><span class="symbol">:</span>&#123;<span class="string">"tags"</span><span class="symbol">:<span class="string">"Test"</span></span>&#125;&#125;)</div><div class="line"><span class="comment">#向数组末尾添加元素，用"$push"</span></div><div class="line"><span class="meta">&gt;&gt;</span>&gt; posts.update(&#123;<span class="string">"_id"</span><span class="symbol">:post</span>[<span class="string">"_id"</span>]&#125;,&#123;<span class="string">"$addToSet"</span><span class="symbol">:</span>&#123;<span class="string">"tags"</span><span class="symbol">:</span>&#123;<span class="string">"$each"</span><span class="symbol">:</span>[<span class="string">"Python"</span>,<span class="string">"Django"</span>]&#125;&#125;&#125;) </div><div class="line"><span class="comment">#为了避免加入了重复的，可以将"$push"改为使用"$addToSet"，如果需要添加多个值，可以配合"$each"来使用</span></div><div class="line"><span class="meta">&gt;&gt;</span>&gt; posts.update(&#123;<span class="string">"_id"</span><span class="symbol">:post</span>[<span class="string">"_id"</span>]&#125;,&#123;<span class="string">"$pop"</span><span class="symbol">:</span>&#123;<span class="string">"tags"</span><span class="symbol">:</span><span class="number">1</span>&#125;&#125;)</div><div class="line"><span class="comment">#"$pop"删除tags数组最后一个，如果是删除第一个，把1改为-1即可</span></div><div class="line">s = db.students.update(&#123;<span class="string">"age"</span><span class="symbol">:</span><span class="number">55</span>&#125;,&#123;<span class="string">"$pull"</span><span class="symbol">:</span>&#123;<span class="string">"tags"</span><span class="symbol">:</span>&#123;<span class="string">"$lt"</span><span class="symbol">:</span><span class="number">3</span>&#125;&#125;&#125;)</div><div class="line"><span class="comment">#可以使用”$pull”来删除数组中指定的值，它会删除数组中所有匹配的值</span></div><div class="line"><span class="meta">&gt;&gt;</span>&gt; posts.update(&#123;<span class="string">"tags"</span><span class="symbol">:<span class="string">"MongoDB"</span></span>&#125;,&#123;<span class="string">"$set"</span><span class="symbol">:</span>&#123;<span class="string">"tags.$"</span><span class="symbol">:<span class="string">"Hello"</span></span>&#125;&#125;)</div><div class="line"><span class="comment">#先搜索tags中满足”MongoDB”的，如果找到，就把它修改为”Hello”</span></div></pre></td></tr></table></figure>
+<h2 id="同步"><a href="#同步" class="headerlink" title="同步"></a>同步</h2><p>参考：<br><a href="http://snowolf.iteye.com/blog/1974747" target="_blank" rel="external">http://snowolf.iteye.com/blog/1974747</a><br><a href="http://heylinux.com/archives/1973.html" target="_blank" rel="external">http://heylinux.com/archives/1973.html</a><br><a href="http://www.server110.com/mongodb/201403/8342.html" target="_blank" rel="external">http://www.server110.com/mongodb/201403/8342.html</a></p>
+<h3 id="主从复制"><a href="#主从复制" class="headerlink" title="主从复制"></a>主从复制</h3><p>一般数据库都会用到这种最通用的模式——主从模式。这种方式简单灵活，可用于备份、故障恢复，读扩展。为了平衡负载，一般通过读写分离模式，即主库写、从库读。</p>
+<p>假设我们有两台MongoDB服务器，10.11.20.140和10.11.20.139。如果要配置主从复制，可参考如下实现：<br>Master（10.11.20.140）：<br><figure class="highlight ini"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="attr">port</span> = <span class="number">27017</span></div><div class="line"><span class="attr">dbpath</span> = /data/db</div><div class="line"><span class="attr">logpath</span> = /var/log/mongodb.log</div><div class="line"><span class="attr">logappend</span> = <span class="literal">true</span> </div><div class="line"><span class="attr">journal</span> = <span class="literal">true</span></div><div class="line"><span class="attr">pidfile</span> = /var/run/mongodb.pid</div><div class="line"><span class="attr">fork</span> = <span class="literal">true</span></div><div class="line"><span class="attr">master</span> = <span class="literal">true</span></div></pre></td></tr></table></figure></p>
+<p>注意：<br><strong>master=true</strong></p>
+<p>Slave（10.11.20.139）：<br><figure class="highlight ini"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="attr">port</span>=<span class="number">27017</span></div><div class="line"><span class="attr">dbpath</span> = /data/db</div><div class="line"><span class="attr">logpath</span> = /var/log/mongodb.log</div><div class="line"><span class="attr">logappend</span> = <span class="literal">true</span> </div><div class="line"><span class="attr">journal</span> = <span class="literal">true</span></div><div class="line"><span class="attr">fork</span> = <span class="literal">true</span></div><div class="line"><span class="attr">slave</span> = <span class="literal">true</span></div><div class="line"><span class="attr">source</span> = <span class="number">10.11</span>.<span class="number">20.140</span>:<span class="number">27017</span></div></pre></td></tr></table></figure></p>
+<p>注意：<br><strong>slave=true</strong><br><strong>source=10.11.20.140:27017</strong></p>
+<p>如果这是配置了“auth = false”，主从同步可能失败。</p>
+<h3 id="集群复制"><a href="#集群复制" class="headerlink" title="集群复制"></a>集群复制</h3><p>主从复制虽然可以承受一定的负载压力，但这种方式仍然是一个单点，如果主库挂了，数据写入就成了风险。如果，当主库挂掉的时候，可以在访问ip不变的前提下，自动将从库作为主库使用，是不是就能避免这种风险？貌似这又涉及到Linux上的服务KeepAlive等等。</p>
+<p>在Mongodb中，提供了一种优于主从模式的集群复制（ReplicateSet）。最理想的模式是，节点之间不分特定的主从。任何一个节点都可以是主节点primary，而其他节点都是secondary，甚至可以通过投票方式选出主节点。<br>一般的集群复制，可以是如下这个结构：</p>
+<p><img src="http://static.zybuluo.com/sanyang/cnfy9u1y7adudi4sbmu008e3/image_1ao3m6lkk3k51fe21nu7314j899.png" alt="image_1ao3m6lkk3k51fe21nu7314j899.png-38.8kB"></p>
+<p><strong>确保主服务器上有数据，从服务器无数据，如果有则通过 <code>use dbname</code>和<code>db.dropDatabase()</code>将数据删除。</strong></p>
+<h4 id="两台机器的Mongo集群"><a href="#两台机器的Mongo集群" class="headerlink" title="两台机器的Mongo集群"></a>两台机器的Mongo集群</h4><p>– 新建mongo相关目录<br><figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">mkdir -<span class="selector-tag">p</span> /data/a/r0 </div><div class="line">mkdir -<span class="selector-tag">p</span> /data/a/r1 </div><div class="line">mkdir -<span class="selector-tag">p</span> /data/b/r0 </div><div class="line">mkdir -<span class="selector-tag">p</span> /data/b/r1 </div><div class="line">mkdir -<span class="selector-tag">p</span> /data/logs/<span class="selector-tag">a</span> </div><div class="line">mkdir -<span class="selector-tag">p</span> /data/logs/<span class="selector-tag">b</span>  </div><div class="line">mkdir -<span class="selector-tag">p</span> /data/configServer/r0 </div><div class="line">mkdir -<span class="selector-tag">p</span> /data/configServer/r1 </div><div class="line">mkdir -<span class="selector-tag">p</span> /data/logs/configServer </div><div class="line">mkdir -<span class="selector-tag">p</span> /data/logs/serverlogs</div></pre></td></tr></table></figure></p>
+<p>– 启动mongo<br><figure class="highlight brainfuck"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/usr/bin/mongod</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">logpath</span> <span class="comment">/data/logs/a/r0</span><span class="string">.</span><span class="comment">log</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">logappend</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">dbpath</span> <span class="comment">/data/a/r0</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">bind_ip</span> <span class="comment">0</span><span class="string">.</span><span class="comment">0</span><span class="string">.</span><span class="comment">0</span><span class="string">.</span><span class="comment">0</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">port</span> <span class="comment">10000</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">shardsvr</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">replSet</span> <span class="comment">setA</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">rest</span>  <span class="literal">-</span><span class="literal">-</span><span class="comment">oplogSize</span> <span class="comment">64</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">directoryperdb</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">fork</span> </div><div class="line"><span class="comment">/usr/bin/mongod</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">logpath</span> <span class="comment">/data/logs/a/r1</span><span class="string">.</span><span class="comment">log</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">logappend</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">dbpath</span> <span class="comment">/data/a/r1</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">bind_ip</span> <span class="comment">0</span><span class="string">.</span><span class="comment">0</span><span class="string">.</span><span class="comment">0</span><span class="string">.</span><span class="comment">0</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">port</span> <span class="comment">10001</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">shardsvr</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">replSet</span> <span class="comment">setA</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">rest</span>  <span class="literal">-</span><span class="literal">-</span><span class="comment">oplogSize</span> <span class="comment">64</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">directoryperdb</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">fork</span></div></pre></td></tr></table></figure></p>
+<p><strong>无密码，bind_ip设置为0.0.0.0，其它机器才可访问</strong></p>
+<p>– 初始化复制集setA<br><figure class="highlight groovy"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="regexp">/usr/</span>bin<span class="regexp">/mongo 127.0.0.1:10000/</span>admin </div><div class="line">config=&#123;<span class="string">_id:</span> <span class="string">'setA'</span>, <span class="string">members:</span>[&#123;<span class="string">_id:</span> <span class="number">0</span>,<span class="string">host:</span><span class="string">'127.0.0.1:10000'</span>&#125;,&#123;<span class="string">_id:</span><span class="number">1</span>,<span class="string">host:</span><span class="string">'127.0.0.1:10001'</span>&#125;]&#125; </div><div class="line">rs.initiate(config);</div></pre></td></tr></table></figure></p>
+<p>– 在secondary上初始化从状态<br><figure class="highlight x86asm"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">/usr/bin/mongo <span class="number">127.0</span><span class="meta">.0</span><span class="meta">.1</span>:<span class="number">10001</span></div><div class="line">rs.slaveOk()</div></pre></td></tr></table></figure></p>
+<p>– 查看当前状态 rs.status()</p>
+<h4 id="三台机器的Mongo集群"><a href="#三台机器的Mongo集群" class="headerlink" title="三台机器的Mongo集群"></a>三台机器的Mongo集群</h4><p>如果只有2台Mongodb，配置复制集群还不够安全，需要1个外在角色调整各个节点的角色。<br><img src="http://static.zybuluo.com/sanyang/tk4hhj3fhfr9c2botrnthnod/image_1ao5n7h9n13a3pr4ci31ps14csm.png" alt="image_1ao5n7h9n13a3pr4ci31ps14csm.png-32kB"></p>
+<p>这些节点包括：</p>
+<ol>
+<li>statndard 常规节点，存储一份完整的数据副本，参与投票，可以成为活跃节点，即primary节点</li>
+<li>passive 只做存储，参与投票</li>
+<li>arbiter 仲裁者只投票，不复制数据，也不能成为活跃节点<br>当Primary宕掉后，可以通过Arbiter在Secodarys中选举一个Primary节点，避免单点故障</li>
+</ol>
+<p><img src="http://static.zybuluo.com/sanyang/zjg93ks9j8ddw13uzal1olol/image_1ao5n9vehm3v1j5a1iuhe4afqv13.png" alt="image_1ao5n9vehm3v1j5a1iuhe4afqv13.png-42.3kB"><br>现在，我们可以增加一个仲裁节点，只负责仲裁，不做数据存储。<br><figure class="highlight ada"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">PRIMARY&gt; rs.addArb(<span class="string">"127.0.0.1:10002"</span>)</div><div class="line">&#123; <span class="string">"ok"</span> : 1 &#125;</div></pre></td></tr></table></figure></p>
+<h2 id="错误笔记"><a href="#错误笔记" class="headerlink" title="错误笔记"></a>错误笔记</h2><ol>
+<li>mongo - couldn’t connect to server 127.0.0.1:27017</li>
+</ol>
+<ul>
+<li>第一步删除.lock文件，<br>  <code>sudo rm /var/lib/mongodb/mongod.lock</code></li>
+<li>第二步repair mongodb<br>  <code>mongod --dbpath=/var/lib/mongodb -repair</code></li>
+<li>第三步重启服务<br>  <code>sudo service mongodb start</code></li>
+</ul>
+<h2 id="何时选择-mongodb"><a href="#何时选择-mongodb" class="headerlink" title="何时选择 mongodb"></a>何时选择 mongodb</h2><ol>
+<li><p>你期望一个更高的写负载<br>默认情况下，对比事务安全，MongoDB更关注高的插入速度。如果你需要加载大量低价值的业务数据，那么MongoDB将很适合你的用例。但是必须避免在要求高事务安全的情景下使用MongoDB，比如一个1000万美元的交易。</p>
+</li>
+<li><p>不可靠环境保证高可用性<br>设置副本集（主-从服务器设置）不仅方便而且很快，此外，使用MongoDB还可以快速、安全及自动化的实现节点（或数据中心）故障转移。</p>
+</li>
+<li><p>未来会有一个很大的规模<br>数据库扩展是非常有挑战性的，当单表格大小达到5-10GB时，MySQL表格性能会毫无疑问的降低。如果你需要分片并且分割你的数据库，MongoDB将很容易实现这一点。</p>
+</li>
+<li><p>使用基于位置的数据查询<br>MongoDB支持二维空间索引，因此可以快速及精确的从指定位置获取数据。</p>
+</li>
+<li><p>非结构化数据的爆发增长<br>给RDBMS增加列在有些情况下可能锁定整个数据库，或者增加负载从而导致性能下降，这个问题通常发生在表格大于1GB（更是下文提到BillRun系统中的痛点——单表格动辄几GB）的情况下。鉴于MongoDB的弱数据结构模式，添加1个新字段不会对旧表格有任何影响，整个过程会非常快速；因此，在应用程序发生改变时，你不需要专门的1个DBA去修改数据库模式。</p>
+</li>
+<li><p>缺少专业的数据库管理员<br>如果你没有专业的DBA，同时你也不需要结构化你的数据及做join查询，MongoDB将会是你的首选。MongoDB非常适合类的持久化，类可以被序列化成JSON并储存在MongoDB。需要注意的是，如果期望获得一个更大的规模，你必须要了解一些最佳实践来避免走入误区。</p>
+</li>
+</ol>
+<h2 id="面试问题"><a href="#面试问题" class="headerlink" title="面试问题"></a>面试问题</h2><p>MongoDB 是目前最好的面向文档的免费开源NoSQL数据库。如果你正准备参加MongoDB NoSQL数据库的技术面试，你最好看看下面的MongoDB NoSQL面试问答。这些MongoDB NoSQL面试问答涵盖了NoSQL数据库基本的概念，复制(Replication)，分片(Sharding)，事务和锁，跟踪分析工具 (Profiler)，Nuances和日志等特性。让我们看看下面的这些MongoDB NoSQL数据库的面试问答吧：</p>
+<ol>
+<li><p>你说的NoSQL数据库是什么意思？NoSQL与RDBMS直接有什么区别？为什么要使用和不使用NoSQL数据库？说一说NoSQL数据库的几个优点？<br>我写了一篇完整的博客来回答这些问题，看这里</p>
+</li>
+<li><p>NoSQL数据库有哪些类型？<br>NoSQL数据库的类型<br>例如：MongoDB, Cassandra, CouchDB, Hypertable, Redis, Riak, Neo4j, HBASE, Couchbase, MemcacheDB, RevenDB and Voldemort are the examples of NoSQL databases. 详细阅读。</p>
+</li>
+<li><p>MySQL与MongoDB之间最基本的差别是什么？<br>MySQL 和MongoDB两者都是免费开源的数据库。MySQL和MongoDB有许多基本差别包括数据的表示(data representation)，查询，关系，事务，schema的设计和定义，标准化(normalization)，速度和性能。通过比较MySQL 和MongoDB，实际上我们是在比较关系型和非关系型数据库。详细阅读</p>
+</li>
+<li><p>你怎么比较MongoDB、CouchDB及CouchBase?<br>MongoDB和CouchDB都是面向文档的数据库。MongoDB和CouchDB都是开源NoSQL数据库的最典型代表。 除了都以文档形式存储外它们没有其他的共同点。MongoDB和CouchDB在数据模型实现、接口、对象存储以及复制方法等方面有很多不同。<br>细节可以参见下面的链接：<br>MongDB vs CouchDB<br>CouchDB vs CouchBase</p>
+</li>
+<li><p>MongoDB成为最好NoSQL数据库的原因是什么?<br>以下特点使得MongoDB成为最好的NoSQL数据库： </p>
+</li>
+</ol>
+<ul>
+<li>面向文件的 </li>
+<li>高性能 </li>
+<li>高可用性 </li>
+<li>易扩展性 </li>
+<li>丰富的查询语言 </li>
+</ul>
+<ol>
+<li><p>32位系统上有什么细微差别?<br>journaling会激活额外的内存映射文件。这将进一步抑制32位版本上的数据库大小。因此，现在journaling在32位系统上默认是禁用的。</p>
+</li>
+<li><p>journal回放在条目(entry)不完整时(比如恰巧有一个中途故障了)会遇到问题吗？<br>每个journal (group)的写操作都是一致的，除非它是完整的否则在恢复过程中它不会回放。</p>
+</li>
+<li><p>分析器在MongoDB中的作用是什么?<br>MongoDB中包括了一个可以显示数据库中每个操作性能特点的数据库分析器。通过这个分析器你可以找到比预期慢的查询（或写操作）；利用这一信息，比如，可以确定是否需要添加索引。</p>
+</li>
+<li><p>名字空间（namespace）是什么？<br>MongoDB存储BSON对象在丛集（collection）中。数据库名字和丛集名字以句点连结起来叫做名字空间（namespace）。</p>
+</li>
+<li><p>如果用户移除对象的属性，该属性是否从存储层中删除？<br>是的，用户移除属性然后对象会重新保存（re-save()）。</p>
+</li>
+<li><p>能否使用日志特征进行安全备份？<br>是的。</p>
+</li>
+<li><p>允许空值null吗？<br>对于对象成员而言，是的。然而用户不能够添加空值（null）到数据库丛集（collection）因为空值不是对象。然而用户能够添加空对象{}。</p>
+</li>
+<li><p>更新操作立刻fsync到磁盘？<br>不会，磁盘写操作默认是延迟执行的。写操作可能在两三秒（默认在60秒内）后到达磁盘。例如，如果一秒内数据库收到一千个对一个对象递增的操作，仅刷新磁盘一次。（注意，尽管fsync选项在命令行和经过getLastError_old是有效的）（译者：也许是坑人的面试题？？）。</p>
+</li>
+<li><p>如何执行事务/加锁？<br>MongoDB没有使用传统的锁或者复杂的带回滚的事务，因为它设计的宗旨是轻量，快速以及可预计的高性能。可以把它类比成MySQL MylSAM的自动提交模式。通过精简对事务的支持，性能得到了提升，特别是在一个可能会穿过多个服务器的系统里。</p>
+</li>
+<li><p>为什么我的数据文件如此庞大？<br>MongoDB会积极的预分配预留空间来防止文件系统碎片。</p>
+</li>
+<li><p>启用备份故障恢复需要多久？<br>从备份数据库声明主数据库宕机到选出一个备份数据库作为新的主数据库将花费10到30秒时间。这期间在主数据库上的操作将会失败–包括写入和强一致性读取 (strong consistent read)操作。然而，你还能在第二数据库上执行最终一致性查询(eventually consistent query)(在slaveOk模式下)，即使在这段时间里。</p>
+</li>
+<li><p>什么是master或primary？<br>它是当前备份集群(replica set)中负责处理所有写入操作的主要节点/成员。在一个备份集群中，当失效备援(failover)事件发生时，一个另外的成员会变成primary。</p>
+</li>
+<li><p>什么是secondary或slave？<br>Seconday从当前的primary上复制相应的操作。它是通过跟踪复制oplog(local.oplog.rs)做到的。</p>
+</li>
+<li><p>我必须调用getLastError来确保写操作生效了么？<br>不用。不管你有没有调用getLastError(又叫”Safe Mode”)服务器做的操作都一样。调用getLastError只是为了确认写操作成功提交了。当然，你经常想得到确认，但是写操作的安全性和是否生效不是由这个决定的。</p>
+</li>
+<li><p>Should I start out with sharded or with a non-sharded MongoDB environment? 我应该启动一个集群分片（sharded）还是一个非集群分片的 MongoDB 环境？<br>为开发便捷起见，我们建议以非集群分片（unsharded）方式开始一个 MongoDB 环境，除非一台服务器不足以存放你的初始数据集。从非集群分片升级到集群分片（sharding）是无缝的，所以在你的数据集还不是很大的时候没必要考虑集群分片（sharding）。</p>
+</li>
+<li><p>分片（sharding）和复制（replication）是怎样工作的？<br>每一个分片（shard）是一个分区数据的逻辑集合。分片可能由单一服务器或者集群组成，我们推荐为每一个分片（shard）使用集群。</p>
+</li>
+<li><p>数据在什么时候才会扩展到多个分片（shard）里？<br>MongoDB 分片是基于区域（range）的。所以一个集合（collection）中的所有的对象都被存放到一个块（chunk）中。只有当存在多余一个块的时候，才会有多个分片获取数据的选项（Only when there is more than 1 chunk is there an option for multiple shards to get data.）。现在，每个默认块的大小是 64Mb，所以你需要至少 64 Mb 空间才可以实施一个迁移。</p>
+</li>
+<li><p>当我试图更新一个正在被迁移的块（chunk）上的文档时会发生什么？<br>更新操作会立即发生在旧的分片（shard）上，然后更改才会在所有权转移（ownership transfers）前复制到新的分片上。</p>
+</li>
+<li><p>如果在一个分片（shard）停止或者很慢的时候，我发起一个查询会怎样？<br>如果一个分片（shard）停止了，除非查询设置了“Partial”选项，否则查询会返回一个错误。如果一个分片（shard）响应很慢，MongoDB则会等待它的响应。</p>
+</li>
+<li><p>我可以把moveChunk目录里的旧文件删除吗？<br>没问题，这些文件是在分片（shard）进行均衡操作（balancing）的时候产生的临时文件。一旦这些操作已经完成，相关的临时文件也应该被删除掉。但目前清理工作是需要手动的，所以请小心地考虑再释放这些文件的空间。</p>
+</li>
+<li><p>我怎么查看 Mongo 正在使用的链接？<br>db._adminCommand(“connPoolStats”);</p>
+</li>
+<li><p>如果块移动操作（moveChunk）失败了，我需要手动清除部分转移的文档吗？<br>不需要，移动操作是一致（consistent）并且是确定性的（deterministic）；一次失败后，移动操作会不断重试；当完成后，数据只会出现在新的分片里（shard）。</p>
+</li>
+<li><p>如果我在使用复制技术（replication），可以一部分使用日志（journaling）而其他部分则不使用吗？<br>可以。</p>
+</li>
+</ol>
+<h2 id="mongodb设置远程连接"><a href="#mongodb设置远程连接" class="headerlink" title="mongodb设置远程连接"></a>mongodb设置远程连接</h2><ol>
+<li><p>添加管理员账号<br>mongo 进入控制台，做如下操作</p>
+ <figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">use admin</div><div class="line">switched to db admin</div><div class="line">db.addUser(<span class="string">'tank'</span>,<span class="string">'test'</span>);</div></pre></td></tr></table></figure>
+</li>
+<li><p>配置mongodb.conf</p>
+ <figure class="highlight ini"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="attr">bind_ip</span> = <span class="number">127.0</span>.<span class="number">0.1</span>   //注释此行</div><div class="line"><span class="attr">auth</span> = <span class="literal">true</span>       //将此行前的注释去掉</div></pre></td></tr></table></figure>
+</li>
+<li><p>重启mongodb</p>
+ <figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">/etc/init.d/mongod</div></pre></td></tr></table></figure>
+</li>
+<li><p>防火墙开放27017端口</p>
+ <figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">iptables -A INPUT -p tcp -m state --state NEW -m tcp --dport 27017 -j ACCEPT</div></pre></td></tr></table></figure>
+</li>
+<li><p>mongdb 远程连接<br><img src="http://static.zybuluo.com/sanyang/oajx5hgeejr251jhe47tlmu2/image_1ao6btcut1nmd96gd8q1tqcnth9.png" alt="image_1ao6btcut1nmd96gd8q1tqcnth9.png-33.5kB"></p>
+</li>
+</ol>
+<h2 id="一图胜千言"><a href="#一图胜千言" class="headerlink" title="一图胜千言"></a>一图胜千言</h2><p><img src="http://cloudaice.com/images/Mysql&amp;&amp;MongoDB.png" alt="mysql与mongodb对比"></p>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ul>
+<li><a href="http://www.cnblogs.com/cswuyg/p/4595799.html" target="_blank" rel="external">http://www.cnblogs.com/cswuyg/p/4595799.html</a></li>
+</ul>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/pay-alipay.png">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/pay-wechat.png">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags"></i>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/MongoDB/">MongoDB</a></li></ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+	<i class="icon-book icon"></i>
+	<a class="article-category-link" href="/categories/技术/">技术</a>
+	</div>
+
+
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://woshijingshenbing.com/2016/12/21/MongoDB-随记/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+  
+<nav id="article-nav">
+  
+    <a href="/2016/12/22/github+hexo 搭建个人博客/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          github+hexo 搭建个人博客
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/12/12/大话设计模式/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">大话设计模式</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="MongoDB-随记" data-title="MongoDB 随记" data-url="http://woshijingshenbing.com/2016/12/21/MongoDB-随记/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"woshijingshenbing"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+
+
+          </div>
+        </div>
+      </div>
+      <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+
+<footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2016 Codreamer
+    	</div>
+      	<div class="footer-right">
+      	<span id="busuanzi_container_site_uv">
+          本站访客数<span id="busuanzi_value_site_uv"></span>人次
+        </span>
+      	</div>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <script>
+	var yiliaConfig = {
+		mathjax: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false,
+		root: "/",
+		innerArchive: true
+	}
+</script>
+
+<script src="/./main.js?v=4.0.0.js"></script>
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+    
+<div class="tools-col" q-class="show:isShow,hide:isShow|isFalse" q-on="click:stop(e)">
+  <div class="tools-wrap">
+    
+    	<section class="tools-section tools-section-all" q-show="innerArchive">
+        <div class="search-wrap">
+          <input class="search-ipt" q-model="search" type="text" placeholder="find something…">
+          <i class="icon-search icon" q-show="search|isEmptyStr"></i>
+          <i class="icon-close icon" q-show="search|isNotEmptyStr" q-on="click:clearChose(e)"></i>
+        </div>
+        <div class="widget tagcloud search-tag">
+          <p class="search-tag-wording">tag:</p>
+          <label class="search-switch">
+            <input type="checkbox" q-on="click:toggleTag(e)" q-attr="checked:showTags">
+          </label>
+          <ul class="article-tag-list" q-show="showTags">
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">http</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">Mysql</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">Markdown</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">Git</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">MongoDB</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">VIM</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">mac</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">hexo</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">nodejs</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">定时任务</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">python</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">并发</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">线程</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">进程</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">协程</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">pycharm</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">随记</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">买房</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">北京</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">游记</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">马尔代夫</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">设计模式</a>
+              </li>
+            
+            <div class="clearfix"></div>
+          </ul>
+        </div>
+        <ul class="search-ul">
+          <p q-show="jsonFail" style="padding: 20px; font-size: 12px;">
+            缺失模块。<br/>1、在博客根目录（注意不是yilia根目录）执行以下命令：<br/> npm i hexo-generator-json-content --save<br/><br/>
+            2、在根目录_config.yml里添加配置：
+<pre style="font-size: 12px;" q-show="jsonFail">
+  jsonContent:
+    meta: false
+    pages: false
+    posts:
+      title: true
+      date: true
+      path: true
+      text: true
+      raw: false
+      content: false
+      slug: false
+      updated: false
+      comments: false
+      link: false
+      permalink: false
+      excerpt: false
+      categories: false
+      tags: true
+</pre>
+          </p>
+          <li class="search-li" q-repeat="items" q-show="isShow">
+            <a q-attr="href:path|urlformat" class="search-title"><i class="icon-quo-left icon"></i><span q-text="title"></span></a>
+            <p class="search-time">
+              <i class="icon-calendar icon"></i>
+              <span q-text="date|dateformat"></span>
+            </p>
+            <p class="search-tag">
+              <i class="icon-price-tags icon"></i>
+              <span q-repeat="tags" q-on="click:choseTag(e, name)" q-text="name|tagformat"></span>
+            </p>
+          </li>
+        </ul>
+    	</section>
+    
+
+    
+    	<section class="tools-section tools-section-friends" q-show="friends">
+  		
+        <ul class="search-ul">
+          
+            <li class="search-li">
+              <a href="https://coderq.com,一个面向程序员交流分享的新一代社区" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>码农圈</a>
+            </li>
+          
+            <li class="search-li">
+              <a href="http://weavesilk.com/,HTML5实现的魔幻效果" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>weavesilk</a>
+            </li>
+          
+        </ul>
+  		
+    	</section>
+    
+
+    
+    	<section class="tools-section tools-section-me" q-show="aboutme">
+  	  	
+  	  		<div class="aboutme-wrap" id="js-aboutme">他真诚地将自己的挑剔,&lt;br /&gt;误认为是对美的不懈追求，&lt;br /&gt;把自己的孤僻,&lt;br /&gt;误认为是不食人间烟火，&lt;br /&gt;把自己的散漫,&lt;br /&gt;误认为是对于自由的热爱。&lt;br /&gt;&lt;br /&gt;他的思想因为追求风雅而变得庸俗起来，&lt;br /&gt;他的行为因为小心翼翼而变得放纵不羁。&lt;br /&gt;&lt;br /&gt;他有很强的责任感，&lt;br /&gt;却也因此害怕做出承诺。&lt;br /&gt;&lt;br /&gt;他批判世上的所有东西，&lt;br /&gt;包括他自己。&lt;br /&gt;&lt;br /&gt;当别人指出他的自相矛盾后，&lt;br /&gt;他无法自圆其说，&lt;br /&gt;于是只好沉默。&lt;br /&gt;&lt;br /&gt;他是个不可理喻的人。</div>
+  	  	
+    	</section>
+    
+  </div>
+  
+</div>
+    <!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+  </div>
+</body>
+</html>

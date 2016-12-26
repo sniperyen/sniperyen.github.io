@@ -1,0 +1,816 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <link rel="dns-prefetch" href="http://woshijingshenbing.com">
+  <title>VIM 随记 | Codreamer的博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="多行注释列注释
+多行注释：
+
+按下Ctrl + v，进入列模式;
+在行首选择需要注释的行;
+按下“I”，进入插入模式；
+然后输入注释符（“//”、“#”等）;
+按下“Esc”键。
+
+
+删除多行注释：
+
+按下Ctrl + v, 进入列模式;
+选定要取消的注释符;
+按下“x”或者“d”.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="VIM 随记">
+<meta property="og:url" content="http://woshijingshenbing.com/2016/10/16/VIM-随记/index.html">
+<meta property="og:site_name" content="Codreamer的博客">
+<meta property="og:description" content="多行注释列注释
+多行注释：
+
+按下Ctrl + v，进入列模式;
+在行首选择需要注释的行;
+按下“I”，进入插入模式；
+然后输入注释符（“//”、“#”等）;
+按下“Esc”键。
+
+
+删除多行注释：
+
+按下Ctrl + v, 进入列模式;
+选定要取消的注释符;
+按下“x”或者“d”.">
+<meta property="og:image" content="http://cloudaice.com/images/vim.jpg">
+<meta property="og:updated_time" content="2016-12-21T05:55:28.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="VIM 随记">
+<meta name="twitter:description" content="多行注释列注释
+多行注释：
+
+按下Ctrl + v，进入列模式;
+在行首选择需要注释的行;
+按下“I”，进入插入模式；
+然后输入注释符（“//”、“#”等）;
+按下“Esc”键。
+
+
+删除多行注释：
+
+按下Ctrl + v, 进入列模式;
+选定要取消的注释符;
+按下“x”或者“d”.">
+<meta name="twitter:image" content="http://cloudaice.com/images/vim.jpg">
+  
+    <link rel="alternative" href="/atom.xml" title="Codreamer的博客" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link rel="stylesheet" href="/main.css?v=4.0.0.css">
+  
+
+  
+<script>
+var _hmt = _hmt || [];
+(function() {
+	var hm = document.createElement("script");
+	hm.src = "https://hm.baidu.com/hm.js?45db6f44750c33b1afd7970532c8b3fb";
+	var s = document.getElementsByTagName("script")[0]; 
+	s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+</head>
+
+<body>
+  <div id="container" q-class="show:isCtnShow">
+    <canvas id="anm-canvas" class="anm-canvas"></canvas>
+    <div class="left-col" q-class="show:isShow">
+      <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			<img src="/img/avatar.png" class="js-avatar">
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">Codreamer</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">除非你改变了交往的人和阅读的书，否则，你的五年之后和现在完全一样</p>
+		
+
+		<nav class="header-menu">
+			<ul>
+			
+				<li><a href="/">主页</a></li>
+	        
+				<li><a href="/photos">相册</a></li>
+	        
+			</ul>
+		</nav>
+		<nav class="header-smart-menu">
+	        
+    		
+    			
+    			<a data-idx="0" q-on="click: openSlider(e, 'innerArchive')" href="javascript:void(0)">所有文章</a>
+    			
+    			
+            
+    			
+    			<a data-idx="1" q-on="click: openSlider(e, 'friends')" href="javascript:void(0)">友链</a>
+    			
+    			
+            
+    			
+    			<a data-idx="2" q-on="click: openSlider(e, 'aboutme')" href="javascript:void(0)">关于我</a>
+    			
+    			
+            
+		</nav>
+		<nav class="header-nav">
+			<div class="social">
+				
+					<a class="github" target="_blank" href="https://github.com/sniperyen" title="github"><i class="icon-github"></i></a>
+		        
+					<a class="weibo" target="_blank" href="http://weibo.com/ddhj" title="weibo"><i class="icon-weibo"></i></a>
+		        
+					<a class="qq" target="_blank" href="/871757525" title="qq"><i class="icon-qq"></i></a>
+		        
+					<a class="mail" target="_blank" href="mailto:871757525@qq.com" title="mail"><i class="icon-mail"></i></a>
+		        
+			</div>
+		</nav>
+	</header>		
+</div>
+
+    </div>
+    <div class="mid-col" q-class="show:isShow,hide:isShow|isFalse">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"><i class="icon-sort"></i></div>
+  		<h1 class="header-author js-mobile-header hide">Codreamer</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				<img src="/img/avatar.png" class="js-avatar">
+			</div>
+			<hgroup>
+			  <h1 class="header-author">Codreamer</h1>
+			</hgroup>
+			
+			<p class="header-subtitle">除非你改变了交往的人和阅读的书，否则，你的五年之后和现在完全一样</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/photos">相册</a></li>
+		        
+		        
+		        	<li><a href="/archives/">所有文章</a></li>
+		        
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/sniperyen" title="github"><i class="icon-github"></i></a>
+			        
+						<a class="weibo" target="_blank" href="http://weibo.com/ddhj" title="weibo"><i class="icon-weibo"></i></a>
+			        
+						<a class="qq" target="_blank" href="/871757525" title="qq"><i class="icon-qq"></i></a>
+			        
+						<a class="mail" target="_blank" href="mailto:871757525@qq.com" title="mail"><i class="icon-mail"></i></a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+
+      <div id="wrapper" class="body-wrap">
+        <div class="menu-l">
+          <div class="canvas-wrap">
+            <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
+          </div>
+          <div id="js-content" class="content-ll">
+            <article id="post-VIM-随记" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      VIM 随记
+    </h1>
+  
+
+        <a href="/2016/10/16/VIM-随记/" class="archive-article-date">
+  	<time datetime="2016-10-16T13:58:39.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-10-16</time>
+</a>
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="多行注释"><a href="#多行注释" class="headerlink" title="多行注释"></a>多行注释</h2><h3 id="列注释"><a href="#列注释" class="headerlink" title="列注释"></a>列注释</h3><ol>
+<li><p>多行注释：</p>
+<ul>
+<li>按下Ctrl + v，进入列模式;</li>
+<li>在行首选择需要注释的行;</li>
+<li>按下“I”，进入插入模式；</li>
+<li>然后输入注释符（“//”、“#”等）;</li>
+<li>按下“Esc”键。</li>
+</ul>
+</li>
+<li><p>删除多行注释：</p>
+<ul>
+<li>按下Ctrl + v, 进入列模式;</li>
+<li>选定要取消的注释符;</li>
+<li>按下“x”或者“d”.</li>
+</ul>
+</li>
+</ol>
+<a id="more"></a>
+<h3 id="其他选择方式"><a href="#其他选择方式" class="headerlink" title="其他选择方式"></a>其他选择方式</h3><p>在正常模式下（按ESC进入）按键v进入可视化模式，然后按键盘左右键或h,l键即可实现文本的选择。<br>其它相关命令：</p>
+<ul>
+<li>v：按字符选择。经常使用的模式，所以亲自尝试一下它。</li>
+<li>V：按行选择。这在你想拷贝或者移动很多行的文本的时候特别有用。</li>
+<li>CTRL＋v：按块选择。非常强大，只在很少的编辑器中才有这样的功能。你可以选择一个矩形块，并且在这个矩形里面的文本会被高亮。</li>
+</ul>
+<p><strong>值得注意的是如果VIM中使用自动换行，那么直到你按ENTER换行前，VIM都会将你之前输入的内容视为一行而不是你看到的好几行，按块选择时就会按VIM中的行来选择块。</strong></p>
+<p>在选择模式的时候使用上面所述的方向键和命令（motion）。比如，vwww，会高亮光标前面的三个词。Vjj 将会高亮当前行以及下面两行。</p>
+<h2 id="快捷键"><a href="#快捷键" class="headerlink" title="快捷键"></a>快捷键</h2><h3 id="一般模式：-移动光标"><a href="#一般模式：-移动光标" class="headerlink" title="一般模式：   移动光标"></a>一般模式：   移动光标</h3><ul>
+<li>h(左), j(下), k(上), l(右)</li>
+<li>[Ctrl] + [f]：屏幕『向前』移动一页（常用）</li>
+<li>[Ctrl] + [b]：屏幕『向后』(向下)移动一页（常用）</li>
+<li>[Ctrl] + [d]：屏幕『向前』移动半页</li>
+<li>[Ctrl] + [u]：屏幕『向后』移动半页</li>
+<li>数字 + 空格：按下数字后再按空格键，光标会向右移动这一行的 n 个字符。例如 20 则光标会向后面移动 20 个字符距离。</li>
+<li>0：这是数字『 0 』：移动到这一行的最前面字符处（常用）</li>
+<li>$：移动到这一行的最后面字符处（常用）</li>
+<li>H：光标移动到这个屏幕的最上方那一行</li>
+<li>M：光标移动到这个屏幕的中央那一行</li>
+<li>L：光标移动到这个屏幕的最下方那一行</li>
+<li>G：移动到这个档案的最后一行（常用）</li>
+<li>nG：移动到这个档案的第 n 行。例如 20G 则会移动到这个档案的 20 行(可配合 :set nu)</li>
+</ul>
+<h3 id="一般模式：-搜寻与取代"><a href="#一般模式：-搜寻与取代" class="headerlink" title="一般模式：   搜寻与取代"></a>一般模式：   搜寻与取代</h3><ul>
+<li>/word：向光标之后寻找一个字符串名称为 word 的字符串。（常用）</li>
+<li>?word：向光标之前寻找一个字符串名称为 word 的字符串。</li>
+<li><code>:n1,n2s/word1/word2/g</code> – 在第 n1 与 n2 行之间寻找 word1 这个字符串，并将该字符串取代为 word2 ！（常用）</li>
+<li><code>:1,$s/word1/word2/g</code>  – 从第一行到最后一行寻找 word1 字符串，并将该字符串取代为 word2 ！（常用）</li>
+<li><code>:1,$s/word1/word2/gc</code> – 从第一行到最后一行寻找 word1 字符串，并将该字符串取代为 word2 ！且在取代前显示提示字符给使用者确认（conform）是否需要取代！（常用）</li>
+</ul>
+<h3 id="一般模式：删除、复制与贴上"><a href="#一般模式：删除、复制与贴上" class="headerlink" title="一般模式：删除、复制与贴上"></a>一般模式：删除、复制与贴上</h3><ul>
+<li>x 为向后删除一个字符， X 为向前删除一个字符（常用）</li>
+<li>nx 向后删除 n 个字符</li>
+<li>dd 删除游标所在的那一整列（常用）</li>
+<li>ndd 删除光标所在的向下 n 列，例如 20dd 则是删除 20 列（常用）</li>
+<li>d1G 删除游标所在到第一行的所有数据</li>
+<li>dG 删除游标所在到最后一行的所有数据</li>
+<li>dw 删除当前字符到单词尾包括空格的所有字符，相当于前切一个单词</li>
+</ul>
+<p><em>复制跟删除类似，只是将d改成y即可</em></p>
+<ul>
+<li>p 为复制的数据在光标下一行贴上，P 则为贴在游标上一行！（常用）</li>
+<li>J 将光标所在列与下一列的数据结合成同一列</li>
+<li>c 重复删除多个数据，例如向下删除 10 行，[ 10cj ]</li>
+<li>u 复原前一个动作。（常用）</li>
+<li>Ctrl+R可以恢复对使用u命令的操作</li>
+</ul>
+<h3 id="进入编辑模式"><a href="#进入编辑模式" class="headerlink" title="进入编辑模式"></a>进入编辑模式</h3><ul>
+<li>i：在目前的光标所在处插入输入之文字，已存在的文字会向后退；（常用）</li>
+<li>I：在当前行首处插入光标开始输入；</li>
+<li>a：由目前光标所在的下一个字开始输入，已存在的文字会向后退：（常用）</li>
+<li>A：在当前行尾处插入光标开始输入；</li>
+<li>o, O：插入新的一行：从光标所在的下（上）一行枝行首开始输入文字；（常用）</li>
+<li>r, R：r 会取代光标所在的那一个字符；R会一直取代光标所在的文字，直到按下 ESC 为止；（常用）</li>
+<li>Esc 退出编辑模式，回到一般模式中（常用）</li>
+</ul>
+<h3 id="指令列命令模式"><a href="#指令列命令模式" class="headerlink" title="指令列命令模式"></a>指令列命令模式</h3><ul>
+<li>:w 将编辑的数据写入硬盘档案中（常用）</li>
+<li>:w! 若档案属性为『只读』时，强制写入该档案</li>
+<li>:q 离开 vi （常用）</li>
+<li>:q! 若曾修改过档案，又不想储存，使用 ! 为强制离开不储存档案。</li>
+<li>:wq 储存后离开，若为 :wq! 则为强制储存后离开（常用）</li>
+<li>:e! 将档案还原到最原始的状态！</li>
+<li>ZZ 若档案没有更动，则不储存离开，若档案已经经过更动，则储存后离开！</li>
+<li><code>:w [filename]</code> 将编辑的数据储存成另一个档案（类似另存新档）</li>
+<li><code>:r [filename]</code> 在编辑的数据中，读入另一个档案的数据。亦即将 『filename』这个档案内容加到游标所在行后面</li>
+<li><code>:set nu</code> 显示行号，设定之后，会在每一行的前缀显示该行的行号</li>
+<li><code>:set nonu</code> 与 set nu 相反，为取消行号！</li>
+<li><code>n1,n2 w [filename]</code> 将 n1 到 n2 的内容储存成 filename 这个档案。</li>
+<li><code>:! command</code> 暂时离开 vi 到指令列模式下执行 command 的显示结果！例如[ :! ls /home ]</li>
+</ul>
+<h2 id="插件"><a href="#插件" class="headerlink" title="插件"></a>插件</h2><h3 id="vundle-插件管理器"><a href="#vundle-插件管理器" class="headerlink" title="vundle 插件管理器"></a>vundle 插件管理器</h3><ol>
+<li>下载 vundle<br><code>$ git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle</code></li>
+<li>在.vimrc中添加bundle的配置 <figure class="highlight lasso"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">set</span> nocompatible                <span class="string">" be iMproved</span></div><div class="line">filetype off                    " required!</div><div class="line"><span class="built_in">set</span> rtp+=~/.vim/bundle/vundle/</div><div class="line">call vundle#rc()</div><div class="line"></div><div class="line"><span class="string">" let Vundle manage Vundle</span></div><div class="line">Bundle 'gmarik/vundle'</div><div class="line"></div><div class="line">"my Bundle here:</div><div class="line"><span class="string">"</span></div><div class="line">" original repos <span class="keyword">on</span> github</div><div class="line">Bundle <span class="string">'kien/ctrlp.vim'</span></div><div class="line">Bundle <span class="string">'sukima/xmledit'</span></div><div class="line">Bundle <span class="string">'sjl/gundo.vim'</span></div><div class="line">Bundle <span class="string">'jiangmiao/auto-pairs'</span></div><div class="line">Bundle <span class="string">'klen/python-mode'</span></div><div class="line">Bundle <span class="string">'Valloric/ListToggle'</span></div><div class="line">Bundle <span class="string">'SirVer/ultisnips'</span></div><div class="line">Bundle <span class="string">'Valloric/YouCompleteMe'</span></div><div class="line">Bundle <span class="string">'scrooloose/syntastic'</span></div><div class="line">Bundle <span class="string">'t9md/vim-quickhl'</span></div><div class="line"><span class="string">" Bundle 'Lokaltog/vim-powerline'</span></div><div class="line">Bundle 'scrooloose/nerdcommenter'</div><div class="line">"<span class="params">...</span><span class="params">...</span><span class="params">...</span><span class="params">...</span><span class="params">...</span><span class="params">...</span><span class="params">...</span><span class="params">...</span><span class="params">...</span><span class="params">...</span><span class="params">...</span>.</div><div class="line"><span class="string">" vim-scripts repos</span></div><div class="line">Bundle 'YankRing.vim'</div><div class="line">Bundle 'vcscommand.vim'</div><div class="line">Bundle 'ShowPairs'</div><div class="line">Bundle 'SudoEdit.vim'</div><div class="line">Bundle 'EasyGrep'</div><div class="line">Bundle 'VOoM'</div><div class="line">Bundle 'VimIM'</div><div class="line">"<span class="params">...</span><span class="params">...</span><span class="params">...</span><span class="params">...</span><span class="params">...</span><span class="params">...</span><span class="params">...</span><span class="params">...</span><span class="params">...</span><span class="params">...</span><span class="params">...</span>.</div><div class="line"><span class="string">" non github repos</span></div><div class="line">" Bundle <span class="string">'git://git.wincent.com/command-t.git'</span></div><div class="line"><span class="string">"......................................</span></div><div class="line">filetype plugin indent on</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>bundle分为三类：</p>
+<pre><code>* 在Github vim-scripts 用户下的repos,只需要写出repos名称
+* 在Github其他用户下的repos, 需要写出”用户名/repos名”
+* 不在Github上的插件，需要写出git全路径
+</code></pre><ol>
+<li>安装插件<br>打开一个vim, 运行:<code>BundleInstall</code>，或者在命令行运行 <code>vim +BundleInstall +qall</code>，安装完成后插件就能用了。</li>
+<li>常用命令<ul>
+<li>更新插件:BundleUpdate</li>
+<li>清除不再使用的插件:BundleClean,</li>
+<li>列出所有插件:BundleList</li>
+<li>查找插件:BundleSearch</li>
+</ul>
+</li>
+</ol>
+<h3 id="YouCompleteMe-代码补全"><a href="#YouCompleteMe-代码补全" class="headerlink" title="YouCompleteMe 代码补全"></a>YouCompleteMe 代码补全</h3><ol>
+<li>下载 vundle<br><code>$ git clone https://github.com/Valloric/YouCompleteMe.git ~/.vim/bundle/vundle</code></li>
+<li></li>
+</ol>
+<h2 id="恢复文件"><a href="#恢复文件" class="headerlink" title="恢复文件"></a>恢复文件</h2><p>vi在编辑某一个文件时，会生成一个临时文件，这个文件以 . 开头并以 .swp结尾。正常退出该文件自动删除，如果意外退出例如忽然断电，该文件不会删除，我们在下次编辑时可以选择一下命令处理：</p>
+<ul>
+<li>O只读打开，不改变文件内容</li>
+<li>E继续编辑文件，不恢复.swp文件保存的内容</li>
+<li>R将恢复上次编辑以后未保存文件内容, 或者使用vi －r 文件名来恢复未保存的内容</li>
+<li>Q退出vi</li>
+<li>D删除.swp文件</li>
+</ul>
+<h2 id="其它操作"><a href="#其它操作" class="headerlink" title="其它操作"></a>其它操作</h2><ul>
+<li>在同一编辑窗打开第二个文件，用:sp [filename]</li>
+<li>在多个编辑文件之间切换，用Ctrl+w</li>
+<li>命令前面加数字表示重复次数，加字母表示使用的缓冲区名称。</li>
+<li>获取帮助，用:help [内容或命令]</li>
+</ul>
+<h2 id="设置-tab-为4个空格："><a href="#设置-tab-为4个空格：" class="headerlink" title="设置 tab 为4个空格："></a>设置 tab 为4个空格：</h2><p>在.vimrc中添加以下代码后，重启vim即可实现按TAB产生4个空格：<br><figure class="highlight vim"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">set</span> <span class="keyword">ts</span>=<span class="number">4</span>  # 注：<span class="keyword">ts</span>是tabstop的缩写，设TAB宽<span class="number">4</span>个空格</div><div class="line"><span class="keyword">set</span> expandtab</div></pre></td></tr></table></figure></p>
+<p>对于已保存的文件，可以使用下面的方法进行空格和TAB的替换：<br>TAB替换为空格：<br><figure class="highlight elixir"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="symbol">:set</span> ts=<span class="number">4</span></div><div class="line"><span class="symbol">:set</span> expandtab</div><div class="line"><span class="symbol">:%retab!</span></div></pre></td></tr></table></figure></p>
+<p>空格替换为TAB：<br><figure class="highlight elixir"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="symbol">:set</span> ts=<span class="number">4</span></div><div class="line"><span class="symbol">:set</span> noexpandtab</div><div class="line"><span class="symbol">:%retab!</span></div></pre></td></tr></table></figure></p>
+<p>加!是用于处理非空白字符之后的TAB，即所有的TAB，若不加!，则只处理行首的TAB。</p>
+<h2 id="一图胜千言"><a href="#一图胜千言" class="headerlink" title="一图胜千言"></a>一图胜千言</h2><p><img src="http://cloudaice.com/images/vim.jpg" alt="vim命令图"></p>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/pay-alipay.png">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/pay-wechat.png">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags"></i>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/VIM/">VIM</a></li></ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+	<i class="icon-book icon"></i>
+	<a class="article-category-link" href="/categories/技术/">技术</a>
+	</div>
+
+
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://woshijingshenbing.com/2016/10/16/VIM-随记/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+  
+<nav id="article-nav">
+  
+    <a href="/2016/12/12/大话设计模式/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          大话设计模式
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/10/16/Mysql-随记/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Mysql 随记</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="VIM-随记" data-title="VIM 随记" data-url="http://woshijingshenbing.com/2016/10/16/VIM-随记/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"woshijingshenbing"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+
+
+          </div>
+        </div>
+      </div>
+      <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+
+<footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2016 Codreamer
+    	</div>
+      	<div class="footer-right">
+      	<span id="busuanzi_container_site_uv">
+          本站访客数<span id="busuanzi_value_site_uv"></span>人次
+        </span>
+      	</div>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <script>
+	var yiliaConfig = {
+		mathjax: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false,
+		root: "/",
+		innerArchive: true
+	}
+</script>
+
+<script src="/./main.js?v=4.0.0.js"></script>
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+    
+<div class="tools-col" q-class="show:isShow,hide:isShow|isFalse" q-on="click:stop(e)">
+  <div class="tools-wrap">
+    
+    	<section class="tools-section tools-section-all" q-show="innerArchive">
+        <div class="search-wrap">
+          <input class="search-ipt" q-model="search" type="text" placeholder="find something…">
+          <i class="icon-search icon" q-show="search|isEmptyStr"></i>
+          <i class="icon-close icon" q-show="search|isNotEmptyStr" q-on="click:clearChose(e)"></i>
+        </div>
+        <div class="widget tagcloud search-tag">
+          <p class="search-tag-wording">tag:</p>
+          <label class="search-switch">
+            <input type="checkbox" q-on="click:toggleTag(e)" q-attr="checked:showTags">
+          </label>
+          <ul class="article-tag-list" q-show="showTags">
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">http</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">Mysql</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">Markdown</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">Git</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">MongoDB</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">VIM</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">mac</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">hexo</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">nodejs</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">定时任务</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">python</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">并发</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">线程</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">进程</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">协程</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">pycharm</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">随记</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">买房</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">北京</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">游记</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">马尔代夫</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">设计模式</a>
+              </li>
+            
+            <div class="clearfix"></div>
+          </ul>
+        </div>
+        <ul class="search-ul">
+          <p q-show="jsonFail" style="padding: 20px; font-size: 12px;">
+            缺失模块。<br/>1、在博客根目录（注意不是yilia根目录）执行以下命令：<br/> npm i hexo-generator-json-content --save<br/><br/>
+            2、在根目录_config.yml里添加配置：
+<pre style="font-size: 12px;" q-show="jsonFail">
+  jsonContent:
+    meta: false
+    pages: false
+    posts:
+      title: true
+      date: true
+      path: true
+      text: true
+      raw: false
+      content: false
+      slug: false
+      updated: false
+      comments: false
+      link: false
+      permalink: false
+      excerpt: false
+      categories: false
+      tags: true
+</pre>
+          </p>
+          <li class="search-li" q-repeat="items" q-show="isShow">
+            <a q-attr="href:path|urlformat" class="search-title"><i class="icon-quo-left icon"></i><span q-text="title"></span></a>
+            <p class="search-time">
+              <i class="icon-calendar icon"></i>
+              <span q-text="date|dateformat"></span>
+            </p>
+            <p class="search-tag">
+              <i class="icon-price-tags icon"></i>
+              <span q-repeat="tags" q-on="click:choseTag(e, name)" q-text="name|tagformat"></span>
+            </p>
+          </li>
+        </ul>
+    	</section>
+    
+
+    
+    	<section class="tools-section tools-section-friends" q-show="friends">
+  		
+        <ul class="search-ul">
+          
+            <li class="search-li">
+              <a href="https://coderq.com,一个面向程序员交流分享的新一代社区" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>码农圈</a>
+            </li>
+          
+            <li class="search-li">
+              <a href="http://weavesilk.com/,HTML5实现的魔幻效果" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>weavesilk</a>
+            </li>
+          
+        </ul>
+  		
+    	</section>
+    
+
+    
+    	<section class="tools-section tools-section-me" q-show="aboutme">
+  	  	
+  	  		<div class="aboutme-wrap" id="js-aboutme">他真诚地将自己的挑剔,&lt;br /&gt;误认为是对美的不懈追求，&lt;br /&gt;把自己的孤僻,&lt;br /&gt;误认为是不食人间烟火，&lt;br /&gt;把自己的散漫,&lt;br /&gt;误认为是对于自由的热爱。&lt;br /&gt;&lt;br /&gt;他的思想因为追求风雅而变得庸俗起来，&lt;br /&gt;他的行为因为小心翼翼而变得放纵不羁。&lt;br /&gt;&lt;br /&gt;他有很强的责任感，&lt;br /&gt;却也因此害怕做出承诺。&lt;br /&gt;&lt;br /&gt;他批判世上的所有东西，&lt;br /&gt;包括他自己。&lt;br /&gt;&lt;br /&gt;当别人指出他的自相矛盾后，&lt;br /&gt;他无法自圆其说，&lt;br /&gt;于是只好沉默。&lt;br /&gt;&lt;br /&gt;他是个不可理喻的人。</div>
+  	  	
+    	</section>
+    
+  </div>
+  
+</div>
+    <!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+  </div>
+</body>
+</html>

@@ -8,12 +8,14 @@
   <link rel="dns-prefetch" href="http://woshijingshenbing.com">
   <title>大话设计模式 | Codreamer的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="概述前段时间面试，被问到面向对象编程的好处，我脑子一下子短路了三秒钟，因为觉得这个问题太简单，感觉有诈，但仍是本能的回答了下去：1“面向对象的三大原则是封装、继承、多态，好处就是代码写得少，便于理解，以及易于修改。我们可以把对象们的共同属性和行为封装到类中，如果有子对象有额外的操作，可以定义子类进行继承，而不用再写一遍父类中的代码，多态可以实现对子类的抽象，对客户只暴露父类中方法，具体的实现在子类">
+  <meta name="description" content="概述前段时间面试，被问到面向对象编程的好处，我脑子一下子短路了三秒钟.因为觉得这个问题太简单，感觉有诈，但仍是本能的回答了下去：
+1“面向对象的三大原则是封装、继承、多态，好处就是代码写得少，便于理解，以及方便修改。我们可以把对象们的共同属性和行为封装到类中，如果有子对象有额外的操作，可以定义子类进行继承，而不用再写一遍父类中的代码，多态可以实现对子类的抽象，对客户只暴露父类中方法，具体的实现在子">
 <meta property="og:type" content="article">
 <meta property="og:title" content="大话设计模式">
-<meta property="og:url" content="http://woshijingshenbing.com/2016/12/12/大话设计模式/index.html">
+<meta property="og:url" content="http://woshijingshenbing.com/2016/12/26/大话设计模式/index.html">
 <meta property="og:site_name" content="Codreamer的博客">
-<meta property="og:description" content="概述前段时间面试，被问到面向对象编程的好处，我脑子一下子短路了三秒钟，因为觉得这个问题太简单，感觉有诈，但仍是本能的回答了下去：1“面向对象的三大原则是封装、继承、多态，好处就是代码写得少，便于理解，以及易于修改。我们可以把对象们的共同属性和行为封装到类中，如果有子对象有额外的操作，可以定义子类进行继承，而不用再写一遍父类中的代码，多态可以实现对子类的抽象，对客户只暴露父类中方法，具体的实现在子类">
+<meta property="og:description" content="概述前段时间面试，被问到面向对象编程的好处，我脑子一下子短路了三秒钟.因为觉得这个问题太简单，感觉有诈，但仍是本能的回答了下去：
+1“面向对象的三大原则是封装、继承、多态，好处就是代码写得少，便于理解，以及方便修改。我们可以把对象们的共同属性和行为封装到类中，如果有子对象有额外的操作，可以定义子类进行继承，而不用再写一遍父类中的代码，多态可以实现对子类的抽象，对客户只暴露父类中方法，具体的实现在子">
 <meta property="og:image" content="http://static.zybuluo.com/sanyang/nfs1z6glt27hb4s0w3xsm0yp/Snip20161226_5.png">
 <meta property="og:image" content="http://static.zybuluo.com/sanyang/l89b1jt8u242fb4anfinhoal/Snip20161226_4.png">
 <meta property="og:image" content="http://static.zybuluo.com/sanyang/tt5gsl8tjyefx16o7060wq84/image_1b4tmq9r218001sdf1npl1rtg18bm1l.png">
@@ -22,10 +24,11 @@
 <meta property="og:image" content="http://static.zybuluo.com/sanyang/adj4gg3wf1fsq0genjyrl6ex/image_1b4tn0cm41nt0i28gn4aer1s402s.png">
 <meta property="og:image" content="http://static.zybuluo.com/sanyang/eckcwdyt7xveknl7nchrc2ep/image_1b4tn9a6bs1u3517ur1ljg1s0pm.png">
 <meta property="og:image" content="http://static.zybuluo.com/sanyang/fjtaa6zaae01m70hjb45f0qg/image_1b4tnnlq1gco1r2pf5nod81tn313.png">
-<meta property="og:updated_time" content="2016-12-26T14:19:49.000Z">
+<meta property="og:updated_time" content="2016-12-26T14:53:38.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="大话设计模式">
-<meta name="twitter:description" content="概述前段时间面试，被问到面向对象编程的好处，我脑子一下子短路了三秒钟，因为觉得这个问题太简单，感觉有诈，但仍是本能的回答了下去：1“面向对象的三大原则是封装、继承、多态，好处就是代码写得少，便于理解，以及易于修改。我们可以把对象们的共同属性和行为封装到类中，如果有子对象有额外的操作，可以定义子类进行继承，而不用再写一遍父类中的代码，多态可以实现对子类的抽象，对客户只暴露父类中方法，具体的实现在子类">
+<meta name="twitter:description" content="概述前段时间面试，被问到面向对象编程的好处，我脑子一下子短路了三秒钟.因为觉得这个问题太简单，感觉有诈，但仍是本能的回答了下去：
+1“面向对象的三大原则是封装、继承、多态，好处就是代码写得少，便于理解，以及方便修改。我们可以把对象们的共同属性和行为封装到类中，如果有子对象有额外的操作，可以定义子类进行继承，而不用再写一遍父类中的代码，多态可以实现对子类的抽象，对客户只暴露父类中方法，具体的实现在子">
 <meta name="twitter:image" content="http://static.zybuluo.com/sanyang/nfs1z6glt27hb4s0w3xsm0yp/Snip20161226_5.png">
   
     <link rel="alternative" href="/atom.xml" title="Codreamer的博客" type="application/atom+xml">
@@ -177,15 +180,18 @@ var _hmt = _hmt || [];
     </h1>
   
 
-        <a href="/2016/12/12/大话设计模式/" class="archive-article-date">
-  	<time datetime="2016-12-11T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-12-12</time>
+        <a href="/2016/12/26/大话设计模式/" class="archive-article-date">
+  	<time datetime="2016-12-26T14:19:49.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-12-26</time>
 </a>
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>前段时间面试，被问到面向对象编程的好处，我脑子一下子短路了三秒钟，因为觉得这个问题太简单，感觉有诈，但仍是本能的回答了下去：<br><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">“面向对象的三大原则是封装、继承、多态，好处就是代码写得少，便于理解，以及易于修改。我们可以把对象们的共同属性和行为封装到类中，如果有子对象有额外的操作，可以定义子类进行继承，而不用再写一遍父类中的代码，多态可以实现对子类的抽象，对客户只暴露父类中方法，具体的实现在子类中完成，这样修改子类，或替换子类，对客户的影响都不大，就是所谓的易于修改，或者称为松耦合。”</div></pre></td></tr></table></figure></p>
-<p>再深入一些，就讲不出来了。<br><a id="more"></a><br>然后又被问用到过哪些设计模式，自己好像只回答了一个装饰器模式，其他的一下子也说不出来，因为平时用python比较多，会经常写装饰器，所以这个印象比较深刻。工作过程中肯定也潜移默化的用到了不少设计模式，但一直没有总结过。</p>
+        <h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>前段时间面试，被问到面向对象编程的好处，我脑子一下子短路了三秒钟.<br>因为觉得这个问题太简单，感觉有诈，但仍是本能的回答了下去：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">“面向对象的三大原则是封装、继承、多态，好处就是代码写得少，便于理解，以及方便修改。我们可以把对象们的共同属性和行为封装到类中，如果有子对象有额外的操作，可以定义子类进行继承，而不用再写一遍父类中的代码，多态可以实现对子类的抽象，对客户只暴露父类中方法，具体的实现在子类中完成，这样修改子类，或替换子类，对客户的影响都不大，就是所谓的易于修改，或者称为松耦合。”</div></pre></td></tr></table></figure>
+<p>再深入一些，就讲不出来了。^_^!</p>
+<a id="more"></a>
+<p>然后又被问用到过哪些设计模式，自己好像只回答了一个装饰器模式，其他的一下子也说不出来，因为平时用python比较多，会经常写装饰器，所以这个印象比较深刻。工作过程中肯定也潜移默化的用到了不少设计模式，但一直没有总结过。</p>
 <p>面试回来赶紧补了下课，才发现自己这方面知识有多薄弱，因为python标榜的是面向函数编程，所以自己经常会在一个module里写很多函数进行调用，类倒是用得越来越少，面向对象的好处，都快被自己忽略掉了。看同事们的代码，也是大把大把面向过程编程，到处是小函数，一个功能会被不同的人，写在不同的地方，代码实在太难以维护。</p>
 <p>在网上看了几篇帖子，都是专业术语，比较晦涩，好像懂了，但仍是不太明了。于是在kindle中下载了两本书，一本《大话设计模式》，用诙谐的语句，浅显易懂的说明了设计模式怎么用，用在哪里，一周就看完了；另一本《设计模式导论》，更深入的介绍了各种设计模式的异同，和更多的应用场景，相似的设计模式之间如何取舍，尚未看完，边看边思考，而且这个过程，可以拿我们现在项目（代码超15w行）开刀，修改的地方，以及为什么这么修改，会陆续记录在这篇博客中，供大家参考。</p>
 <h2 id="五大原则（SOLID）"><a href="#五大原则（SOLID）" class="headerlink" title="五大原则（SOLID）"></a>五大原则（SOLID）</h2><h3 id="原则一：单一责任原则（Single-Responsibility-Principle）"><a href="#原则一：单一责任原则（Single-Responsibility-Principle）" class="headerlink" title="原则一：单一责任原则（Single Responsibility Principle）"></a>原则一：单一责任原则（Single Responsibility Principle）</h3><p><img src="http://static.zybuluo.com/sanyang/nfs1z6glt27hb4s0w3xsm0yp/Snip20161226_5.png" alt="Snip20161226_5.png-200.1kB"></p>
@@ -230,7 +236,7 @@ var _hmt = _hmt || [];
 <p>书籍：</p>
 <ul>
 <li>《大话设计模式》</li>
-<li>《设计模式导论》</li>
+<li>《设计模式-可复用面向对象软件的基础（Design Patterns - Elements of Reusable Object-Oriented Software）》</li>
 </ul>
 
       
@@ -331,7 +337,7 @@ var _hmt = _hmt || [];
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="http://s.jiathis.com/qrcode.php?url=http://woshijingshenbing.com/2016/12/12/大话设计模式/" alt="微信分享二维码">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://woshijingshenbing.com/2016/12/26/大话设计模式/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -345,18 +351,9 @@ var _hmt = _hmt || [];
   
 <nav id="article-nav">
   
-    <a href="/2016/12/21/MongoDB-随记/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          MongoDB 随记
-        
-      </div>
-    </a>
   
-  
-    <a href="/2016/10/16/VIM-随记/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">VIM 随记</div>
+    <a href="/2016/12/21/MongoDB-随记/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">MongoDB 随记</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -369,7 +366,7 @@ var _hmt = _hmt || [];
 
 <div class="duoshuo">
 	<!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="大话设计模式" data-title="大话设计模式" data-url="http://woshijingshenbing.com/2016/12/12/大话设计模式/"></div>
+	<div class="ds-thread" data-thread-key="大话设计模式" data-title="大话设计模式" data-url="http://woshijingshenbing.com/2016/12/26/大话设计模式/"></div>
 	<!-- 多说评论框 end -->
 	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 	<script type="text/javascript">
@@ -414,7 +411,7 @@ var _hmt = _hmt || [];
     </div>
     <script>
 	var yiliaConfig = {
-		mathjax: true,
+		mathjax: false,
 		isHome: false,
 		isPost: true,
 		isArchive: false,
@@ -427,27 +424,6 @@ var _hmt = _hmt || [];
 </script>
 
 <script src="/./main.js?v=4.0.0.js"></script>
-
-
-<script type="text/x-mathjax-config">
-MathJax.Hub.Config({
-    tex2jax: {
-        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
-        processEscapes: true,
-        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-    }
-});
-
-MathJax.Hub.Queue(function() {
-    var all = MathJax.Hub.getAllJax(), i;
-    for(i=0; i < all.length; i += 1) {
-        all[i].SourceElement().parentNode.className += ' has-jax';                 
-    }       
-});
-</script>
-
-<script src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
-</script>
 
 
     
@@ -468,19 +444,11 @@ MathJax.Hub.Queue(function() {
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)">http</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)">Mysql</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)">Markdown</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)">Git</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">http</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -488,7 +456,19 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)">Markdown</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">Mysql</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)">VIM</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">定时任务</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -504,7 +484,27 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)">定时任务</a>
+                <a href="javascript:void(0)">pycharm</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">随记</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">游记</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">马尔代夫</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">买房</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">北京</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -525,30 +525,6 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)">协程</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)">pycharm</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)">随记</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)">买房</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)">北京</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)">游记</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)">马尔代夫</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -604,11 +580,11 @@ MathJax.Hub.Queue(function() {
         <ul class="search-ul">
           
             <li class="search-li">
-              <a href="https://coderq.com,一个面向程序员交流分享的新一代社区" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>码农圈</a>
+              <a href="https://www.v2ex.com/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>v2ex</a>
             </li>
           
             <li class="search-li">
-              <a href="http://weavesilk.com/,HTML5实现的魔幻效果" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>weavesilk</a>
+              <a href="http://weavesilk.com/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>weavesilk</a>
             </li>
           
         </ul>
